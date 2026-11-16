@@ -1,0 +1,149 @@
+/* src/components/gereedschapskist/geluiden/geluiden.css */
+
+.geluiden-container {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #1e293b;
+    padding-bottom: 40px;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+@keyframes slideUpFade { 
+    0% { opacity: 0; transform: translateY(15px); } 
+    100% { opacity: 1; transform: translateY(0); } 
+}
+.stagger-1 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.05s; }
+.stagger-2 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.1s; }
+.stagger-3 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.15s; }
+
+.geluiden-intro-card {
+    background: linear-gradient(to bottom right, #f5f3ff, #ffffff);
+    border: 1px solid #ddd6fe;
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.05);
+}
+
+.geluiden-intro-card h3 { margin: 0 0 8px 0; color: #5b21b6; font-size: 18px; display: flex; align-items: center; gap: 8px; }
+.geluiden-intro-card p { margin: 0; font-size: 14px; color: #475569; line-height: 1.6; }
+
+/* Audiokaarten */
+.sound-card {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+
+.sound-card:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    transform: translateY(-2px);
+}
+
+.sound-card.active-sound {
+    border-color: #c4b5fd;
+    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.12);
+    background: #faf5ff !important;
+}
+
+.sound-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.sound-info-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.sound-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    flex-shrink: 0;
+}
+
+.sound-title { margin: 0; font-size: 16px; font-weight: 800; color: #1e293b; }
+.sound-desc { margin: 4px 0 0 0; font-size: 13px; color: #64748b; font-weight: 500; }
+
+.play-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #f1f5f9;
+    border: none;
+    color: #3b82f6;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.play-btn:hover { background: #e2e8f0; transform: scale(1.05); }
+.sound-card.active-sound .play-btn { background: #8b5cf6; color: #ffffff; }
+
+/* Custom Volume Slider */
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 12px;
+    border-top: 1px dashed #e2e8f0;
+}
+
+.volume-icon { font-size: 16px; color: #94a3b8; }
+
+.volume-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 4px;
+    outline: none;
+    transition: background 0.2s;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #8b5cf6;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.volume-slider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #8b5cf6;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Navigatie Knoppen */
+.btn-secondary {
+    background-color: #f1f5f9; color: #475569; border: none; padding: 14px 24px; 
+    border-radius: 16px; font-weight: 700; font-size: 15px; cursor: pointer; 
+    transition: all 0.2s; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.btn-secondary:hover { background-color: #e2e8f0; color: #1e293b; }

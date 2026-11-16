@@ -1,0 +1,137 @@
+/* src/components/gereedschapskist/gereedschapskist.css */
+
+.gk-container,
+.gk-container * {
+    box-sizing: border-box;
+}
+
+.gk-container {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #1e293b;
+    padding: 20px 20px 100px 20px; /* Extra padding onderaan voor de navigatiebalk */
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+@keyframes slideUpFade { 
+    0% { opacity: 0; transform: translateY(15px); } 
+    100% { opacity: 1; transform: translateY(0); } 
+}
+
+.gk-header {
+    text-align: center;
+    margin-bottom: 32px;
+    animation: slideUpFade 0.4s ease forwards;
+}
+
+.gk-header span {
+    font-size: 12px;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.gk-header h1 {
+    font-size: 28px;
+    color: #1e293b;
+    margin: 8px 0 0 0;
+    font-weight: 800;
+}
+
+/* Het Raster (Grid) */
+.gk-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+/* De Tool Kaarten */
+.gk-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    opacity: 0;
+    animation: slideUpFade 0.4s ease forwards;
+}
+
+.gk-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 20px -8px rgba(0,0,0,0.1);
+    border-color: #cbd5e1;
+}
+
+.gk-icon-wrapper {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+}
+
+.gk-card:hover .gk-icon-wrapper {
+    transform: scale(1.1);
+}
+
+.gk-card-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.gk-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+}
+
+.gk-card p {
+    font-size: 13px;
+    color: #64748b;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Staggered animaties voor de kaarten */
+.stagger-delay-1 { animation-delay: 0.1s; }
+.stagger-delay-2 { animation-delay: 0.2s; }
+.stagger-delay-3 { animation-delay: 0.3s; }
+.stagger-delay-4 { animation-delay: 0.4s; }
+.stagger-delay-5 { animation-delay: 0.5s; }
+
+/* Mobiele optimalisatie: Lijstweergave i.p.v. 2 kolommen */
+@media (max-width: 768px) {
+    .gk-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .gk-card {
+        flex-direction: row;
+        text-align: left;
+        padding: 24px 20px; /* Meer ademruimte op mobiel */
+        justify-content: flex-start;
+        gap: 20px;
+    }
+    
+    .gk-icon-wrapper {
+        width: 56px;
+        height: 56px;
+        font-size: 28px;
+    }
+}

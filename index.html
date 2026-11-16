@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="src/assets/icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Verslavingsvrij</title>
+    
+    <!-- Stylesheets inladen -->
+    <link rel="stylesheet" href="src/styles/global.css">
+    <link rel="stylesheet" href="src/components/dashboard/dashboard.css">
+</head>
+<body>
+    <!-- 1. Uitgedunde Topbar (Alleen logo en wisselwachter) -->
+    <header class="topbar">
+        <div style="font-weight: 700; font-size: 18px; color: white;">Verslavingsvrij</div>
+        
+        <div class="topbar-switcher" id="addiction-switcher" style="position: relative;">
+            <button class="topbar-btn" id="btn-addiction-switch">
+                <span id="current-addiction-icon">🍺</span>
+            </button>
+            <!-- De lege container voor het dynamische Duolingo menu -->
+            <div id="addiction-dropdown-container" class="hidden" style="position: absolute; right: 0; top: 100%; z-index: 1000; margin-top: 8px;"></div>
+        </div>
+    </header>
+
+    <!-- 2. Het dynamische content-gebied -->
+    <main id="app-content" style="margin-bottom: 90px;">
+        <!-- JavaScript (main.js) laadt hier automatisch de modules of het dashboard in -->
+    </main>
+
+    <!-- 3. De nieuwe navigatiebalk onderaan -->
+    <nav class="bottom-nav">
+        <!-- Let op de ID's, die gebruiken we straks in main.js om ze klikbaar te maken -->
+        <button class="nav-item active" id="btn-home">
+            <span class="nav-icon">🗺️</span>
+            <span>Route</span>
+        </button>
+        <button class="nav-item" id="btn-tools">
+            <span class="nav-icon">🧰</span>
+            <span>Hulpmiddelen</span>
+        </button>
+        
+        <!-- De zwevende Noodknop in het midden -->
+        <div class="nav-item-acute">
+            <button class="acute-btn" id="btn-noodknop">⚡</button>
+        </div>
+
+        <button class="nav-item" id="btn-logbook">
+            <span class="nav-icon">📖</span>
+            <span>Registraties</span>
+        </button>
+        <button class="nav-item" id="btn-profile">
+            <span class="nav-icon">👤</span>
+            <span>Profiel</span>
+        </button>
+    </nav>
+
+    <!-- Hoofdscript inladen -->
+    <script type="module" src="src/main.js"></script>
+    <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js');
+  }
+</script>
+</body>
+</html>

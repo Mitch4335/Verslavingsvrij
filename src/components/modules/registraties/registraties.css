@@ -1,0 +1,240 @@
+/* src/components/modules/registraties/registraties.css */
+
+/* DE CRUCIALE FIX: Voorkom dat padding elementen breder maakt dan het scherm */
+.module-container,
+.module-container * {
+    box-sizing: border-box;
+}
+
+.module-container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 24px 16px;
+    font-family: inherit;
+    color: #1e293b;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+@keyframes slideUpFade { 
+    0% { opacity: 0; transform: translateY(15px); } 
+    100% { opacity: 1; transform: translateY(0); } 
+}
+.stagger-1 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.05s; }
+.stagger-2 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.1s; }
+.stagger-3 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.15s; }
+
+.step-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin-bottom: 24px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 8px;
+}
+
+.form-input, .form-textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #1e293b;
+    background: #ffffff;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.form-input:focus, .form-textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.choice-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.choice-card {
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.choice-card:hover {
+    border-color: #cbd5e1;
+    background: #f1f5f9;
+}
+
+.choice-card.selected {
+    border-color: #2563eb;
+    background: #eff6ff;
+}
+
+.choice-card h4 {
+    margin: 0 0 4px 0;
+    font-size: 15px;
+    color: #1e293b;
+}
+
+.choice-card p {
+    margin: 0;
+    font-size: 13px;
+    color: #64748b;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.btn-primary {
+    background: #2563eb;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #1d4ed8;
+}
+
+.btn-primary:disabled {
+    background: #94a3b8;
+    color: #f8fafc;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.btn-secondary {
+    background: #ffffff;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+    background: #f1f5f9;
+    color: #1e293b;
+}
+
+/* Modal overlays */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-overlay.hidden {
+    display: none;
+}
+
+.modal-card {
+    background: #ffffff;
+    padding: 32px;
+    border-radius: 16px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.modal-icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.modal-card h3 {
+    margin: 0 0 8px 0;
+    font-size: 20px;
+    color: #1e293b;
+}
+
+.modal-card p {
+    margin: 0 0 20px 0;
+    font-size: 14px;
+    color: #475569;
+    line-height: 1.5;
+}
+
+/* --- MOBIELE OPTIMALISATIES --- */
+@media (max-width: 768px) {
+    .info-block {
+        padding: 16px !important;
+    }
+    
+    .choice-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .button-group {
+        flex-direction: column-reverse !important;
+        gap: 12px !important;
+    }
+
+    .button-group button {
+        width: 100% !important;
+        margin: 0 !important;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .custom-input-wrapper {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        padding: 12px !important;
+    }
+
+    .custom-input-wrapper input {
+        width: 100% !important;
+        margin-bottom: 8px !important;
+        padding: 8px 0 !important;
+    }
+    
+    .custom-input-wrapper .reg-btn-add {
+        width: 100% !important;
+    }
+}

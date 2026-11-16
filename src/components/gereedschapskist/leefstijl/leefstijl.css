@@ -1,0 +1,175 @@
+/* src/components/gereedschapskist/leefstijl/leefstijl.css */
+
+.ls-container {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #1e293b;
+    padding-bottom: 40px;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+@keyframes slideUpFade { 
+    0% { opacity: 0; transform: translateY(15px); } 
+    100% { opacity: 1; transform: translateY(0); } 
+}
+.stagger-1 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.05s; }
+.stagger-2 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.1s; }
+.stagger-3 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.15s; }
+.stagger-4 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.2s; }
+
+/* Intro & Sectie Headers */
+.sectie-titel {
+    font-size: 14px;
+    font-weight: 800;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 32px 0 16px 0;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 8px;
+}
+
+/* --- DE BATTERIJEN (SCAN) --- */
+.scan-card {
+    background: linear-gradient(to bottom right, #f8fafc, #ffffff);
+    border: 1px solid #cbd5e1;
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 24px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.battery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.battery-item {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.battery-item:hover {
+    border-color: #cbd5e1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+.battery-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.battery-icon {
+    font-size: 24px;
+    background: #f1f5f9;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.battery-name { font-weight: 700; font-size: 15px; color: #1e293b; }
+
+.battery-blocks {
+    display: flex;
+    gap: 4px;
+}
+
+.b-block {
+    width: 12px;
+    height: 24px;
+    border-radius: 4px;
+    background: #e2e8f0;
+}
+
+/* Vragenlijst */
+.vraag-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 16px;
+}
+.vraag-card h4 { margin: 0 0 16px 0; font-size: 16px; color: #1e293b; line-height: 1.5; }
+.antwoord-opties { display: flex; flex-direction: column; gap: 8px; }
+.antwoord-btn {
+    background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px; border-radius: 10px;
+    text-align: left; font-size: 14px; font-weight: 600; color: #475569; cursor: pointer;
+    transition: all 0.2s;
+}
+.antwoord-btn:hover { background: #f1f5f9; }
+.antwoord-btn.selected { background: #3b82f6; color: #ffffff; border-color: #2563eb; }
+
+/* Focus & Tips */
+.tip-list { list-style: none; padding: 0; margin: 0; }
+.tip-item {
+    background: #f8fafc; border-radius: 12px; padding: 16px; margin-bottom: 12px;
+    display: flex; gap: 12px; align-items: flex-start;
+}
+.tip-icon { font-size: 20px; flex-shrink: 0; }
+.tip-text { margin: 0; font-size: 14px; color: #334155; line-height: 1.5; }
+
+/* Bestaande Kennisbank Stijlen */
+.pillar-card {
+    background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 20px; margin-bottom: 16px;
+    display: flex; align-items: center; justify-content: space-between; cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+}
+.pillar-card:hover { border-color: #cbd5e1; box-shadow: 0 8px 24px rgba(0,0,0,0.06); transform: translateY(-3px); }
+.pillar-info { display: flex; align-items: center; gap: 16px; }
+.pillar-icon { width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
+.pillar-title { margin: 0; font-size: 17px; font-weight: 800; color: #1e293b; }
+.pillar-subtitle { margin: 4px 0 0 0; font-size: 13px; color: #64748b; font-weight: 500; }
+.pillar-arrow { color: #cbd5e1; font-weight: bold; font-size: 20px; transition: all 0.2s; }
+
+.chapter-list { display: flex; flex-direction: column; gap: 12px; }
+.chapter-card {
+    background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 16px;
+    display: flex; align-items: center; gap: 16px; cursor: pointer; transition: all 0.2s;
+}
+.chapter-card:hover { background: #f8fafc; border-color: #cbd5e1; transform: translateX(4px); }
+.chapter-icon { font-size: 24px; background: #f1f5f9; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 12px; }
+.chapter-text h4 { margin: 0 0 4px 0; font-size: 16px; font-weight: 700; color: #1e293b; }
+.chapter-text p { margin: 0; font-size: 13px; color: #64748b; }
+
+.lesson-header { margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; }
+.lesson-header h2 { margin: 0 0 8px 0; font-size: 28px; font-weight: 800; color: #1e293b; line-height: 1.2; }
+.lesson-header p { margin: 0; font-size: 15px; color: #64748b; }
+.lesson-media-box { background: #f8fafc; border-radius: 20px; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 32px; border: 1px solid #e2e8f0; min-height: 200px; }
+.lesson-content { font-size: 15px; color: #334155; line-height: 1.7; }
+.lesson-content h3 { font-size: 18px; font-weight: 800; color: #1e293b; margin: 24px 0 12px 0; }
+.lesson-content p { margin: 0 0 16px 0; }
+.lesson-content ul { margin: 0 0 16px 0; padding-left: 20px; }
+.lesson-content li { margin-bottom: 8px; }
+
+/* Knoppen & Animaties */
+.btn-primary { background-color: #3b82f6; color: white; border: none; padding: 14px 24px; border-radius: 16px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2); display: inline-block; text-align: center; }
+.btn-primary:hover { background-color: #2563eb; transform: translateY(-2px); }
+.btn-secondary { background-color: #f1f5f9; color: #475569; border: none; padding: 14px 24px; border-radius: 16px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.2s; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; box-sizing: border-box; }
+.btn-secondary:hover { background-color: #e2e8f0; color: #1e293b; }
+
+@keyframes floatAnim { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
+@keyframes pulseAnim { 0% { transform: scale(1); } 50% { transform: scale(1.15); } 100% { transform: scale(1); } }
+.anim-float { display: inline-block; animation: floatAnim 4s ease-in-out infinite; font-size: 56px; margin: 0 12px; filter: drop-shadow(0 10px 8px rgba(0,0,0,0.1)); }
+.anim-pulse { display: inline-block; animation: pulseAnim 3s ease-in-out infinite; font-size: 56px; margin: 0 12px; filter: drop-shadow(0 10px 8px rgba(0,0,0,0.1)); }
+.graph-container { width: 100%; max-width: 400px; height: 150px; position: relative; }
+.graph-svg { width: 100%; height: 100%; overflow: visible; }
+.graph-path { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: drawGraph 2s ease-out forwards; animation-delay: 0.5s; }
+@keyframes drawGraph { to { stroke-dashoffset: 0; } }
+@keyframes fadeIn { to { opacity: 1; } }
+.graph-label { opacity: 0; animation: fadeIn 0.5s ease-out forwards; }
+.icon-transition { font-size: 64px; position: absolute; animation: fadeIn 1s ease-in-out forwards; }

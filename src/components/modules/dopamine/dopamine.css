@@ -1,0 +1,253 @@
+/* src/components/modules/dopamine/dopamine.css */
+
+/* --- WIZARD LOGICA --- */
+.wizard-step {
+    display: none;
+}
+
+.wizard-step.active {
+    display: block;
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- KNOPPEN STYLING --- */
+.btn-primary {
+    background-color: #2563eb;
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+    font-family: inherit;
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8;
+}
+
+.btn-secondary {
+    background-color: #ffffff;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.btn-secondary:hover {
+    background-color: #f1f5f9;
+    color: #1e293b;
+}
+
+/* --- DOPAMINE MODULE SPECIFIEK --- */
+.dopamine-container {
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: inherit;
+    padding-bottom: 40px;
+}
+
+.info-flashcard {
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.info-flashcard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    border-color: #cbd5e1;
+}
+
+.flashcard-icon {
+    font-size: 40px;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.flashcard-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+}
+
+.flashcard-text {
+    font-size: 15px;
+    color: #475569;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* VISUELE WEERGAVE BARS (STAP 2) */
+.dopamine-chart {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 16px;
+    border: 1px solid #e2e8f0;
+}
+
+.bar-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    gap: 12px;
+}
+
+.bar-row:last-child {
+    margin-bottom: 0;
+}
+
+.bar-label {
+    width: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #475569;
+}
+
+.bar-track {
+    flex: 1;
+    height: 12px;
+    background: #e2e8f0;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.bar-fill { height: 100%; border-radius: 6px; }
+.bar-normal { background: #10b981; width: 30%; }
+.bar-spike { background: #ef4444; width: 95%; }
+
+/* HET G-SCHEMA (STAP 2) */
+.g-schema-container {
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px 16px;
+    margin-top: 20px;
+    position: relative;
+}
+
+.g-schema-flow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    position: relative;
+    z-index: 2;
+}
+
+.schema-node {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 4px;
+    border-radius: 12px;
+    text-align: center;
+    border: 2px solid transparent;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+
+.node-situatie { background: #ffffff; border-color: #cbd5e1; }
+.node-gedrag { background: #eff6ff; border-color: #bfdbfe; color: #1e3a8a; }
+.node-gevolg { background: #ecfdf5; border-color: #a7f3d0; color: #065f46; }
+
+.schema-node .node-title { font-weight: 800; font-size: 14px; margin-bottom: 4px; color: #1e293b; }
+.schema-node .node-sub { font-size: 12px; color: #64748b; line-height: 1.2; }
+.node-gedrag .node-title, .node-gevolg .node-title { color: inherit; }
+.node-gedrag .node-sub, .node-gevolg .node-sub { color: inherit; opacity: 0.8; }
+
+.schema-arrow { color: #94a3b8; font-size: 20px; font-weight: bold; }
+
+.schema-feedback {
+    margin-top: 24px;
+    text-align: center;
+    position: relative;
+}
+
+.feedback-line {
+    position: absolute;
+    top: -40px;
+    left: 16%;
+    right: 16%;
+    height: 50px;
+    border: 2px dashed #94a3b8;
+    border-top: none;
+    border-radius: 0 0 16px 16px;
+    z-index: 1;
+}
+
+.feedback-text {
+    font-size: 13px;
+    font-weight: 700;
+    color: #2563eb;
+    background: #f8fafc;
+    display: inline-block;
+    padding: 0 16px;
+    position: relative;
+    z-index: 2;
+    top: 2px;
+}
+
+/* --- NIEUW: LIJNGRAFIEK ANIMATIE (STAP 3) --- */
+.svg-graph-container {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px 10px 10px 10px;
+    margin: 20px 0;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.dopamine-animated-line {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+}
+
+.wizard-step.active .dopamine-animated-line {
+    animation: drawLine 2s ease-in-out forwards;
+    animation-delay: 0.3s; /* Wacht heel even na het tonen van het scherm */
+}
+
+@keyframes drawLine {
+    to { stroke-dashoffset: 0; }
+}
+
+.svg-data-point {
+    opacity: 0;
+}
+
+.wizard-step.active .svg-data-point {
+    animation: popPoint 0.4s ease-out forwards;
+}
+
+.wizard-step.active .point-1 { animation-delay: 0.8s; }
+.wizard-step.active .point-2 { animation-delay: 1.4s; }
+.wizard-step.active .point-3 { animation-delay: 1.6s; }
+.wizard-step.active .point-4 { animation-delay: 1.8s; }
+
+@keyframes popPoint {
+    from { opacity: 0; transform: scale(0); transform-origin: center; }
+    to { opacity: 1; transform: scale(1); transform-origin: center; }
+}

@@ -1,0 +1,281 @@
+/* src/components/gereedschapskist/activiteiten/activiteiten.css */
+
+.act-container,
+.act-container * {
+    box-sizing: border-box;
+}
+
+.act-container {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #1e293b;
+    padding-bottom: 40px;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+@keyframes slideUpFade { 
+    0% { opacity: 0; transform: translateY(15px); } 
+    100% { opacity: 1; transform: translateY(0); } 
+}
+.stagger-1 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.1s; }
+.stagger-2 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.2s; }
+.stagger-3 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.3s; }
+
+/* Dashboard Kaarten & Intro Banner */
+.act-info-block { 
+    background: #ffffff; 
+    border: 1px solid #e2e8f0; 
+    border-radius: 16px; 
+    padding: 24px; 
+    margin-bottom: 24px; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03); 
+    width: 100%;
+}
+
+.act-info-block-orange {
+    border-top: 4px solid #f59e0b;
+    background: linear-gradient(to bottom, #fffdfa, #ffffff);
+}
+
+/* Accordeon Catalogus */
+.theme-accordion {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+}
+
+.theme-accordion.open {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-color: #cbd5e1;
+}
+
+.theme-header {
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: #f8fafc;
+    user-select: none;
+}
+
+.theme-header h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.theme-icon { font-size: 20px; }
+.theme-toggle { font-size: 12px; color: #64748b; transition: transform 0.3s ease; }
+.theme-accordion.open .theme-toggle { transform: rotate(180deg); }
+
+.theme-content {
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease;
+    background: #ffffff;
+}
+
+.theme-accordion.open .theme-content {
+    padding: 20px;
+    max-height: 2000px; 
+}
+
+/* Activity Chips (Multi-select) */
+.chip-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.act-chip {
+    background: #ffffff;
+    border: 2px solid #cbd5e1;
+    color: #334155;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.act-chip:hover:not(.already-added) {
+    background: #f1f5f9;
+    border-color: #94a3b8;
+}
+
+.act-chip.selected {
+    background: #f59e0b !important;
+    border-color: #d97706 !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+    transform: scale(1.05);
+}
+
+.act-chip.already-added {
+    opacity: 0.5;
+    background: #f1f5f9;
+    cursor: not-allowed;
+    text-decoration: line-through;
+    color: #94a3b8;
+    border-color: #e2e8f0;
+}
+
+/* Eigen Invoer Veld (Nieuw) */
+.custom-act-wrapper {
+    margin-top: 16px;
+    display: flex;
+    gap: 8px;
+    border-top: 1px dashed #e2e8f0;
+    padding-top: 16px;
+}
+
+.custom-act-input {
+    flex: 1;
+    padding: 10px 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 20px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    font-family: inherit;
+}
+
+.custom-act-input:focus {
+    border-color: #f59e0b;
+}
+
+.btn-add-custom {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    color: #475569;
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 20px;
+    padding: 0 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-add-custom:hover {
+    background: #f59e0b;
+    color: white;
+    border-color: #f59e0b;
+}
+
+/* Frequentie Instellen UI */
+.freq-item-card {
+    background: #ffffff; 
+    border: 1px solid #e2e8f0; 
+    border-radius: 12px; 
+    padding: 16px; 
+    margin-bottom: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.freq-item-card h4 {
+    margin: 0 0 12px 0;
+    color: #1e293b;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.freq-pill-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.freq-pill {
+    padding: 8px 14px; 
+    border-radius: 20px; 
+    border: 1px solid #cbd5e1; 
+    background: #f8fafc; 
+    color: #475569; 
+    font-size: 13px; 
+    cursor: pointer; 
+    transition: all 0.2s;
+}
+
+.freq-pill:hover {
+    background: #f1f5f9;
+}
+
+.freq-pill.active {
+    background: #fffbeb; 
+    border-color: #f59e0b; 
+    color: #b45309; 
+    font-weight: 700; 
+}
+
+/* User's List Items */
+.user-act-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    margin-bottom: 12px;
+    transition: all 0.2s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.user-act-item:hover {
+    border-color: #cbd5e1;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.04);
+}
+
+.user-act-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.user-act-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: #fffbeb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.user-act-info h4 { margin: 0 0 4px 0; color: #1e293b; font-size: 16px; font-weight: 700; }
+.user-act-info span { font-size: 12px; font-weight: 700; color: #d97706; background: #fef3c7; padding: 3px 10px; border-radius: 12px; display: inline-block; }
+
+.remove-act-btn {
+    background: none; border: none; color: #94a3b8; font-size: 20px; cursor: pointer; padding: 8px; border-radius: 50%; transition: all 0.2s;
+}
+.remove-act-btn:hover { background: #fef2f2; color: #ef4444; }
+
+/* --- MOBIELE OPTIMALISATIES --- */
+@media (max-width: 768px) {
+    .button-group {
+        flex-direction: column-reverse !important;
+        gap: 12px !important;
+    }
+
+    .button-group button {
+        width: 100% !important;
+        margin: 0 !important;
+        justify-content: center;
+        text-align: center;
+    }
+}

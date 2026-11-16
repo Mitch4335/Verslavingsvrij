@@ -1,0 +1,158 @@
+/* src/components/modules/bespreekbaar/bespreekbaar.css */
+
+.module-container.bespreekbaar-container,
+.module-container.bespreekbaar-container * {
+    box-sizing: border-box;
+}
+
+.module-container.bespreekbaar-container {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #1e293b;
+    padding-bottom: 40px;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+@keyframes slideUpFade { 
+    0% { opacity: 0; transform: translateY(15px); } 
+    100% { opacity: 1; transform: translateY(0); } 
+}
+.stagger-1 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.1s; }
+.stagger-2 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.2s; }
+.stagger-3 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.3s; }
+.stagger-4 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.4s; }
+
+/* Kaart Styling */
+.info-block { 
+    background: #ffffff; 
+    border: 1px solid #e2e8f0; 
+    border-radius: 12px; 
+    padding: 24px; 
+    margin-bottom: 24px; 
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); 
+    width: 100%;
+}
+
+.info-block-border-blue { border-left: 4px solid #3b82f6; }
+.info-block-border-green { border-left: 4px solid #10b981; }
+.info-block-border-orange { border-left: 4px solid #f59e0b; }
+.info-block-border-red { border-left: 4px solid #ef4444; }
+
+/* Invoervelden */
+.form-input {
+    width: 100%; 
+    padding: 12px 14px; 
+    border: 1px solid #cbd5e1; 
+    border-radius: 8px; 
+    font-size: 15px; 
+    outline: none; 
+    box-sizing: border-box; 
+    font-family: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-input:focus {
+    border-color: #2563eb; 
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+textarea.form-input {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Keuze Cards (Voor doelen) */
+.keuze-card {
+    background: #ffffff; 
+    border: 2px solid #e2e8f0; 
+    border-radius: 12px; 
+    padding: 16px;
+    cursor: pointer; 
+    transition: all 0.2s; 
+    display: flex; 
+    gap: 16px; 
+    align-items: center;
+}
+
+.keuze-card:hover:not(.active) { 
+    border-color: #94a3b8; 
+    background: #f8fafc; 
+}
+
+.keuze-card.active { 
+    border-color: #3b82f6; 
+    background: #eff6ff; 
+}
+
+/* Naam Chips */
+.naam-chip {
+    padding: 8px 16px; 
+    border-radius: 20px; 
+    font-size: 14px; 
+    font-weight: 600; 
+    cursor: pointer; 
+    transition: all 0.2s;
+    background: #f8fafc; 
+    border: 1px solid #cbd5e1; 
+    color: #334155;
+}
+
+.naam-chip:hover { 
+    background: #f1f5f9; 
+}
+
+.naam-chip.selected { 
+    background: #eff6ff; 
+    border-color: #3b82f6; 
+    color: #1d4ed8; 
+}
+
+/* Chat Bubbles */
+@keyframes popIn {
+    0% { opacity: 0; transform: translateY(10px) scale(0.95); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.chat-bubble {
+    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    padding: 12px 16px; 
+    border-radius: 16px; 
+    max-width: 85%; 
+    font-size: 14px; 
+    line-height: 1.4; 
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.chat-other { 
+    background: #ffffff; 
+    color: #1e293b; 
+    align-self: flex-start; 
+    border: 1px solid #e2e8f0; 
+    border-bottom-left-radius: 4px; 
+}
+
+.chat-user { 
+    background: #2563eb; 
+    color: #ffffff; 
+    align-self: flex-end; 
+    border-bottom-right-radius: 4px; 
+}
+
+/* --- MOBIELE OPTIMALISATIES --- */
+@media (max-width: 768px) {
+    .info-block {
+        padding: 16px;
+    }
+    
+    .button-group {
+        flex-direction: column-reverse !important;
+        gap: 12px !important;
+    }
+
+    .button-group button {
+        width: 100% !important;
+        margin: 0 !important;
+        justify-content: center;
+        text-align: center;
+    }
+}

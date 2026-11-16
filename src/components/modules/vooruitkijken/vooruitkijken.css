@@ -1,0 +1,127 @@
+/* src/components/modules/vooruitkijken/vooruitkijken.css */
+
+.module-container.vooruitkijken-container,
+.module-container.vooruitkijken-container * {
+    box-sizing: border-box;
+}
+
+.module-container.vooruitkijken-container {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #1e293b;
+    padding-bottom: 40px;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+@keyframes slideUpFade { 
+    0% { opacity: 0; transform: translateY(15px); } 
+    100% { opacity: 1; transform: translateY(0); } 
+}
+.stagger-1 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.1s; }
+.stagger-2 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.2s; }
+.stagger-3 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.3s; }
+.stagger-4 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.4s; }
+
+/* Kaart Styling */
+.info-block { 
+    background: #ffffff; 
+    border: 1px solid #e2e8f0; 
+    border-radius: 12px; 
+    padding: 24px; 
+    margin-bottom: 24px; 
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); 
+    width: 100%;
+}
+
+.info-block-border-blue { border-left: 4px solid #3b82f6; }
+.info-block-border-green { border-left: 4px solid #10b981; }
+.info-block-border-orange { border-left: 4px solid #f59e0b; }
+.info-block-border-purple { border-left: 4px solid #8b5cf6; }
+
+/* Formuliervelden */
+.textarea-capsule {
+    width: 100%; 
+    height: 150px; 
+    padding: 16px; 
+    border: 2px solid #e2e8f0; 
+    border-radius: 12px; 
+    font-family: inherit; 
+    font-size: 15px; 
+    color: #1e293b;
+    resize: vertical; 
+    transition: border-color 0.2s, box-shadow 0.2s; 
+    background: #f8fafc;
+}
+
+.textarea-capsule:focus { 
+    outline: none; 
+    border-color: #3b82f6; 
+    background: #ffffff; 
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+/* Interactieve Waarden Cards */
+.waarden-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.value-card {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    user-select: none;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.value-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.value-card .checkmark {
+    display: none;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Selected states */
+.value-card.selected-green { background: #ffffff !important; border-color: #16a34a !important; box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2); transform: scale(1.02); }
+.value-card.selected-green .checkmark { display: block; color: #16a34a; }
+
+.value-card.selected-blue { background: #ffffff !important; border-color: #2563eb !important; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2); transform: scale(1.02); }
+.value-card.selected-blue .checkmark { display: block; color: #2563eb; }
+
+.value-card.selected-yellow { background: #ffffff !important; border-color: #d97706 !important; box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.2); transform: scale(1.02); }
+.value-card.selected-yellow .checkmark { display: block; color: #d97706; }
+
+.value-card.selected-purple { background: #ffffff !important; border-color: #7c3aed !important; box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2); transform: scale(1.02); }
+.value-card.selected-purple .checkmark { display: block; color: #7c3aed; }
+
+/* --- MOBIELE OPTIMALISATIES --- */
+@media (max-width: 768px) {
+    .info-block {
+        padding: 16px;
+    }
+
+    .waarden-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .button-group {
+        flex-direction: column-reverse !important;
+        gap: 12px !important;
+    }
+
+    .button-group button {
+        width: 100% !important;
+        margin: 0 !important;
+        justify-content: center;
+        text-align: center;
+    }
+}

@@ -1,0 +1,219 @@
+/* src/components/modules/helpende-gedachten/helpende-gedachten.css */
+
+.module-container.helpend-container {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #1e293b;
+    padding-bottom: 40px;
+}
+
+@keyframes slideUpFade { 
+    0% { opacity: 0; transform: translateY(15px); } 
+    100% { opacity: 1; transform: translateY(0); } 
+}
+.stagger-1 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.1s; }
+.stagger-2 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.2s; }
+.stagger-3 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.3s; }
+.stagger-4 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.4s; }
+
+.info-block { 
+    background: #ffffff; 
+    border: 1px solid #e2e8f0; 
+    border-radius: 12px; 
+    padding: 24px; 
+    margin-bottom: 24px; 
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); 
+}
+
+.info-block-border-blue { border-left: 4px solid #3b82f6; }
+.info-block-border-red { border-left: 4px solid #ef4444; }
+
+/* --- CHIPS / KNOPPEN --- */
+.helpend-chip-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.helpend-pill-btn {
+    text-align: left;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid #cbd5e1;
+    background: #f8fafc;
+    color: #334155;
+    font-family: inherit;
+}
+
+.helpend-pill-btn:hover {
+    background: #f1f5f9;
+}
+
+.helpend-pill-btn.selected {
+    border: 1px solid #ef4444;
+    background: #fef2f2;
+    color: #b91c1c;
+}
+
+.helpend-btn-icon-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.helpend-checkmark {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ef4444;
+}
+
+.btn-toggle-extra {
+    background: none;
+    border: none;
+    color: #ef4444;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 20px;
+    font-size: 13px;
+    text-align: left;
+}
+
+/* --- CUSTOM INPUTS --- */
+.custom-input-wrapper { 
+    display: flex; 
+    gap: 10px; 
+    align-items: center; 
+    background: #f8fafc; 
+    border: 1px solid #cbd5e1; 
+    border-radius: 8px; 
+    padding: 6px 6px 6px 16px; 
+}
+.custom-risico-input { 
+    flex: 1; 
+    border: none; 
+    background: transparent; 
+    outline: none; 
+    font-size: 14px; 
+    color: #334155; 
+    font-family: inherit; 
+}
+.btn-add-custom { 
+    background: #1e293b; 
+    color: white; 
+    border: none; 
+    padding: 10px 18px; 
+    border-radius: 6px; 
+    font-weight: 600; 
+    cursor: pointer; 
+    transition: background 0.2s;
+    font-family: inherit;
+}
+.btn-add-custom:hover { background: #334155; }
+
+/* --- STAP 3 KOPPELEN --- */
+.koppel-card {
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.risico-banner {
+    background: #fef2f2;
+    border: 1px solid #fca5a5;
+    padding: 12px 16px;
+    border-radius: 8px;
+    color: #b91c1c;
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.tegen-sectie {
+    margin-left: 14px;
+    border-left: 3px solid #86efac;
+    padding-left: 16px;
+    position: relative;
+}
+
+.tegen-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: #16a34a;
+    margin-bottom: 8px;
+}
+
+.helpend-template-picker {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    font-size: 14px;
+    color: #334155;
+    margin-bottom: 12px;
+    outline: none;
+    background: #f8fafc;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.custom-helpend-input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #22c55e;
+    font-size: 14px;
+    color: #0f172a;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 80px;
+    box-sizing: border-box;
+    line-height: 1.5;
+}
+
+.custom-helpend-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+}
+
+.save-controls {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 10px;
+    gap: 12px;
+}
+
+.save-status {
+    font-size: 13px;
+    color: #16a34a;
+    font-weight: 700;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.btn-save-custom {
+    background: #1e293b;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: inherit;
+}

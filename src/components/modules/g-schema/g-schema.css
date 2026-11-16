@@ -1,0 +1,225 @@
+/* src/components/modules/g-schema/g-schema.css */
+
+.module-container.gschema-container {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #1e293b;
+    padding-bottom: 40px;
+}
+
+@keyframes slideUpFade { 
+    0% { opacity: 0; transform: translateY(15px); } 
+    100% { opacity: 1; transform: translateY(0); } 
+}
+.stagger-1 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.1s; }
+.stagger-2 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.2s; }
+.stagger-3 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.3s; }
+.stagger-4 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.4s; }
+
+.info-block { 
+    background: #ffffff; 
+    border: 1px solid #e2e8f0; 
+    border-radius: 12px; 
+    padding: 24px; 
+    margin-bottom: 24px; 
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); 
+}
+
+.info-block-border-blue { border-left: 4px solid #3b82f6; }
+.info-block-border-orange { border-left: 4px solid #f59e0b; }
+.info-block-border-green { border-left: 4px solid #10b981; }
+.info-block-border-purple { border-left: 4px solid #8b5cf6; }
+.info-block-border-red { border-left: 4px solid #ef4444; }
+
+/* --- FORMULIEREN & TEKSTVAKKEN --- */
+.form-hint {
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.gschema-textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 15px;
+    color: #334155;
+    line-height: 1.5;
+    resize: vertical;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+.gschema-textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.chip-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.gschema-chip {
+    padding: 6px 12px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 9999px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #475569;
+}
+
+/* --- DEMO SCENARIO STYLING --- */
+.demo-toggle-group {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.demo-btn {
+    flex: 1;
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    color: #475569;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.demo-btn.active#btn-scenario-1 {
+    background: #fef2f2;
+    border-color: #ef4444;
+    color: #b91c1c;
+}
+
+.demo-btn.active#btn-scenario-2 {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #047857;
+}
+
+.chain-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+    min-height: 300px;
+}
+
+.chain-box.theme-red { border-left: 4px solid #ef4444; }
+.chain-box.theme-green { border-left: 4px solid #10b981; }
+
+.chain-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    animation: slideUpFade 0.4s ease forwards;
+}
+
+.chain-badge {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 14px;
+    flex-shrink: 0;
+    background: #1e293b;
+    color: white;
+}
+
+.chain-box.theme-red .chain-row:not(.is-neutral) .chain-badge { background: #ef4444; }
+.chain-box.theme-green .chain-row:not(.is-neutral) .chain-badge { background: #10b981; }
+
+.chain-content h5 { margin: 0 0 4px 0; font-size: 13px; color: #64748b; letter-spacing: 0.5px; }
+.chain-content p { margin: 0; font-size: 15px; color: #1e293b; font-weight: 500; }
+
+/* --- SOCRATISCHE VRAGEN --- */
+.socratic-question {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.socratic-question p {
+    margin: 0;
+    font-size: 14px;
+    color: #334155;
+    font-weight: 500;
+    flex: 1;
+}
+
+.socratic-btns {
+    display: flex;
+    gap: 8px;
+}
+
+.soc-btn {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    padding: 8px 16px;
+    border-radius: 9999px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #475569;
+}
+
+.soc-btn:hover { background: #f1f5f9; }
+.soc-btn.active-ja { background: #f0fdf4; border-color: #10b981; color: #047857; }
+.soc-btn.active-nee { background: #fef2f2; border-color: #ef4444; color: #b91c1c; }
+
+/* --- MOBIELE OPTIMALISATIES --- */
+@media (max-width: 768px) {
+    /* Zorg dat de navigatieknoppen netjes onder elkaar (gestapeld) komen te staan */
+    .wizard-step > div:last-of-type {
+        flex-direction: column-reverse !important;
+        gap: 12px !important;
+    }
+    
+    .wizard-step > div:last-of-type button {
+        width: 100% !important;
+        margin: 0 !important;
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* Optimaliseer de Ja/Nee vragen voor kleine schermen */
+    .socratic-question {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .socratic-btns {
+        width: 100%;
+    }
+    
+    .soc-btn {
+        flex: 1;
+        text-align: center;
+    }
+}
