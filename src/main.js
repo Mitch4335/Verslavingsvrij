@@ -762,9 +762,9 @@ document.addEventListener('click', (e) => {
         const actief = getActiefTraject();
         const pSignaleringsplan = localStorage.getItem(`arminius_module_signaleringsplan_completed_${actief}`);
         
-      //  if (!pSignaleringsplan) {
-      //      alert("De Noodkit wordt pas actief zodra je het Signaleringsplan volledig hebt afgerond.");
-      //      return;
+        if (!pSignaleringsplan) {
+            alert("De Noodkit wordt pas actief zodra je het Signaleringsplan volledig hebt afgerond.");
+            return;
         }
 
         updateBottomNav('btn-noodknop');
