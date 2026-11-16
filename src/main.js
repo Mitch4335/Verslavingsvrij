@@ -759,11 +759,6 @@ if (e.target.closest('#btn-noodknop')) {
     return;
 }
 
-        updateBottomNav('btn-noodknop');
-        renderNoodkit();
-        return;
-    }
-
     if (e.target.closest('#btn-tools')) {
         updateBottomNav('btn-tools');
         const appContent = document.getElementById('app-content');
