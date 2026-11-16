@@ -622,17 +622,12 @@ export function renderDashboard() {
     const pHulp = localStorage.getItem(`arminius_module_hulp_completed_${actiefTraject}`);
     const pVooruitkijken = localStorage.getItem(`arminius_module_vooruitkijken_completed_${actiefTraject}`);
 
-    // Noodknop status (buiten de route)
-    const noodknop = document.getElementById('btn-noodknop');
-    if (noodknop) {
-        if (!pSignaleringsplan) {
-            noodknop.style.opacity = '0.4';
-            noodknop.style.filter = 'grayscale(100%)';
-        } else {
-            noodknop.style.opacity = '1';
-            noodknop.style.filter = 'none';
-        }
-    }
+// Noodknop status (buiten de route)
+const noodknop = document.getElementById('btn-noodknop');
+if (noodknop) {
+    noodknop.style.opacity = '1';
+    noodknop.style.filter = 'none';
+}
 
     // --- LOGICA SECTIE 1 ---
     if (p1) markCompleted('node-motivatie');
@@ -758,14 +753,11 @@ document.addEventListener('click', (e) => {
         return;
     }
 
-    if (e.target.closest('#btn-noodknop')) {
-        const actief = getActiefTraject();
-        const pSignaleringsplan = localStorage.getItem(`arminius_module_signaleringsplan_completed_${actief}`);
-        
-        if (!pSignaleringsplan) {
-            alert("De Noodkit wordt pas actief zodra je het Signaleringsplan volledig hebt afgerond.");
-            return;
-        }
+if (e.target.closest('#btn-noodknop')) {
+    updateBottomNav('btn-noodknop');
+    renderNoodkit();
+    return;
+}
 
         updateBottomNav('btn-noodknop');
         renderNoodkit();
