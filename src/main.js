@@ -622,12 +622,12 @@ export function renderDashboard() {
     const pHulp = localStorage.getItem(`arminius_module_hulp_completed_${actiefTraject}`);
     const pVooruitkijken = localStorage.getItem(`arminius_module_vooruitkijken_completed_${actiefTraject}`);
 
-// Noodknop status (buiten de route)
-const noodknop = document.getElementById('btn-noodknop');
-if (noodknop) {
-    noodknop.style.opacity = '1';
-    noodknop.style.filter = 'none';
-}
+    // Noodknop status (buiten de route)
+    const noodknop = document.getElementById('btn-noodknop');
+    if (noodknop) {
+        noodknop.style.opacity = '1';
+        noodknop.style.filter = 'none';
+    }
 
     // --- LOGICA SECTIE 1 ---
     if (p1) markCompleted('node-motivatie');
@@ -707,6 +707,28 @@ if (noodknop) {
             if (pVooruitkijken) markCompleted('node-vooruitkijken');
         }
     }
+
+    // =========================================================
+    // --- TIJDELIJKE DEMO-MODUS: ALLES ONTGRENDELEN ---
+    // Verwijder dit blok later om de beveiliging weer aan te zetten
+    // =========================================================
+    unlockModule('node-zelfcontrole', '#eff6ff');
+    unlockModule('node-registraties', '#fffbeb');
+    unlockModule('node-fasen-gedrag', '#fefce8');
+    unlockModule('node-watisverslaving', '#fff1f2');
+    unlockModule('node-anatomie-trek', '#eff6ff');
+    unlockModule('node-risicosituaties', '#fffbeb');
+    unlockModule('node-g-schema', '#f5f3ff');
+    unlockModule('node-helpende-gedachten', '#ecfdf5');
+    unlockModule('node-signaleringsplan', '#fef2f2');
+    unlockModule('node-uitglijder', '#eff6ff');
+    unlockModule('node-weigeren', '#fff1f2');
+    unlockModule('node-cirkels', '#f5f3ff');
+    unlockModule('node-bespreekbaar', '#ecfdf5');
+    unlockModule('node-lotgenoten', '#eff6ff');
+    unlockModule('node-hulp', '#fffbeb');
+    unlockModule('node-vooruitkijken', '#fff1f2');
+    // =========================================================
 }
 
 document.addEventListener('click', (e) => {
@@ -753,11 +775,11 @@ document.addEventListener('click', (e) => {
         return;
     }
 
-if (e.target.closest('#btn-noodknop')) {
-    updateBottomNav('btn-noodknop');
-    renderNoodkit();
-    return;
-}
+    if (e.target.closest('#btn-noodknop')) {
+        updateBottomNav('btn-noodknop');
+        renderNoodkit();
+        return;
+    }
 
     if (e.target.closest('#btn-tools')) {
         updateBottomNav('btn-tools');
