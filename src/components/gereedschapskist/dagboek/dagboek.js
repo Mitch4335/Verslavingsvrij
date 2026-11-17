@@ -61,7 +61,7 @@ export function renderDagboekModule(containerElement, onBackToKist) {
         <div style="padding: 20px;">
             <div class="module-container db-container" style="max-width: 700px; margin: 0 auto;">
                 <div style="margin-bottom: 32px;" id="db-main-header">
-                    <span style="font-size: 12px; font-weight: 600; color: #3b82f6; text-transform: uppercase; letter-spacing: 0.5px;">Hulpmiddelen</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #3b82f6; text-transform: uppercase; letter-spacing: 0.5px;">Hulpmiddelen</span>
                     <h2 style="font-size: 28px; color: #1e293b; margin-top: 4px; font-weight: 800;" id="db-header-title">Dagboek</h2>
                 </div>
 
@@ -144,7 +144,7 @@ export function renderDagboekModule(containerElement, onBackToKist) {
                                     <span style="font-size: 24px;">${stemmingObj.emoji}</span>
                                     <div>
                                         <div class="log-date">${datumStr}</div>
-                                        <div style="font-size: 13px; color: #94a3b8; font-weight: 600;">Voelt zich ${stemmingObj.label.toLowerCase()}</div>
+                                        <div style="font-size: 15px; color: #94a3b8; font-weight: 600;">Voelt zich ${stemmingObj.label.toLowerCase()}</div>
                                     </div>
                                 </div>
                                 <p class="log-text">${escapeHtml(noot.tekst)}</p>
@@ -185,7 +185,7 @@ export function renderDagboekModule(containerElement, onBackToKist) {
             pageContent.innerHTML = `
                 <div class="stagger-1 db-info-block db-info-block-soft">
                     <label style="display: block; font-size: 16px; font-weight: 700; color: #1e293b; margin-bottom: 4px;">1. Hoe voel je je vandaag?</label>
-                    <p style="font-size: 13px; color: #64748b; margin: 0 0 8px 0;">Kies de stemming die nu het beste bij je past.</p>
+                    <p style="font-size: 15px; color: #64748b; margin: 0 0 8px 0;">Kies de stemming die nu het beste bij je past.</p>
                     <div class="mood-grid" id="stemming-selector">
                         ${moodGridHtml}
                     </div>
@@ -193,13 +193,13 @@ export function renderDagboekModule(containerElement, onBackToKist) {
 
                 <div class="stagger-2 db-info-block">
                     <label style="display: block; font-size: 16px; font-weight: 700; color: #1e293b; margin-bottom: 4px;">2. Waar denk je aan?</label>
-                    <p style="font-size: 13px; color: #64748b; margin: 0 0 16px 0;">Schrijf vrijuit over wat je bezighoudt, een gebeurtenis van vandaag, of een gevoel dat je kwijt wilt.</p>
+                    <p style="font-size: 15px; color: #64748b; margin: 0 0 16px 0;">Schrijf vrijuit over wat je bezighoudt, een gebeurtenis van vandaag, of een gevoel dat je kwijt wilt.</p>
                     <textarea id="dagboek-tekst" class="db-textarea db-textarea-large" placeholder="Vandaag was een dag waarop...">${escapeHtml(huidigeNotitie.tekst)}</textarea>
                 </div>
 
                 <div class="stagger-3 db-info-block">
                     <label style="display: block; font-size: 16px; font-weight: 700; color: #1e293b; margin-bottom: 4px;">3. Inzicht (Optioneel)</label>
-                    <p style="font-size: 13px; color: #64748b; margin: 0 0 16px 0;">Wat heb je hiervan geleerd, of wat wil je uit deze dag meenemen naar morgen?</p>
+                    <p style="font-size: 15px; color: #64748b; margin: 0 0 16px 0;">Wat heb je hiervan geleerd, of wat wil je uit deze dag meenemen naar morgen?</p>
                     <textarea id="dagboek-conclusie" class="db-textarea db-textarea-small" placeholder="Ik besefte vandaag dat...">${escapeHtml(huidigeNotitie.conclusie)}</textarea>
                 </div>
 

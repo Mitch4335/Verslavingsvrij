@@ -67,7 +67,7 @@
 }
 
 .thema-subtitle {
-    font-size: 13px;
+    font-size: 15px;
     color: #64748b;
     margin-bottom: 12px;
 }
@@ -87,7 +87,7 @@
     gap: 8px; 
     padding: 8px 14px; 
     border-radius: 9999px;
-    font-size: 13px; 
+    font-size: 15px; 
     font-weight: 500; 
     cursor: pointer; 
     transition: all 0.2s ease;
@@ -111,7 +111,7 @@
     background: none;
     border: none;
     color: #2563eb;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 600;
     cursor: pointer;
     padding: 0;
@@ -134,7 +134,7 @@
     border: none; 
     background: transparent; 
     outline: none; 
-    font-size: 13px; 
+    font-size: 15px; 
     color: #334155; 
     font-family: inherit; 
     min-width: 0;
@@ -149,7 +149,7 @@
     cursor: pointer; 
     transition: background 0.2s; 
     flex-shrink: 0;
-    font-size: 13px;
+    font-size: 15px;
 }
 .btn-add-custom:hover { background: #334155; }
 

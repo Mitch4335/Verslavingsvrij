@@ -199,7 +199,7 @@ export function renderRisicosituaties(containerElement, onComplete) {
             
             <div class="module-container risico-container" style="max-width: 700px; margin: 0 auto;">
                 <div style="margin-bottom: 32px;" id="risico-main-header">
-                    <span style="font-size: 12px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Zelfonderzoek</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Zelfonderzoek</span>
                     <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Jouw Risicosituaties</h2>
                 </div>
 
@@ -234,7 +234,7 @@ export function renderRisicosituaties(containerElement, onComplete) {
                 <!-- STAP 1: TRIGGERS SELECTEREN -->
                 <section class="wizard-step" id="step-1-triggers" style="display: none;">
                     <div class="stagger-1" style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #3b82f6; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 2</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #3b82f6; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 2</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Wat zijn jouw triggers?</h2>
                         <p style="font-size: 15px; color: #475569; line-height: 1.6; margin-top: 6px;">
                             In welke situaties of bij welke gevoelens is de kans op trek bij jou het grootst? Selecteer alles wat je herkent.
@@ -277,7 +277,7 @@ export function renderRisicosituaties(containerElement, onComplete) {
                 <!-- STAP 2: TOP 3 & ACTIES -->
                 <section class="wizard-step" id="step-2-top3" style="display: none;">
                     <div class="stagger-1" style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 2</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 2</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Koppel je acties</h2>
                         <p style="font-size: 15px; color: #475569; line-height: 1.6; margin-top: 6px;">
                             Kies je drie belangrijkste valkuilen en bepaal direct hoe je hier in de toekomst mee om wilt gaan.
@@ -674,7 +674,7 @@ export function renderRisicosituaties(containerElement, onComplete) {
                         <span class="drag-handle">⋮⋮</span>
                     </div>
                     <div class="slot-coping-section">
-                        <p style="margin: 0 0 10px 0; font-size: 13px; font-weight: 700; color: #475569;">Helpende acties:</p>
+                        <p style="margin: 0 0 10px 0; font-size: 15px; font-weight: 700; color: #475569;">Helpende acties:</p>
                         <div class="chip-group coping-chip-container">
                             ${shownHTML}
                             ${customHTML}

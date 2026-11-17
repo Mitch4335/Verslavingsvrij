@@ -133,7 +133,7 @@
 .pillar-info { display: flex; align-items: center; gap: 16px; }
 .pillar-icon { width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
 .pillar-title { margin: 0; font-size: 17px; font-weight: 800; color: #1e293b; }
-.pillar-subtitle { margin: 4px 0 0 0; font-size: 13px; color: #64748b; font-weight: 500; }
+.pillar-subtitle { margin: 4px 0 0 0; font-size: 15px; color: #64748b; font-weight: 500; }
 .pillar-arrow { color: #cbd5e1; font-weight: bold; font-size: 20px; transition: all 0.2s; }
 
 .chapter-list { display: flex; flex-direction: column; gap: 12px; }
@@ -144,7 +144,7 @@
 .chapter-card:hover { background: #f8fafc; border-color: #cbd5e1; transform: translateX(4px); }
 .chapter-icon { font-size: 24px; background: #f1f5f9; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 12px; }
 .chapter-text h4 { margin: 0 0 4px 0; font-size: 16px; font-weight: 700; color: #1e293b; }
-.chapter-text p { margin: 0; font-size: 13px; color: #64748b; }
+.chapter-text p { margin: 0; font-size: 15px; color: #64748b; }
 
 .lesson-header { margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; }
 .lesson-header h2 { margin: 0 0 8px 0; font-size: 28px; font-weight: 800; color: #1e293b; line-height: 1.2; }

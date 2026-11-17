@@ -75,7 +75,7 @@
     background: #f8fafc;
     border: 1px solid #e2e8f0;
     border-radius: 9999px;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 500;
     color: #475569;
 }
@@ -147,7 +147,7 @@
 .chain-box.theme-red .chain-row:not(.is-neutral) .chain-badge { background: #ef4444; }
 .chain-box.theme-green .chain-row:not(.is-neutral) .chain-badge { background: #10b981; }
 
-.chain-content h5 { margin: 0 0 4px 0; font-size: 13px; color: #64748b; letter-spacing: 0.5px; }
+.chain-content h5 { margin: 0 0 4px 0; font-size: 15px; color: #64748b; letter-spacing: 0.5px; }
 .chain-content p { margin: 0; font-size: 15px; color: #1e293b; font-weight: 500; }
 
 /* --- SOCRATISCHE VRAGEN --- */
@@ -181,7 +181,7 @@
     border: 1px solid #cbd5e1;
     padding: 8px 16px;
     border-radius: 9999px;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;

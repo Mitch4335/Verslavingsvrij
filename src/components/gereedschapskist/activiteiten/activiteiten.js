@@ -89,7 +89,7 @@ export function renderActiviteitenModule(containerElement, onBackToKist) {
         <div style="padding: 20px;">
             <div class="module-container act-container" style="max-width: 700px; margin: 0 auto;">
                 <div style="margin-bottom: 32px;" id="act-main-header">
-                    <span style="font-size: 12px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Hulpmiddelen</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Hulpmiddelen</span>
                     <h2 style="font-size: 28px; color: #1e293b; margin-top: 4px; font-weight: 800;" id="act-header-title">Plezierige Bezigheden</h2>
                 </div>
 

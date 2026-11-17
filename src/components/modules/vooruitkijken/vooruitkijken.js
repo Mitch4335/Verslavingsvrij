@@ -114,7 +114,7 @@ export function renderVooruitkijkenModule(containerElement, onComplete) {
             
             <div class="module-container vooruitkijken-container" style="max-width: 700px; margin: 0 auto;">
                 <div style="margin-bottom: 32px;" id="vk-main-header">
-                    <span style="font-size: 12px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Afsluiting</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Afsluiting</span>
                     <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;" id="vk-header-title">Vooruitkijken</h2>
                 </div>
 
@@ -195,7 +195,7 @@ export function renderVooruitkijkenModule(containerElement, onComplete) {
             headerTitle.textContent = "Het normaliseren van 'saai'";
             html = `
                 <div class="stagger-1" style="margin-bottom: 24px;">
-                    <span style="font-size: 12px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 3</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 3</span>
                 </div>
 
                 <div class="stagger-2 info-block info-block-border-orange" style="margin-bottom: 32px;">
@@ -231,7 +231,7 @@ export function renderVooruitkijkenModule(containerElement, onComplete) {
             headerTitle.textContent = "Wat is écht belangrijk?";
             html = `
                 <div class="stagger-1" style="margin-bottom: 24px;">
-                    <span style="font-size: 12px; font-weight: 600; color: #8b5cf6; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 3</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #8b5cf6; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 3</span>
                 </div>
 
                 <div class="stagger-2 info-block info-block-border-purple" style="margin-bottom: 32px;">
@@ -239,32 +239,32 @@ export function renderVooruitkijkenModule(containerElement, onComplete) {
                         Nu ${tData.middel} niet langer op de eerste plaats staat, komt er ongemerkt veel tijd, geld en mentale ruimte vrij. Dit is hét moment om jezelf af te vragen: wie wil ik eigenlijk zijn?
                     </p>
 
-                    <h4 style="margin: 0 0 16px 0; color: #1e293b; font-size: 16px;">Komende tijd ga ik me richten op... <span style="font-size: 13px; font-weight: normal; color: #64748b;">(kies wat bij je past)</span></h4>
+                    <h4 style="margin: 0 0 16px 0; color: #1e293b; font-size: 16px;">Komende tijd ga ik me richten op... <span style="font-size: 15px; font-weight: normal; color: #64748b;">(kies wat bij je past)</span></h4>
 
                     <div class="waarden-grid">
                         <div class="value-card ${geselecteerdeWaarden.includes('relaties') ? 'selected-green' : ''}" data-id="relaties" data-color="green" style="background: #f0fdf4; border: 2px solid #bbf7d0;">
                             <span class="checkmark">✓</span>
                             <span style="font-size: 24px; display: block; margin-bottom: 8px;">❤️</span>
                             <strong style="color: #166534; font-size: 14px; display: block; margin-bottom: 4px;">Relaties & Gezin</strong>
-                            <p style="margin: 0; color: #15803d; font-size: 13px;">Tijd steken in het herstellen van banden en oprecht aanwezig zijn.</p>
+                            <p style="margin: 0; color: #15803d; font-size: 15px;">Tijd steken in het herstellen van banden en oprecht aanwezig zijn.</p>
                         </div>
                         <div class="value-card ${geselecteerdeWaarden.includes('gezondheid') ? 'selected-blue' : ''}" data-id="gezondheid" data-color="blue" style="background: #eff6ff; border: 2px solid #bfdbfe;">
                             <span class="checkmark">✓</span>
                             <span style="font-size: 24px; display: block; margin-bottom: 8px;">💪</span>
                             <strong style="color: #1e3a8a; font-size: 14px; display: block; margin-bottom: 4px;">Gezondheid & Sport</strong>
-                            <p style="margin: 0; color: #1d4ed8; font-size: 13px;">Het lichaam de kans geven om te herstellen en fitter te worden.</p>
+                            <p style="margin: 0; color: #1d4ed8; font-size: 15px;">Het lichaam de kans geven om te herstellen en fitter te worden.</p>
                         </div>
                         <div class="value-card ${geselecteerdeWaarden.includes('ontwikkeling') ? 'selected-yellow' : ''}" data-id="ontwikkeling" data-color="yellow" style="background: #fffbeb; border: 2px solid #fde68a;">
                             <span class="checkmark">✓</span>
                             <span style="font-size: 24px; display: block; margin-bottom: 8px;">🎨</span>
                             <strong style="color: #b45309; font-size: 14px; display: block; margin-bottom: 4px;">Ontwikkeling & Hobby</strong>
-                            <p style="margin: 0; color: #b45309; font-size: 13px;">Een oude passie oppakken of een nieuwe vaardigheid leren.</p>
+                            <p style="margin: 0; color: #b45309; font-size: 15px;">Een oude passie oppakken of een nieuwe vaardigheid leren.</p>
                         </div>
                         <div class="value-card ${geselecteerdeWaarden.includes('werk') ? 'selected-purple' : ''}" data-id="werk" data-color="purple" style="background: #f5f3ff; border: 2px solid #ddd6fe;">
                             <span class="checkmark">✓</span>
                             <span style="font-size: 24px; display: block; margin-bottom: 8px;">💼</span>
                             <strong style="color: #5b21b6; font-size: 14px; display: block; margin-bottom: 4px;">Werk & Doel</strong>
-                            <p style="margin: 0; color: #6d28d9; font-size: 13px;">Investeren in je carrière of betekenisvol vrijwilligerswerk.</p>
+                            <p style="margin: 0; color: #6d28d9; font-size: 15px;">Investeren in je carrière of betekenisvol vrijwilligerswerk.</p>
                         </div>
                     </div>
                 </div>
@@ -286,13 +286,13 @@ export function renderVooruitkijkenModule(containerElement, onComplete) {
 
             html = `
                 <div class="stagger-1" style="margin-bottom: 24px;">
-                    <span style="font-size: 12px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 3 van 3</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 3 van 3</span>
                     <p style="font-size: 15px; color: #475569; margin-top: 6px;">Er gaan geheid momenten komen waarop je het zwaar krijgt of je motivatie wegzakt. Schrijf hieronder een korte, krachtige boodschap aan je 'toekomstige zelf'. Waarom doe je dit?</p>
                 </div>
 
                 <div class="stagger-2 info-block info-block-border-green" style="margin-bottom: 32px;">
                     <textarea id="capsule-input" class="textarea-capsule" placeholder="Beste ik, als je het nu even zwaar hebt, herinner je dan dat...">${escapeHtml(savedText)}</textarea>
-                    <p style="margin: 12px 0 0 0; font-size: 13px; color: #64748b;">Deze boodschap wordt lokaal opgeslagen en kun je later op je profiel of tijdens moeilijke momenten teruglezen.</p>
+                    <p style="margin: 12px 0 0 0; font-size: 15px; color: #64748b;">Deze boodschap wordt lokaal opgeslagen en kun je later op je profiel of tijdens moeilijke momenten teruglezen.</p>
                 </div>
 
                 <div class="stagger-3 button-group" style="display: flex; justify-content: space-between;">

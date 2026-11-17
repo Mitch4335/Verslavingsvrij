@@ -48,6 +48,17 @@
     padding: 20px;
     margin-bottom: 20px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    /* Toegevoegd voor mobiel: */
+    box-sizing: border-box;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Minder padding op kleine schermen */
+@media (max-width: 640px) {
+    .card-section {
+        padding: 16px;
+    }
 }
 
 .card-section h4 {
@@ -135,10 +146,13 @@
     gap: 8px;
     margin-top: 12px;
     align-items: center;
+    /* Toegevoegd voor mobiel: */
+    flex-wrap: wrap;
 }
 
 .custom-input-wrapper input {
     flex: 1;
+    min-width: 180px; /* Bepaalt de breedte voordat de knop eronder schuift */
     padding: 8px 16px;
     border: 1px solid #d1d5db;
     border-radius: 20px;
@@ -362,4 +376,33 @@
 
 .top3-slot.empty .drag-handle {
     display: none;
+}
+
+/* =========================================================
+   FIX VOOR NAVIGATIEKNOPPEN (Mobiel & Desktop)
+   ========================================================= */
+.button-group {
+    display: flex !important;
+    gap: 12px !important; /* Zorgt voor frisse ruimte tussen knoppen */
+    flex-direction: column-reverse !important; /* Op mobiel: Vorige onder, Volgende/Opslaan boven */
+}
+
+.button-group button {
+    width: 100% !important; /* Knoppen nemen de volle breedte op mobiel */
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Ruimte tussen pijltje/emoji en tekst */
+    white-space: nowrap; /* Voorkomt dat de tekst lelijk afbreekt over meerdere regels */
+    padding: 14px 20px !important; /* Iets dikkere, makkelijker klikbare knop */
+}
+
+@media (min-width: 480px) {
+    .button-group {
+        flex-direction: row !important; /* Op grotere schermen weer netjes naast elkaar */
+    }
+    .button-group button {
+        width: auto !important;
+        flex: 1; /* Verdelen de ruimte eerlijk in de breedte */
+    }
 }

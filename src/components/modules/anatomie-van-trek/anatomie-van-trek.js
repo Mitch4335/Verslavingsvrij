@@ -128,7 +128,7 @@ export function renderAnatomieVanTrek(containerElement, onComplete) {
             <section class="wizard-step active" id="trek-step-intro" style="display: block;">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 32px;">
-                        <span style="font-size: 12px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Psycho-educatie</span>
+                        <span style="font-size: 14px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Psycho-educatie</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">De anatomie van trek</h2>
                     </div>
 
@@ -163,7 +163,7 @@ export function renderAnatomieVanTrek(containerElement, onComplete) {
             <section class="wizard-step" id="trek-step-1" style="display: none;">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #3b82f6; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 3</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #3b82f6; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 3</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Een aangeleerde reflex</h2>
                     </div>
 
@@ -191,7 +191,7 @@ export function renderAnatomieVanTrek(containerElement, onComplete) {
             <section class="wizard-step" id="trek-step-2" style="display: none;">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #ef4444; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 3</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #ef4444; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 3</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">De Trekgolf (Urge Surfing)</h2>
                     </div>
 
@@ -242,7 +242,7 @@ export function renderAnatomieVanTrek(containerElement, onComplete) {
             <section class="wizard-step" id="trek-step-3" style="display: none;">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Stap 3 van 3</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Stap 3 van 3</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Gewenning (Tolerantie)</h2>
                     </div>
 

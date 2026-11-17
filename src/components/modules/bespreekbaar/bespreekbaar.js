@@ -164,7 +164,7 @@ export function renderBespreekbaarModule(containerElement, onComplete) {
             
             <div class="module-container bespreekbaar-container" style="max-width: 700px; margin: 0 auto;">
                 <div style="margin-bottom: 32px;" id="be-main-header">
-                    <span style="font-size: 12px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Omgeving & Steun</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Omgeving & Steun</span>
                     <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;" id="be-header-title">Bespreekbaar maken</h2>
                 </div>
 
@@ -216,7 +216,7 @@ export function renderBespreekbaarModule(containerElement, onComplete) {
                     <div style="background: ${isVoltooid ? '#ecfdf5' : '#f8fafc'}; border: 1px solid ${isVoltooid ? '#a7f3d0' : '#cbd5e1'}; border-radius: 12px; padding: 20px; position: relative; margin-bottom: 16px;">
                         <button type="button" class="delete-plan-btn" data-index="${index}" style="position: absolute; top: 16px; right: 16px; background: none; border: none; color: #ef4444; font-size: 18px; cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'" title="Verwijder dit plan">🗑️</button>
                         
-                        ${isVoltooid ? `<div style="display: inline-block; background: #10b981; color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 12px; letter-spacing: 0.5px;">✅ GESPREK GEVOERD</div>` : ''}
+                        ${isVoltooid ? `<div style="display: inline-block; background: #10b981; color: white; padding: 4px 12px; border-radius: 20px; font-size: 14px; font-weight: 700; margin-bottom: 12px; letter-spacing: 0.5px;">✅ GESPREK GEVOERD</div>` : ''}
                         
                         <p style="margin: 0 0 8px 0; font-size: 15px; color: #334155;"><strong>👥 Met wie:</strong> ${escapeHtml(plan.persoon)}</p>
                         <p style="margin: 0 0 8px 0; font-size: 15px; color: #334155;"><strong>🎯 Waarom:</strong> ${doelText}</p>
@@ -224,7 +224,7 @@ export function renderBespreekbaarModule(containerElement, onComplete) {
                         ${plan.locatie ? `<p style="margin: 0 0 8px 0; font-size: 15px; color: #334155;"><strong>📍 Waar:</strong> ${escapeHtml(plan.locatie)}</p>` : ''}
                         
                         <div style="margin-top: 16px; background: #ffffff; padding: 12px; border-radius: 8px; border-left: 3px solid ${isVoltooid ? '#10b981' : '#3b82f6'};">
-                            <span style="font-size: 12px; color: #64748b; font-weight: 700; text-transform: uppercase;">Openingszin:</span><br>
+                            <span style="font-size: 14px; color: #64748b; font-weight: 700; text-transform: uppercase;">Openingszin:</span><br>
                             <span style="font-size: 15px; color: #1e293b; font-style: italic;">"${escapeHtml(plan.openingszin)}"</span>
                         </div>
                         
@@ -319,7 +319,7 @@ export function renderBespreekbaarModule(containerElement, onComplete) {
 
             html = `
                 <div class="stagger-1" style="margin-bottom: 24px;">
-                    <span style="font-size: 12px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 4</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 4</span>
                 </div>
 
                 <div class="stagger-2 info-block info-block-border-blue" style="margin-bottom: 32px;">
@@ -344,7 +344,7 @@ export function renderBespreekbaarModule(containerElement, onComplete) {
             headerTitle.textContent = "Wat is het doel van dit gesprek?";
             html = `
                 <div class="stagger-1" style="margin-bottom: 24px;">
-                    <span style="font-size: 12px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 4</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 4</span>
                     <p style="font-size: 15px; color: #475569; margin-top: 6px;">Waarom wil je praten met ${escapeHtml(huidigPlan.persoon)}? Kies de belangrijkste reden.</p>
                 </div>
 
@@ -353,7 +353,7 @@ export function renderBespreekbaarModule(containerElement, onComplete) {
                         <span style="font-size: 28px;">🌬️</span>
                         <div>
                             <h3 style="margin: 0 0 4px 0; font-size: 16px; color: #1e293b;">Opluchting en openheid</h3>
-                            <p style="margin: 0; font-size: 13px; color: #64748b;">Ik wil mijn geheime emotionele last delen en eerlijk zijn over mijn gebruik.</p>
+                            <p style="margin: 0; font-size: 15px; color: #64748b;">Ik wil mijn geheime emotionele last delen en eerlijk zijn over mijn gebruik.</p>
                         </div>
                     </div>
 
@@ -361,7 +361,7 @@ export function renderBespreekbaarModule(containerElement, onComplete) {
                         <span style="font-size: 28px;">🤝</span>
                         <div>
                             <h3 style="margin: 0 0 4px 0; font-size: 16px; color: #1e293b;">Steun vragen</h3>
-                            <p style="margin: 0; font-size: 13px; color: #64748b;">Ik wil de ander kunnen inschakelen als hulplijn voor lastige momenten.</p>
+                            <p style="margin: 0; font-size: 15px; color: #64748b;">Ik wil de ander kunnen inschakelen als hulplijn voor lastige momenten.</p>
                         </div>
                     </div>
 
@@ -369,7 +369,7 @@ export function renderBespreekbaarModule(containerElement, onComplete) {
                         <span style="font-size: 28px;">🛑</span>
                         <div>
                             <h3 style="margin: 0 0 4px 0; font-size: 16px; color: #1e293b;">Grenzen stellen</h3>
-                            <p style="margin: 0; font-size: 13px; color: #64748b;">Ik wil het contact pauzeren of verbreken.</p>
+                            <p style="margin: 0; font-size: 15px; color: #64748b;">Ik wil het contact pauzeren of verbreken.</p>
                         </div>
                     </div>
                 </div>
@@ -389,20 +389,20 @@ export function renderBespreekbaarModule(containerElement, onComplete) {
             headerTitle.textContent = "De Randvoorwaarden";
             html = `
                 <div class="stagger-1" style="margin-bottom: 24px;">
-                    <span style="font-size: 12px; font-weight: 600; color: #ec4899; text-transform: uppercase; letter-spacing: 0.5px;">Stap 3 van 4</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #ec4899; text-transform: uppercase; letter-spacing: 0.5px;">Stap 3 van 4</span>
                     <p style="font-size: 15px; color: #475569; margin-top: 6px;">Een goede voorbereiding bepaalt vaak de sfeer van het gesprek.</p>
                 </div>
 
                 <div class="stagger-2 info-block info-block-border-blue" style="margin-bottom: 16px;">
                     <p style="font-size: 14px; color: #3b82f6; font-weight: 700; margin: 0 0 8px 0;">🕒 Kies het juiste moment</p>
-                    <p style="font-size: 13px; color: #64748b; margin: 0 0 12px 0;">Kies een moment wanneer er de tijd is om met elkaar te praten en jullie allebei ontspannen zijn.</p>
+                    <p style="font-size: 15px; color: #64748b; margin: 0 0 12px 0;">Kies een moment wanneer er de tijd is om met elkaar te praten en jullie allebei ontspannen zijn.</p>
                     <label style="display: block; font-size: 14px; font-weight: 700; color: #1e293b; margin-bottom: 6px;">Wanneer wil je dit gesprek voeren?</label>
                     <input type="text" id="moment-input" class="form-input" value="${escapeHtml(huidigPlan.moment)}" placeholder="Bijv. zondagmiddag na de lunch">
                 </div>
 
                 <div class="stagger-3 info-block info-block-border-green" style="margin-bottom: 32px;">
                     <p style="font-size: 14px; color: #10b981; font-weight: 700; margin: 0 0 8px 0;">📍 Kies een goede plek</p>
-                    <p style="font-size: 13px; color: #64748b; margin: 0 0 12px 0;">Strak tegenover elkaar zitten kan als een confrontatie voelen. Samen een wandeling maken of in de auto zitten praat vaak veel makkelijker.</p>
+                    <p style="font-size: 15px; color: #64748b; margin: 0 0 12px 0;">Strak tegenover elkaar zitten kan als een confrontatie voelen. Samen een wandeling maken of in de auto zitten praat vaak veel makkelijker.</p>
                     <label style="display: block; font-size: 14px; font-weight: 700; color: #1e293b; margin-bottom: 6px;">Waar wil je afspreken?</label>
                     <input type="text" id="locatie-input" class="form-input" value="${escapeHtml(huidigPlan.locatie)}" placeholder="Bijv. tijdens een wandeling in het bos">
                 </div>
@@ -449,7 +449,7 @@ export function renderBespreekbaarModule(containerElement, onComplete) {
 
             html = `
                 <div class="stagger-1" style="margin-bottom: 24px;">
-                    <span style="font-size: 12px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Stap 4 van 4</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Stap 4 van 4</span>
                     <p style="font-size: 15px; color: #475569; margin-top: 6px;">De eerste zin is het moeilijkst. Als die eruit is, volgt de rest vaak vanzelf.</p>
                 </div>
 
@@ -461,10 +461,10 @@ export function renderBespreekbaarModule(containerElement, onComplete) {
 
                 <div class="stagger-3 info-block info-block-border-blue" style="margin-bottom: 32px;">
                     <label style="display: block; font-size: 15px; font-weight: 700; color: #1e293b; margin-bottom: 8px;">Jouw openingszin</label>
-                    <p style="font-size: 13px; color: #64748b; margin-top: 0; margin-bottom: 16px;">Typ je eigen zin, of gebruik ons voorbeeld en pas het aan.</p>
+                    <p style="font-size: 15px; color: #64748b; margin-top: 0; margin-bottom: 16px;">Typ je eigen zin, of gebruik ons voorbeeld en pas het aan.</p>
                     <textarea id="openingszin-input" class="form-input">${escapeHtml(huidigPlan.openingszin || firstMessage)}</textarea>
                     
-                    <div style="margin-top: 16px; padding: 12px; background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; font-size: 13px; color: #92400e;">
+                    <div style="margin-top: 16px; padding: 12px; background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; font-size: 15px; color: #92400e;">
                         <strong>Tip:</strong> Gebruik altijd de 'Ik-boodschap'. Bijvoorbeeld "Ik heb besloten..." of "Ik merk dat ik...". Vermijd verwijten met 'Jij'.
                     </div>
                 </div>
@@ -501,7 +501,7 @@ export function renderBespreekbaarModule(containerElement, onComplete) {
             // ALTERNATIEF PAD
             html = `
                 <div class="stagger-1" style="margin-bottom: 24px;">
-                    <span style="font-size: 12px; font-weight: 600; color: #ef4444; text-transform: uppercase; letter-spacing: 0.5px;">Andere wegen zoeken</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #ef4444; text-transform: uppercase; letter-spacing: 0.5px;">Andere wegen zoeken</span>
                     <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Je hoeft het niet alleen te doen</h2>
                 </div>
 
@@ -572,7 +572,7 @@ export function renderBespreekbaarModule(containerElement, onComplete) {
                         ${plan.locatie ? `<p style="margin: 0 0 8px 0; font-size: 15px; color: #334155;"><strong>📍 Waar:</strong> ${escapeHtml(plan.locatie)}</p>` : ''}
                         
                         <div style="margin-top: 16px; background: #ffffff; padding: 12px; border-radius: 8px; border-left: 3px solid #3b82f6;">
-                            <span style="font-size: 12px; color: #64748b; font-weight: 700; text-transform: uppercase;">Jouw openingszin:</span><br>
+                            <span style="font-size: 14px; color: #64748b; font-weight: 700; text-transform: uppercase;">Jouw openingszin:</span><br>
                             <span style="font-size: 15px; color: #1e293b; font-style: italic;">"${escapeHtml(plan.openingszin)}"</span>
                         </div>
                     </div>

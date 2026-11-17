@@ -191,7 +191,7 @@ export function renderLeefstijlModule(containerElement, onBackToKist) {
                 <div style="padding: 20px;">
                     <div class="module-container ls-container" style="max-width: 650px; margin: 0 auto;">
                         <div style="margin-bottom: 24px;" class="stagger-1">
-                            <span style="font-size: 12px; font-weight: 800; color: #ec4899; text-transform: uppercase; letter-spacing: 1px;">Hulpmiddelen</span>
+                            <span style="font-size: 14px; font-weight: 800; color: #ec4899; text-transform: uppercase; letter-spacing: 1px;">Hulpmiddelen</span>
                             <h2 style="font-size: 28px; color: #1e293b; margin-top: 4px; font-weight: 800;">Leefstijl & Fundament</h2>
                         </div>
             `;
@@ -244,7 +244,7 @@ export function renderLeefstijlModule(containerElement, onBackToKist) {
                             </div>
                         </div>
                         <div style="text-align: center;">
-                            <button class="btn-secondary start-scan-btn" style="display: inline-flex; width: auto; font-size: 13px; padding: 10px 20px;">
+                            <button class="btn-secondary start-scan-btn" style="display: inline-flex; width: auto; font-size: 15px; padding: 10px 20px;">
                                 🔄 Scan opnieuw doen
                             </button>
                         </div>
@@ -290,7 +290,7 @@ export function renderLeefstijlModule(containerElement, onBackToKist) {
                 <div style="padding: 20px;">
                     <div class="module-container ls-container" style="max-width: 650px; margin: 0 auto;">
                         <div style="margin-bottom: 24px;">
-                            <span style="font-size: 13px; font-weight: 700; color: #94a3b8;">Vraag ${actieveVraagIndex + 1} van ${scanVragen.length}</span>
+                            <span style="font-size: 15px; font-weight: 700; color: #94a3b8;">Vraag ${actieveVraagIndex + 1} van ${scanVragen.length}</span>
                         </div>
                         
                         <div class="vraag-card stagger-1">
@@ -364,7 +364,7 @@ export function renderLeefstijlModule(containerElement, onBackToKist) {
                             <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 12px;">
                                 <div class="pillar-icon" style="background-color: ${data.bg};">${data.icon}</div>
                                 <div>
-                                    <span style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase;">Kennisbank</span>
+                                    <span style="font-size: 14px; font-weight: 800; color: #64748b; text-transform: uppercase;">Kennisbank</span>
                                     <h2 style="font-size: 24px; color: #1e293b; margin: 0; font-weight: 800;">${data.titel}</h2>
                                 </div>
                             </div>
@@ -407,7 +407,7 @@ export function renderLeefstijlModule(containerElement, onBackToKist) {
                     <div class="module-container ls-container" style="max-width: 650px; margin: 0 auto;">
                         
                         <div class="lesson-header stagger-1">
-                            <span style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; margin-bottom: 8px; display: block;">${themaData.titel}</span>
+                            <span style="font-size: 14px; font-weight: 800; color: #64748b; text-transform: uppercase; margin-bottom: 8px; display: block;">${themaData.titel}</span>
                             <h2>${lesData.titel}</h2>
                             <p>${lesData.desc}</p>
                         </div>

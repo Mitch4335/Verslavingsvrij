@@ -156,7 +156,7 @@ export function renderSignaleringsplan(containerElement, onComplete) {
             
             <div class="module-container sp-container" style="max-width: 700px; margin: 0 auto;">
                 <div style="margin-bottom: 32px;" id="sp-main-header">
-                    <span style="font-size: 12px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Zelfonderzoek</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Zelfonderzoek</span>
                     <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;" id="sp-header-title">Het Signaleringsplan</h2>
                 </div>
 
@@ -311,7 +311,7 @@ export function renderSignaleringsplan(containerElement, onComplete) {
 
             pageContent.innerHTML = `
                 <div class="stagger-1" style="margin-bottom: 24px;">
-                    <span style="font-size: 12px; font-weight: 600; color: ${colorCode}; text-transform: uppercase; letter-spacing: 0.5px;">Stap ${currentStepIndex + 1} van 3</span>
+                    <span style="font-size: 14px; font-weight: 600; color: ${colorCode}; text-transform: uppercase; letter-spacing: 0.5px;">Stap ${currentStepIndex + 1} van 3</span>
                     <p style="font-size: 15px; color: #475569; margin-top: 4px;">Breng jouw signalen, situaties en helpende acties voor deze fase in kaart.</p>
                 </div>
 
@@ -372,8 +372,8 @@ export function renderSignaleringsplan(containerElement, onComplete) {
                                 <div style="font-size: 14px; font-weight: 700; color: #1e293b; margin-bottom: 12px;">${thema.label}</div>
                                 <div style="display: flex; flex-wrap: wrap; gap: 8px;">
                                     ${selectedItems.length > 0 
-                                        ? selectedItems.map(item => `<span style="background: #ffffff; color: #334155; border: 1px solid #cbd5e1; padding: 6px 12px; border-radius: 9999px; font-size: 13px; font-weight: 500;">${escapeHtml(item)}</span>`).join('') 
-                                        : '<span style="font-size: 13px; color: #94a3b8; font-style: italic;">Nog niets ingevuld</span>'
+                                        ? selectedItems.map(item => `<span style="background: #ffffff; color: #334155; border: 1px solid #cbd5e1; padding: 6px 12px; border-radius: 9999px; font-size: 15px; font-weight: 500;">${escapeHtml(item)}</span>`).join('') 
+                                        : '<span style="font-size: 15px; color: #94a3b8; font-style: italic;">Nog niets ingevuld</span>'
                                     }
                                 </div>
                             </div>
@@ -390,8 +390,8 @@ export function renderSignaleringsplan(containerElement, onComplete) {
                                 <div style="font-size: 14px; font-weight: 700; color: #1e293b; margin-bottom: 12px;">${thema.label}</div>
                                 <div style="display: flex; flex-wrap: wrap; gap: 8px;">
                                     ${selectedItems.length > 0 
-                                        ? selectedItems.map(item => `<span style="background: #ffffff; color: #334155; border: 1px solid #cbd5e1; padding: 6px 12px; border-radius: 9999px; font-size: 13px; font-weight: 500;">${escapeHtml(item)}</span>`).join('') 
-                                        : '<span style="font-size: 13px; color: #94a3b8; font-style: italic;">Nog niets ingevuld</span>'
+                                        ? selectedItems.map(item => `<span style="background: #ffffff; color: #334155; border: 1px solid #cbd5e1; padding: 6px 12px; border-radius: 9999px; font-size: 15px; font-weight: 500;">${escapeHtml(item)}</span>`).join('') 
+                                        : '<span style="font-size: 15px; color: #94a3b8; font-style: italic;">Nog niets ingevuld</span>'
                                     }
                                 </div>
                             </div>

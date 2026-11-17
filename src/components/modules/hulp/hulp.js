@@ -98,7 +98,7 @@ export function renderHulpModule(containerElement, onComplete) {
             
             <div class="module-container hulp-container" style="max-width: 700px; margin: 0 auto;">
                 <div style="margin-bottom: 32px;" id="hu-main-header">
-                    <span style="font-size: 12px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Omgeving & Steun</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Omgeving & Steun</span>
                     <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;" id="hu-header-title">Hulp inschakelen</h2>
                 </div>
 
@@ -180,7 +180,7 @@ export function renderHulpModule(containerElement, onComplete) {
             headerTitle.textContent = "De voordeur: De Huisarts";
             html = `
                 <div class="stagger-1" style="margin-bottom: 24px;">
-                    <span style="font-size: 12px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 4</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 4</span>
                 </div>
 
                 <div class="stagger-2 info-block info-block-border-orange">
@@ -214,7 +214,7 @@ export function renderHulpModule(containerElement, onComplete) {
             headerTitle.textContent = "De specialistische route";
             html = `
                 <div class="stagger-1" style="margin-bottom: 24px;">
-                    <span style="font-size: 12px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 4</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 4</span>
                     <p style="font-size: 15px; color: #475569; margin-top: 6px;">Bij de verslavingszorg instellingen wordt, afhankelijk van jouw situatie, een plan gemaakt. Dit zijn de twee meest voorkomende opties:</p>
                 </div>
 
@@ -260,7 +260,7 @@ export function renderHulpModule(containerElement, onComplete) {
             headerTitle.textContent = "Klinieken & Ondersteuning";
             html = `
                 <div class="stagger-1" style="margin-bottom: 24px;">
-                    <span style="font-size: 12px; font-weight: 600; color: #3b82f6; text-transform: uppercase; letter-spacing: 0.5px;">Stap 3 van 4</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #3b82f6; text-transform: uppercase; letter-spacing: 0.5px;">Stap 3 van 4</span>
                 </div>
 
                 <div class="stagger-2 info-block info-block-border-blue" style="margin-bottom: 24px;">
@@ -271,7 +271,7 @@ export function renderHulpModule(containerElement, onComplete) {
                     
                     <div style="background: #fef2f2; border: 1px solid #fecaca; padding: 16px; border-radius: 8px; border-left: 4px solid #ef4444;">
                         <strong style="display: block; color: #991b1b; margin-bottom: 8px; font-size: 14px;">⚠ Let goed op je verzekering</strong>
-                        <p style="margin: 0; color: #7f1d1d; font-size: 13px; line-height: 1.5;">Niet elke zorgverzekeraar werkt samen met elke (particuliere) kliniek. Zeker opnames in buitenlandse klinieken worden zelden volledig vergoed en kunnen leiden tot torenhoge onverwachte kosten. Zoek dit altijd vooraf goed uit!</p>
+                        <p style="margin: 0; color: #7f1d1d; font-size: 15px; line-height: 1.5;">Niet elke zorgverzekeraar werkt samen met elke (particuliere) kliniek. Zeker opnames in buitenlandse klinieken worden zelden volledig vergoed en kunnen leiden tot torenhoge onverwachte kosten. Zoek dit altijd vooraf goed uit!</p>
                     </div>
                 </div>
 
@@ -303,7 +303,7 @@ export function renderHulpModule(containerElement, onComplete) {
             headerTitle.textContent = "Direct en Anoniem contact";
             html = `
                 <div class="stagger-1" style="margin-bottom: 24px;">
-                    <span style="font-size: 12px; font-weight: 600; color: #8b5cf6; text-transform: uppercase; letter-spacing: 0.5px;">Stap 4 van 4</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #8b5cf6; text-transform: uppercase; letter-spacing: 0.5px;">Stap 4 van 4</span>
                     <p style="font-size: 15px; color: #475569; margin-top: 6px;">Is de stap naar de huisarts nog net te groot? Blijf er niet alleen mee rondlopen. Er zijn professionals die je vandaag nog anoniem, gratis en zonder verplichtingen te woord staan.</p>
                 </div>
 
@@ -314,7 +314,7 @@ export function renderHulpModule(containerElement, onComplete) {
                             <span style="color: #3b82f6; font-size: 20px;">💬</span>
                         </div>
                         <p style="margin: 0; font-size: 14px; color: #475569;">Anonieme, professionele psychologische en maatschappelijke hulp. Je kunt ze bellen, chatten of appen voor een luisterend oor en advies.</p>
-                        <span style="color: #2563eb; font-weight: 700; font-size: 13px; margin-top: 8px;">Naar mindkorrelatie.nl &nearr;</span>
+                        <span style="color: #2563eb; font-weight: 700; font-size: 15px; margin-top: 8px;">Naar mindkorrelatie.nl &nearr;</span>
                     </a>
 
                     <a href="https://www.deluisterlijn.nl/" target="_blank" rel="noopener noreferrer" class="contact-card">
@@ -323,7 +323,7 @@ export function renderHulpModule(containerElement, onComplete) {
                             <span style="color: #3b82f6; font-size: 20px;">📞</span>
                         </div>
                         <p style="margin: 0; font-size: 14px; color: #475569;">Zit je even helemaal vast? De vrijwilligers van de Luisterlijn zijn 24/7 bereikbaar voor een vertrouwelijk gesprek.</p>
-                        <span style="color: #2563eb; font-weight: 700; font-size: 13px; margin-top: 8px;">Naar deluisterlijn.nl &nearr;</span>
+                        <span style="color: #2563eb; font-weight: 700; font-size: 15px; margin-top: 8px;">Naar deluisterlijn.nl &nearr;</span>
                     </a>
 
                     <div class="contact-card" style="border-left: 4px solid #10b981; cursor: default;">

@@ -78,7 +78,7 @@
 }
 
 .sound-title { margin: 0; font-size: 16px; font-weight: 800; color: #1e293b; }
-.sound-desc { margin: 4px 0 0 0; font-size: 13px; color: #64748b; font-weight: 500; }
+.sound-desc { margin: 4px 0 0 0; font-size: 15px; color: #64748b; font-weight: 500; }
 
 .play-btn {
     width: 48px;

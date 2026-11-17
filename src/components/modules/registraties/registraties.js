@@ -228,7 +228,7 @@ function renderCatalogus() {
 
                 if (overigItems.length > 0) {
                     if (alcoholItems.length > 0) {
-                        gedragText += `<div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed #cbd5e1; font-size: 13px; color: #475569;">`;
+                        gedragText += `<div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed #cbd5e1; font-size: 15px; color: #475569;">`;
                         gedragText += `<b>Ook gebruikt:</b><ul style="margin: 4px 0 0 0; padding-left: 16px;">`;
                         overigItems.forEach(item => {
                             let qty = item.weergaveAantal !== undefined ? item.weergaveAantal : (item.aantal || '');
@@ -278,7 +278,7 @@ function renderCatalogus() {
                 gedragText = `<div style="font-weight:700; color:#10b981; margin-bottom:4px;">🛡️ Niet ${rVoltooid}</div>Alternatief: ${altList}<br>${seBadge}`;
                 
                 if (reg.extraMiddelen && reg.extraMiddelen.length > 0) {
-                    let extraText = `<div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed #cbd5e1; font-size: 13px; color: #475569;">`;
+                    let extraText = `<div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed #cbd5e1; font-size: 15px; color: #475569;">`;
                     extraText += `<b>Wel gebruikt (terugval/vervanging):</b><ul style="margin: 4px 0 0 0; padding-left: 16px;">`;
                     reg.extraMiddelen.forEach(item => {
                         let qty = item.weergaveAantal !== undefined ? item.weergaveAantal : (item.aantal || '');
@@ -344,8 +344,8 @@ function renderCatalogus() {
                         ${pos}${neg}
                         
                         <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px;">
-                            <button type="button" style="background: none; border: 1px solid #cbd5e1; color: #475569; padding: 6px 12px; border-radius: 12px; font-size: 13px; font-weight: 600; cursor: pointer;" onclick="editRegistratie(${reg.id})">✏️ Bijwerken</button>
-                            <button type="button" style="background: none; border: 1px solid #fca5a5; color: #ef4444; padding: 6px 12px; border-radius: 12px; font-size: 13px; font-weight: 600; cursor: pointer;" onclick="deleteRegistratie(${reg.id})">🗑️ Verwijderen</button>
+                            <button type="button" style="background: none; border: 1px solid #cbd5e1; color: #475569; padding: 6px 12px; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer;" onclick="editRegistratie(${reg.id})">✏️ Bijwerken</button>
+                            <button type="button" style="background: none; border: 1px solid #fca5a5; color: #ef4444; padding: 6px 12px; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer;" onclick="deleteRegistratie(${reg.id})">🗑️ Verwijderen</button>
                         </div>
                     </div>
                 </details>
@@ -561,7 +561,7 @@ window.renderFormulier = function(editData = null) {
         specifiekeGedragInvoer = `
             <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border: 1px solid #e2e8f0;">
                 <div style="display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 12px;">
-                    <label style="font-size: 12px; font-weight: 600; color: #64748b;">Soort drank</label>
+                    <label style="font-size: 14px; font-weight: 600; color: #64748b;">Soort drank</label>
                     <select id="reg-drank-type" class="form-input" style="border-radius: 8px; padding: 10px;" onchange="updateAlcoholDropdowns('type')">
                         <option value="" selected disabled>-- Kies soort --</option>
                         <option value="bier">Bier</option>
@@ -573,25 +573,25 @@ window.renderFormulier = function(editData = null) {
                 </div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px;">
                     <div>
-                        <label style="font-size: 12px; font-weight: 600; color: #64748b;">Verpakking / Type</label>
+                        <label style="font-size: 14px; font-weight: 600; color: #64748b;">Verpakking / Type</label>
                         <select id="reg-drank-verpakking" class="form-input" style="border-radius: 8px; padding: 10px;" onchange="updateAlcoholDropdowns('verpakking')">
                             <option value="" selected disabled>-- Kies eerst soort --</option>
                         </select>
                     </div>
                     <div>
-                        <label style="font-size: 12px; font-weight: 600; color: #64748b;">Aantal eenheden</label>
+                        <label style="font-size: 14px; font-weight: 600; color: #64748b;">Aantal eenheden</label>
                         <input type="number" id="reg-drank-aantal" class="form-input" style="border-radius: 8px; padding: 10px;" min="1" value="1" oninput="calcStandaardGlazen()">
                     </div>
                 </div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
                     <div>
-                        <label style="font-size: 12px; font-weight: 600; color: #64748b;">Maat</label>
+                        <label style="font-size: 14px; font-weight: 600; color: #64748b;">Maat</label>
                         <select id="reg-drank-maat" class="form-input" style="border-radius: 8px; padding: 10px;" onchange="calcStandaardGlazen()">
                             <option value="" selected disabled>-- Kies maat --</option>
                         </select>
                     </div>
                     <div>
-                        <label style="font-size: 12px; font-weight: 600; color: #64748b;">Alcohol %</label>
+                        <label style="font-size: 14px; font-weight: 600; color: #64748b;">Alcohol %</label>
                         <select id="reg-drank-percentage" class="form-input" style="border-radius: 8px; padding: 10px;" onchange="calcStandaardGlazen()">
                             <option value="" selected disabled>-- Kies percentage --</option>
                         </select>
@@ -604,7 +604,7 @@ window.renderFormulier = function(editData = null) {
         specifiekeGedragInvoer = `
             <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border: 1px solid #e2e8f0;">
                 <div style="display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 12px;">
-                    <label style="font-size: 12px; font-weight: 600; color: #64748b;">Wat precies?</label>
+                    <label style="font-size: 14px; font-weight: 600; color: #64748b;">Wat precies?</label>
                     <select id="reg-can-wat" class="form-input" style="border-radius: 8px; padding: 10px;" onchange="checkStep3Completion()">
                         <option value="Wiet">Wiet</option>
                         <option value="Hasj">Hasj</option>
@@ -612,14 +612,14 @@ window.renderFormulier = function(editData = null) {
                 </div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
                     <div>
-                        <label style="font-size: 12px; font-weight: 600; color: #64748b;">Eenheid</label>
+                        <label style="font-size: 14px; font-weight: 600; color: #64748b;">Eenheid</label>
                         <select id="reg-can-eenheid" class="form-input" style="border-radius: 8px; padding: 10px;" onchange="checkStep3Completion()">
                             <option value="Joints">Joints</option>
                             <option value="Gram">Gram</option>
                         </select>
                     </div>
                     <div>
-                        <label style="font-size: 12px; font-weight: 600; color: #64748b;">Hoeveelheid</label>
+                        <label style="font-size: 14px; font-weight: 600; color: #64748b;">Hoeveelheid</label>
                         <input type="number" id="reg-can-aantal" class="form-input" style="border-radius: 8px; padding: 10px;" min="0.1" step="0.5" value="1" oninput="checkStep3Completion()">
                     </div>
                 </div>
@@ -629,7 +629,7 @@ window.renderFormulier = function(editData = null) {
         specifiekeGedragInvoer = `
             <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border: 1px solid #e2e8f0;">
                 <div style="display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 12px;">
-                    <label style="font-size: 12px; font-weight: 600; color: #64748b;">Wat precies?</label>
+                    <label style="font-size: 14px; font-weight: 600; color: #64748b;">Wat precies?</label>
                     <select id="reg-coc-wat" class="form-input" style="border-radius: 8px; padding: 10px;" onchange="checkStep3Completion()">
                         <option value="Snuifcocaïne">Snuifcocaïne</option>
                         <option value="Crack / Basecoke">Crack / Basecoke</option>
@@ -637,7 +637,7 @@ window.renderFormulier = function(editData = null) {
                 </div>
                 <div style="display: grid; grid-template-columns: 1fr; gap: 8px;">
                     <div>
-                        <label style="font-size: 12px; font-weight: 600; color: #64748b;">Hoeveelheid (in gram)</label>
+                        <label style="font-size: 14px; font-weight: 600; color: #64748b;">Hoeveelheid (in gram)</label>
                         <input type="number" id="reg-coc-aantal" class="form-input" style="border-radius: 8px; padding: 10px;" min="0.1" step="0.1" value="1.0" oninput="checkStep3Completion()">
                     </div>
                 </div>
@@ -648,7 +648,7 @@ window.renderFormulier = function(editData = null) {
             <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border: 1px solid #e2e8f0;">
                 <div style="display: grid; grid-template-columns: 1fr; gap: 8px;">
                     <div>
-                        <label style="font-size: 12px; font-weight: 600; color: #64748b;">Hoeveel geld heb je ingezet (€)?</label>
+                        <label style="font-size: 14px; font-weight: 600; color: #64748b;">Hoeveel geld heb je ingezet (€)?</label>
                         <input type="number" id="reg-gok-aantal" class="form-input" style="border-radius: 8px; padding: 10px;" min="0" step="10" value="50" oninput="checkStep3Completion()">
                     </div>
                 </div>
@@ -721,7 +721,7 @@ window.renderFormulier = function(editData = null) {
             <section class="wizard-step active" id="reg-step-intro">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 32px;">
-                        <span style="font-size: 12px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Nieuwe Registratie</span>
+                        <span style="font-size: 14px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Nieuwe Registratie</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Inzicht door registratie</h2>
                     </div>
 
@@ -756,7 +756,7 @@ window.renderFormulier = function(editData = null) {
             <section class="wizard-step" id="reg-step-1" style="display: none;">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 24px;">
-                        <span style="font-size: 12px; font-weight: 700; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 4</span>
+                        <span style="font-size: 14px; font-weight: 700; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 4</span>
                         <h2 style="font-size: 24px; font-weight: 700; color: #1e293b; margin-top: 4px; margin-bottom: 6px;">Externe situatie</h2>
                         <p style="font-size: 14px; font-weight: 600; color: #3b82f6; margin: 8px 0 0 0; background: #eff6ff; padding: 10px 14px; border-radius: 8px; border: 1px solid #bfdbfe;">
                             ℹ️ Vul dit in voor het moment waarop je <strong>trek kreeg</strong>, ongeacht of je daarna wel of niet hebt ${voltooid}.
@@ -838,7 +838,7 @@ window.renderFormulier = function(editData = null) {
             <section class="wizard-step" id="reg-step-2" style="display: none;">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 24px;">
-                        <span style="font-size: 12px; font-weight: 700; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 4</span>
+                        <span style="font-size: 14px; font-weight: 700; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 4</span>
                         <h2 style="font-size: 24px; font-weight: 700; color: #1e293b; margin-top: 4px; margin-bottom: 6px;">Interne beleving</h2>
                         <p style="font-size: 15px; color: #475569; margin: 0;">Welke gedachten en gevoelens speelden er van binnen toen je trek kreeg?</p>
                     </div>
@@ -890,7 +890,7 @@ window.renderFormulier = function(editData = null) {
             <section class="wizard-step" id="reg-step-3" style="display: none;">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 700; color: #ef4444; text-transform: uppercase; letter-spacing: 0.5px;">Stap 3 van 4</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 700; color: #ef4444; text-transform: uppercase; letter-spacing: 0.5px;">Stap 3 van 4</span>
                         <h2 style="font-size: 24px; font-weight: 700; color: #1e293b; margin-top: 4px; margin-bottom: 6px;">Jouw actie</h2>
                         <p style="font-size: 15px; color: #475569; margin: 0;">Wat heb je uiteindelijk gedaan in deze situatie?</p>
                     </div>
@@ -904,11 +904,11 @@ window.renderFormulier = function(editData = null) {
                         <div class="choice-grid">
                             <button type="button" class="choice-card" id="card-actie-drinken" onclick="setActieType('drinken')">
                                 <h4 style="margin: 0 0 6px 0; color: #1e293b; font-size: 16px; font-weight: 700;">⚠️ Wel ${voltooid}</h4>
-                                <p style="margin: 0; color: #64748b; font-size: 13px; font-weight: 500;">Je hebt toegegeven aan de trek.</p>
+                                <p style="margin: 0; color: #64748b; font-size: 15px; font-weight: 500;">Je hebt toegegeven aan de trek.</p>
                             </button>
                             <button type="button" class="choice-card" id="card-actie-alternatief" onclick="setActieType('alternatief')">
                                 <h4 style="margin: 0 0 6px 0; color: #1e293b; font-size: 16px; font-weight: 700;">🛡️ Niet ${voltooid}</h4>
-                                <p style="margin: 0; color: #64748b; font-size: 13px; font-weight: 500;">Gekozen voor alternatief gedrag.</p>
+                                <p style="margin: 0; color: #64748b; font-size: 15px; font-weight: 500;">Gekozen voor alternatief gedrag.</p>
                             </button>
                         </div>
 
@@ -949,7 +949,7 @@ window.renderFormulier = function(editData = null) {
                                 <!-- Terugval / Vervangend middel -->
                                 <div style="margin-top: 24px; padding-top: 16px; border-top: 1px dashed #cbd5e1;">
                                     <label style="display: block; font-weight: 700; font-size: 15px; color: #1e293b; margin-bottom: 4px;">Vervangend middel gebruikt?</label>
-                                    <p style="font-size: 13px; color: #64748b; margin-bottom: 16px; margin-top: 0;">Heb je in de plaats hiervan iets anders gebruikt (bijv. geblowd i.p.v. gedronken)?</p>
+                                    <p style="font-size: 15px; color: #64748b; margin-bottom: 16px; margin-top: 0;">Heb je in de plaats hiervan iets anders gebruikt (bijv. geblowd i.p.v. gedronken)?</p>
                                     
                                     <div id="alt-extra-items-container" style="display: flex; flex-direction: column; gap: 8px;"></div>
                                     
@@ -973,7 +973,7 @@ window.renderFormulier = function(editData = null) {
             <section class="wizard-step" id="reg-step-4" style="display: none;">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 700; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 4 van 4</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 700; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 4 van 4</span>
                         <h2 style="font-size: 24px; font-weight: 700; color: #1e293b; margin-top: 4px; margin-bottom: 6px;">De Effecten</h2>
                         <p style="font-size: 15px; color: #475569; margin: 0;">Wat waren de voor- en nadelen van jouw gemaakte keuze?</p>
                     </div>
@@ -991,7 +991,7 @@ window.renderFormulier = function(editData = null) {
                                 <input type="range" id="reg-se-slider" min="0" max="100" value="70" step="5" style="flex: 1; accent-color: #16a34a; cursor: pointer;" oninput="document.getElementById('se-val-display').innerText = this.value + '%'">
                                 <span id="se-val-display" style="font-weight: 800; color: #166534; font-size: 16px; min-width: 50px; text-align: right;">70%</span>
                             </div>
-                            <div style="display: flex; justify-content: space-between; font-size: 12px; color: #15803d; font-weight: 600; margin-top: 8px;">
+                            <div style="display: flex; justify-content: space-between; font-size: 14px; color: #15803d; font-weight: 600; margin-top: 8px;">
                                 <span>Niet zo snel</span>
                                 <span>Zeker wel</span>
                             </div>
@@ -1416,7 +1416,7 @@ window.addExtraAlcohol = function() {
         <div class="extra-item-block" id="extra-alc-${id}" style="background: #f8fafc; padding: 16px; border-radius: 16px; border: 1px solid #e2e8f0; margin-top: 12px; position: relative;">
             <button type="button" onclick="document.getElementById('extra-alc-${id}').remove(); calcStandaardGlazen();" style="position: absolute; top: 12px; right: 16px; background: none; border: none; color: #ef4444; font-weight: bold; cursor: pointer; font-size: 16px;">✕</button>
             <div style="display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 12px;">
-                <label style="font-size: 12px; font-weight: 600; color: #64748b;">Soort drank (extra)</label>
+                <label style="font-size: 14px; font-weight: 600; color: #64748b;">Soort drank (extra)</label>
                 <select id="reg-drank-type-${id}" class="form-input extra-alc-type" style="border-radius: 12px; padding: 10px;" onchange="updateAlcoholDropdowns('type', '${id}')">
                     <option value="" selected disabled>-- Kies soort --</option>
                     <option value="bier">Bier</option>
@@ -1428,25 +1428,25 @@ window.addExtraAlcohol = function() {
             </div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px;">
                 <div>
-                    <label style="font-size: 12px; font-weight: 600; color: #64748b;">Verpakking / Type</label>
+                    <label style="font-size: 14px; font-weight: 600; color: #64748b;">Verpakking / Type</label>
                     <select id="reg-drank-verpakking-${id}" class="form-input extra-alc-verpakking" style="border-radius: 12px; padding: 10px;" onchange="updateAlcoholDropdowns('verpakking', '${id}')">
                         <option value="" selected disabled>-- Kies eerst soort --</option>
                     </select>
                 </div>
                 <div>
-                    <label style="font-size: 12px; font-weight: 600; color: #64748b;">Aantal eenheden</label>
+                    <label style="font-size: 14px; font-weight: 600; color: #64748b;">Aantal eenheden</label>
                     <input type="number" id="reg-drank-aantal-${id}" class="form-input extra-alc-aantal" style="border-radius: 12px; padding: 10px;" min="1" value="1" placeholder="Aantal" oninput="calcStandaardGlazen()">
                 </div>
             </div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
                 <div>
-                    <label style="font-size: 12px; font-weight: 600; color: #64748b;">Maat</label>
+                    <label style="font-size: 14px; font-weight: 600; color: #64748b;">Maat</label>
                     <select id="reg-drank-maat-${id}" class="form-input extra-alc-maat" style="border-radius: 12px; padding: 10px;" onchange="calcStandaardGlazen()">
                         <option value="" selected disabled>-- Kies maat --</option>
                     </select>
                 </div>
                 <div>
-                    <label style="font-size: 12px; font-weight: 600; color: #64748b;">Alcohol %</label>
+                    <label style="font-size: 14px; font-weight: 600; color: #64748b;">Alcohol %</label>
                     <select id="reg-drank-percentage-${id}" class="form-input extra-alc-perc" style="border-radius: 12px; padding: 10px;" onchange="calcStandaardGlazen()">
                         <option value="" selected disabled>-- Kies percentage --</option>
                     </select>
@@ -1483,7 +1483,7 @@ window.addExtraSubstance = function(containerId) {
     const html = `
         <div class="extra-substance-block" id="extra-sub-${id}" style="background: #f8fafc; padding: 16px; border-radius: 12px; margin-top: 8px; position: relative; border: 1px solid #e2e8f0;">
             <button type="button" onclick="document.getElementById('extra-sub-${id}').remove();" style="position: absolute; top: 12px; right: 16px; background: none; border: none; color: #ef4444; font-weight: bold; cursor: pointer; font-size: 16px;">✕</button>
-            <label style="font-size: 13px; font-weight: 700; color: #1e293b; display: block; margin-bottom: 8px;">Ander middel</label>
+            <label style="font-size: 15px; font-weight: 700; color: #1e293b; display: block; margin-bottom: 8px;">Ander middel</label>
             <div style="display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 8px;">
                 <select class="form-input extra-sub-type" style="border-radius: 8px; padding: 8px;" onchange="renderExtraSubFields('${id}', this.value)">
                     <option value="" selected disabled>-- Kies middel --</option>

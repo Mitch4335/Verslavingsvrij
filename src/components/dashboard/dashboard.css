@@ -92,7 +92,7 @@ body, html {
 
 .node-label {
     margin-top: 8px;
-    font-size: 13px;
+    font-size: 15px;
     color: #333333;
     max-width: 130px;
     text-align: center;
@@ -211,7 +211,7 @@ body, html {
 
 .dropdown-header {
     padding: 16px 16px 8px 16px;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 800;
     color: #94a3b8;
     text-transform: uppercase;

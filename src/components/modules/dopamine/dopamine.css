@@ -120,7 +120,7 @@
 
 .bar-label {
     width: 100px;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 600;
     color: #475569;
 }
@@ -174,7 +174,7 @@
 .node-gevolg { background: #ecfdf5; border-color: #a7f3d0; color: #065f46; }
 
 .schema-node .node-title { font-weight: 800; font-size: 14px; margin-bottom: 4px; color: #1e293b; }
-.schema-node .node-sub { font-size: 12px; color: #64748b; line-height: 1.2; }
+.schema-node .node-sub { font-size: 14px; color: #64748b; line-height: 1.2; }
 .node-gedrag .node-title, .node-gevolg .node-title { color: inherit; }
 .node-gedrag .node-sub, .node-gevolg .node-sub { color: inherit; opacity: 0.8; }
 
@@ -199,7 +199,7 @@
 }
 
 .feedback-text {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 700;
     color: #2563eb;
     background: #f8fafc;

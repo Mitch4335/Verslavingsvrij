@@ -38,7 +38,7 @@ export function renderAdemhalingModule(containerElement, onBackToKist) {
             <div style="padding: 20px;">
                 <div class="module-container adem-container" style="max-width: 600px; margin: 0 auto;">
                     <div style="margin-bottom: 32px;" class="stagger-1">
-                        <span style="font-size: 12px; font-weight: 800; color: #10b981; text-transform: uppercase; letter-spacing: 1px;">Hulpmiddelen</span>
+                        <span style="font-size: 14px; font-weight: 800; color: #10b981; text-transform: uppercase; letter-spacing: 1px;">Hulpmiddelen</span>
                         <h2 style="font-size: 28px; color: #1e293b; margin-top: 4px; font-weight: 800;">Ademhaling</h2>
                     </div>
 

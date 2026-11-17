@@ -82,7 +82,7 @@
     cursor: pointer;
     padding: 0;
     margin-bottom: 20px;
-    font-size: 13px;
+    font-size: 15px;
     text-align: left;
 }
 
@@ -199,7 +199,7 @@
 }
 
 .save-status {
-    font-size: 13px;
+    font-size: 15px;
     color: #16a34a;
     font-weight: 700;
     opacity: 0;
@@ -214,6 +214,6 @@
     border-radius: 6px;
     font-weight: 600;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 15px;
     font-family: inherit;
 }

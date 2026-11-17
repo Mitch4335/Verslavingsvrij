@@ -123,7 +123,7 @@ export function renderWatIsVerslavingModule(containerElement, onComplete) {
             <section class="wizard-step active" id="wat-step-intro" style="display: block;">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 32px;">
-                        <span style="font-size: 12px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Psycho-educatie</span>
+                        <span style="font-size: 14px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Psycho-educatie</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Wat is verslaving eigenlijk?</h2>
                     </div>
 
@@ -158,7 +158,7 @@ export function renderWatIsVerslavingModule(containerElement, onComplete) {
             <section class="wizard-step" id="wat-step-1" style="display: none;">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 5</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 5</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">De grens bepalen</h2>
                         <p style="font-size: 15px; color: #475569;">Wanneer is iets een gewoonte, en wanneer is het een verslaving? Klik op de kenmerken die je bij jezelf herkent.</p>
                     </div>
@@ -204,7 +204,7 @@ export function renderWatIsVerslavingModule(containerElement, onComplete) {
             <section class="wizard-step" id="wat-step-2" style="display: none;">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 5</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 5</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Waar is het precies misgegaan?</h2>
                     </div>
 
@@ -241,7 +241,7 @@ export function renderWatIsVerslavingModule(containerElement, onComplete) {
             <section class="wizard-step" id="wat-step-3" style="display: none;">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #8b5cf6; text-transform: uppercase; letter-spacing: 0.5px;">Stap 3 van 5</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #8b5cf6; text-transform: uppercase; letter-spacing: 0.5px;">Stap 3 van 5</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">De onzichtbare kwetsbaarheid</h2>
                         <p style="font-size: 15px; color: #475569; margin-bottom: 24px;">Klik op de onderdelen om te ontdekken hoe de bodem voor verslaving onbewust al lang gelegd kan zijn.</p>
                     </div>
@@ -311,7 +311,7 @@ export function renderWatIsVerslavingModule(containerElement, onComplete) {
             <section class="wizard-step" id="wat-step-4" style="display: none;">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 4 van 5</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 4 van 5</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Het Domino-effect</h2>
                     </div>
 
@@ -345,7 +345,7 @@ export function renderWatIsVerslavingModule(containerElement, onComplete) {
             <section class="wizard-step" id="wat-step-5" style="display: none;">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #ec4899; text-transform: uppercase; letter-spacing: 0.5px;">Stap 5 van 5</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #ec4899; text-transform: uppercase; letter-spacing: 0.5px;">Stap 5 van 5</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Verslaving als overlevingsmechanisme</h2>
                         <p style="font-size: 15px; color: #475569;">Verslaving is in de basis een ongezond copingmechanisme. Hoe ga jij om met problemen?</p>
                     </div>

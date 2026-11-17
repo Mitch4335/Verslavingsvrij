@@ -117,7 +117,7 @@ export function renderCirkelsModule(containerElement, onComplete) {
             
             <div class="module-container cirkels-container" style="max-width: 700px; margin: 0 auto;">
                 <div style="margin-bottom: 32px;" id="ci-main-header">
-                    <span style="font-size: 12px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Omgeving & Steun</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Omgeving & Steun</span>
                     <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;" id="ci-header-title">Cirkels van nabijheid</h2>
                 </div>
 
@@ -143,7 +143,7 @@ export function renderCirkelsModule(containerElement, onComplete) {
 
         let html = `
             <div class="stagger-1" style="margin-bottom: 24px;">
-                <span style="font-size: 12px; font-weight: 600; color: ${color}; text-transform: uppercase; letter-spacing: 0.5px;">Stap ${stepNum} van 3</span>
+                <span style="font-size: 14px; font-weight: 600; color: ${color}; text-transform: uppercase; letter-spacing: 0.5px;">Stap ${stepNum} van 3</span>
             </div>
 
             <div class="stagger-2 info-block ${borderClass}">

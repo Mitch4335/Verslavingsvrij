@@ -149,7 +149,7 @@ export function renderUitglijderModule(containerElement, onComplete) {
             
             <div class="module-container ug-container" style="max-width: 700px; margin: 0 auto;">
                 <div style="margin-bottom: 32px;" id="ug-main-header">
-                    <span style="font-size: 12px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Actieplan</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Actieplan</span>
                     <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;" id="ug-header-title">Herstel na een uitglijder</h2>
                 </div>
 
@@ -372,7 +372,7 @@ export function renderUitglijderModule(containerElement, onComplete) {
             headerTitle.textContent = "Wat vertel je jezelf?";
             html = `
                 <div class="stagger-1" style="margin-bottom: 24px;">
-                    <span style="font-size: 12px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 3</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 3</span>
                 </div>
                 ${renderSelectionStep(
                     "gedachten", 
@@ -393,7 +393,7 @@ export function renderUitglijderModule(containerElement, onComplete) {
             headerTitle.textContent = "Wat ga je doen?";
             html = `
                 <div class="stagger-1" style="margin-bottom: 24px;">
-                    <span style="font-size: 12px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 3</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 3</span>
                 </div>
                 ${renderSelectionStep(
                     "maatregelen", 
@@ -416,7 +416,7 @@ export function renderUitglijderModule(containerElement, onComplete) {
 
             html = `
                 <div class="stagger-1" style="margin-bottom: 24px;">
-                    <span style="font-size: 12px; font-weight: 600; color: #3b82f6; text-transform: uppercase; letter-spacing: 0.5px;">Stap 3 van 3</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #3b82f6; text-transform: uppercase; letter-spacing: 0.5px;">Stap 3 van 3</span>
                 </div>
                 
                 <div class="stagger-2 info-block info-block-border-blue">

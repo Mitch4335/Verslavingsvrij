@@ -133,7 +133,7 @@ export function renderGSchemaModule(onComplete) {
                 <!-- STAP 0: MODULE INTRODUCTIE -->
                 <section class="wizard-step active" id="gs-step-0" style="display: block;">
                     <div style="margin-bottom: 32px;">
-                        <span style="font-size: 12px; font-weight: 700; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Psycho-educatie</span>
+                        <span style="font-size: 14px; font-weight: 700; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Psycho-educatie</span>
                         <h2 style="font-size: 28px; font-weight: 800; color: #1e293b; margin-top: 4px; margin-bottom: 16px;">Het G-schema</h2>
                     </div>
 
@@ -159,7 +159,7 @@ export function renderGSchemaModule(onComplete) {
                 <!-- STAP DEMO: VOORBEELD -->
                 <section class="wizard-step" id="gs-step-demo" style="display: none;">
                     <div class="stagger-1" style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Voorbeeld uit de praktijk</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Voorbeeld uit de praktijk</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Hoe gedachten sturen</h2>
                     </div>
 
@@ -187,7 +187,7 @@ export function renderGSchemaModule(onComplete) {
                 <!-- STAP 1: G1 -->
                 <section class="wizard-step" id="gs-step-1" style="display: none;">
                     <div class="stagger-1" style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #3b82f6; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 6</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #3b82f6; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 6</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">De Gebeurtenis (G1)</h2>
                     </div>
 
@@ -200,7 +200,7 @@ export function renderGSchemaModule(onComplete) {
                         
                         ${top3Situaties.length > 0 ? `
                             <div style="margin-bottom: 16px; padding: 12px; background: #f8fafc; border-radius: 8px;">
-                                <label style="font-size: 13px; font-weight: 600; color: #64748b;">Je Top 3 Risicosituaties (ter inspiratie):</label>
+                                <label style="font-size: 15px; font-weight: 600; color: #64748b;">Je Top 3 Risicosituaties (ter inspiratie):</label>
                                 <div class="chip-grid">
                                     ${top3Situaties.map(sit => `<div class="gschema-chip">${sit}</div>`).join('')}
                                 </div>
@@ -221,7 +221,7 @@ export function renderGSchemaModule(onComplete) {
                 <!-- STAP 2: G2 -->
                 <section class="wizard-step" id="gs-step-2" style="display: none;">
                     <div class="stagger-1" style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #8b5cf6; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 6</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #8b5cf6; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 6</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">De Gedachte (G2)</h2>
                     </div>
 
@@ -241,7 +241,7 @@ export function renderGSchemaModule(onComplete) {
                 <!-- STAP 3: G3 -->
                 <section class="wizard-step" id="gs-step-3" style="display: none;">
                     <div class="stagger-1" style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #ec4899; text-transform: uppercase; letter-spacing: 0.5px;">Stap 3 van 6</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #ec4899; text-transform: uppercase; letter-spacing: 0.5px;">Stap 3 van 6</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Het Gevoel (G3)</h2>
                     </div>
 
@@ -261,7 +261,7 @@ export function renderGSchemaModule(onComplete) {
                 <!-- STAP 4: G4 -->
                 <section class="wizard-step" id="gs-step-4" style="display: none;">
                     <div class="stagger-1" style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Stap 4 van 6</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Stap 4 van 6</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Het Gedrag (G4)</h2>
                     </div>
 
@@ -281,7 +281,7 @@ export function renderGSchemaModule(onComplete) {
                 <!-- STAP 5: G5 -->
                 <section class="wizard-step" id="gs-step-5" style="display: none;">
                     <div class="stagger-1" style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #ef4444; text-transform: uppercase; letter-spacing: 0.5px;">Stap 5 van 6</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #ef4444; text-transform: uppercase; letter-spacing: 0.5px;">Stap 5 van 6</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Het Gevolg (G5)</h2>
                     </div>
 
@@ -301,7 +301,7 @@ export function renderGSchemaModule(onComplete) {
                 <!-- STAP 6: ALTERNATIEF -->
                 <section class="wizard-step" id="gs-step-6" style="display: none;">
                     <div class="stagger-1" style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 6 van 6</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 6 van 6</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Uitdagen & Nieuw Perspectief</h2>
                     </div>
 
@@ -346,15 +346,15 @@ export function renderGSchemaModule(onComplete) {
                         <p class="form-hint">Wat gebeurt er als je deze nieuwe gedachte kiest?</p>
 
                         <div class="form-group" style="margin-bottom: 12px;">
-                            <label style="font-size: 13px; color: #475569; display: block; margin-bottom: 4px;">Nieuw Gevoel (G3):</label>
+                            <label style="font-size: 15px; color: #475569; display: block; margin-bottom: 4px;">Nieuw Gevoel (G3):</label>
                             <input type="text" class="gschema-textarea" style="min-height: 45px; padding: 8px 12px;" id="gs-input-alt-gevoel" placeholder="Bijv. Trots, rustiger gevoel..." value="${formData.altGevoel || ''}">
                         </div>
                         <div class="form-group" style="margin-bottom: 12px;">
-                            <label style="font-size: 13px; color: #475569; display: block; margin-bottom: 4px;">Nieuw Gedrag (G4):</label>
+                            <label style="font-size: 15px; color: #475569; display: block; margin-bottom: 4px;">Nieuw Gedrag (G4):</label>
                             <input type="text" class="gschema-textarea" style="min-height: 45px; padding: 8px 12px;" id="gs-input-alt-gedrag" placeholder="Bijv. Een glas water pakken..." value="${formData.altGedrag || ''}">
                         </div>
                         <div class="form-group" style="margin-bottom: 0;">
-                            <label style="font-size: 13px; color: #475569; display: block; margin-bottom: 4px;">Nieuw Gevolg (G5):</label>
+                            <label style="font-size: 15px; color: #475569; display: block; margin-bottom: 4px;">Nieuw Gevolg (G5):</label>
                             <input type="text" class="gschema-textarea" style="min-height: 45px; padding: 8px 12px;" id="gs-input-alt-gevolg" placeholder="Bijv. Morgen trots wakker worden..." value="${formData.altGevolg || ''}">
                         </div>
                     </div>

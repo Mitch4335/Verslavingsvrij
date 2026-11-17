@@ -111,7 +111,7 @@ export function renderDoelenModule(onComplete) {
                 
                 .goal-icon { font-size: 32px; margin-bottom: 12px; }
                 .goal-card h4 { margin: 0 0 8px 0; font-size: 16px; color: #1e293b; }
-                .goal-card p { margin: 0; font-size: 13px; color: #475569; line-height: 1.5; }
+                .goal-card p { margin: 0; font-size: 15px; color: #475569; line-height: 1.5; }
                 
                 @media(max-width: 600px) { .goal-options-grid { grid-template-columns: 1fr; } }
             </style>
@@ -120,7 +120,7 @@ export function renderDoelenModule(onComplete) {
             <section class="wizard-step active" id="step-intro">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 32px;">
-                        <span style="font-size: 12px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Module Introductie</span>
+                        <span style="font-size: 14px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Module Introductie</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Doelen stellen</h2>
                     </div>
 
@@ -155,7 +155,7 @@ export function renderDoelenModule(onComplete) {
             <section class="wizard-step" id="step-baseline">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 4</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 4</span>
                         <h3 style="font-size: 24px; color: #1e293b; margin-top: 4px;">De Nulmeting</h3>
                     </div>
 
@@ -191,7 +191,7 @@ export function renderDoelenModule(onComplete) {
             <section class="wizard-step" id="step-1">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #8b5cf6; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 4</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #8b5cf6; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 4</span>
                         <h3 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Wat is haalbaar?</h3>
                     </div>
 
@@ -219,7 +219,7 @@ export function renderDoelenModule(onComplete) {
             <section class="wizard-step" id="step-2">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #ec4899; text-transform: uppercase; letter-spacing: 0.5px;">Stap 3 van 4</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #ec4899; text-transform: uppercase; letter-spacing: 0.5px;">Stap 3 van 4</span>
                         <h3 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Jouw richting kiezen</h3>
                         <p style="font-size: 15px; color: #64748b; margin-top: 8px;">Wat wordt je doel met betrekking tot ${term.middel}?</p>
                     </div>
@@ -250,7 +250,7 @@ export function renderDoelenModule(onComplete) {
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 24px; display: flex; justify-content: space-between; align-items: flex-start;">
                         <div>
-                            <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Stap 4 van 4</span>
+                            <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Stap 4 van 4</span>
                             <h3 id="step2-main-title" style="font-size: 24px; color: #1e293b; margin-top: 4px;">Jouw Plan & Herinnering</h3>
                         </div>
                         <button type="button" class="info-btn-blue hidden" id="btn-info-withdrawal" title="Informatie over veilig stoppen" style="background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; border-radius: 50%; width: 32px; height: 32px; font-weight: bold; cursor: pointer;">i</button>
@@ -522,7 +522,7 @@ function renderSpecificFields(term) {
                         <input type="checkbox" id="goal-reminder-checkbox" ${reminderEnabled ? 'checked' : ''} style="width: 18px; height: 18px; accent-color: #2563eb;">
                         Ontvang een herinneringsmelding over een maand
                     </label>
-                    <p style="margin: 6px 0 0 28px; font-size: 13px; color: #64748b;">We sturen je dan een vriendelijk seintje om je voortgang te evalueren.</p>
+                    <p style="margin: 6px 0 0 28px; font-size: 15px; color: #64748b;">We sturen je dan een vriendelijk seintje om je voortgang te evalueren.</p>
                 </div>
             </div>
         `;
@@ -618,7 +618,7 @@ function renderSpecificFields(term) {
                         <input type="checkbox" id="goal-reminder-checkbox" ${reminderEnabled ? 'checked' : ''} style="width: 18px; height: 18px; accent-color: #2563eb;">
                         Ontvang een herinneringsmelding over een maand
                     </label>
-                    <p style="margin: 6px 0 0 28px; font-size: 13px; color: #64748b;">We sturen je dan een vriendelijk seintje om te kijken hoe het ervoor staat met je doel.</p>
+                    <p style="margin: 6px 0 0 28px; font-size: 15px; color: #64748b;">We sturen je dan een vriendelijk seintje om te kijken hoe het ervoor staat met je doel.</p>
                 </div>
             </div>
         `;
@@ -739,16 +739,16 @@ function renderMinderingRows(term) {
                     <div class="accordion-header" data-index="${index}" style="padding: 14px 16px; background: ${isOpen ? '#f1f5f9' : '#f8fafc'}; display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none;">
                         <div style="display: flex; align-items: center; gap: 8px;">
                             <span style="font-weight: 600; font-size: 14px; color: #1e293b;">Soort: ${readableDrankName}</span>
-                            ${showStepMax ? `<span style="font-size: 12px; color: #64748b; background: #e2e8f0; padding: 2px 8px; border-radius: 12px;">ca. ${weeklyTotalForThisItem.toFixed(1)} st.gl/week</span>` : ''}
+                            ${showStepMax ? `<span style="font-size: 14px; color: #64748b; background: #e2e8f0; padding: 2px 8px; border-radius: 12px;">ca. ${weeklyTotalForThisItem.toFixed(1)} st.gl/week</span>` : ''}
                         </div>
                         <div style="display: flex; align-items: center; gap: 12px;">
-                            ${minderingItems.length > 1 ? `<button type="button" class="btn-remove-mindering" data-index="${index}" style="background: none; border: none; color: #ef4444; cursor: pointer; font-size: 12px; font-weight: 600;">Verwijderen</button>` : ''}
+                            ${minderingItems.length > 1 ? `<button type="button" class="btn-remove-mindering" data-index="${index}" style="background: none; border: none; color: #ef4444; cursor: pointer; font-size: 14px; font-weight: 600;">Verwijderen</button>` : ''}
                             <span style="font-size: 14px; color: #64748b; transition: transform 0.2s; transform: rotate(${isOpen ? '180deg' : '0deg'});">▼</span>
                         </div>
                     </div>
                     <div class="accordion-content" style="padding: 16px; display: ${isOpen ? 'grid' : 'none'}; gap: 16px; border-top: 1px solid #e2e8f0; background: #ffffff;">
                         <div>
-                            <label style="font-size: 12px; font-weight: 600; color: #475569; display: block; margin-bottom: 6px;">Soort drank</label>
+                            <label style="font-size: 14px; font-weight: 600; color: #475569; display: block; margin-bottom: 6px;">Soort drank</label>
                             <select class="form-input drank-type-select" style="padding: 10px; font-size: 14px; ${fontStyle}">
                                 <option value="" ${!item.drank ? 'selected disabled' : ''}>-- Kies soort --</option>
                                 <option value="bier" ${item.drank === 'bier' ? 'selected' : ''}>Bier</option>
@@ -760,7 +760,7 @@ function renderMinderingRows(term) {
                         <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px; border-radius: 6px; display: ${showStepUnit ? 'grid' : 'none'}; gap: 12px;">
                             <div style="display: grid; grid-template-columns: 1fr; gap: 8px;">
                                 <div>
-                                    <label style="font-size: 12px; color: #64748b; font-weight: 600; display: block; margin-bottom: 4px;">Verpakking</label>
+                                    <label style="font-size: 14px; color: #64748b; font-weight: 600; display: block; margin-bottom: 4px;">Verpakking</label>
                                     <select class="form-input drank-verpakking-select" style="padding: 10px; font-size: 14px; ${fontStyle}">
                                         ${verpakkingOptions}
                                     </select>
@@ -768,13 +768,13 @@ function renderMinderingRows(term) {
                             </div>
                             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
                                 <div>
-                                    <label style="font-size: 12px; color: #64748b; font-weight: 600; display: block; margin-bottom: 4px;">Maat / Inhoud</label>
+                                    <label style="font-size: 14px; color: #64748b; font-weight: 600; display: block; margin-bottom: 4px;">Maat / Inhoud</label>
                                     <select class="form-input drank-maat-select" style="padding: 10px; font-size: 14px; ${fontStyle}">
                                         ${maatOptions}
                                     </select>
                                 </div>
                                 <div>
-                                    <label style="font-size: 12px; color: #64748b; font-weight: 600; display: block; margin-bottom: 4px;">Alcoholpercentage (%)</label>
+                                    <label style="font-size: 14px; color: #64748b; font-weight: 600; display: block; margin-bottom: 4px;">Alcoholpercentage (%)</label>
                                     <select class="form-input drank-percentage-select" style="padding: 10px; font-size: 14px; ${fontStyle}">
                                         ${percentageOptions}
                                     </select>
@@ -782,18 +782,18 @@ function renderMinderingRows(term) {
                             </div>
                         </div>
                         <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px; border-radius: 6px; display: ${showStepMax ? 'grid' : 'none'}; gap: 12px;">
-                            <span style="font-size: 13px; font-weight: 700; color: #1e293b;">Maximale inname / frequentie</span>
+                            <span style="font-size: 15px; font-weight: 700; color: #1e293b;">Maximale inname / frequentie</span>
                             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 12px;">
                                 <div>
-                                    <label style="font-size: 12px; color: #64748b; font-weight: 600; display: block; margin-bottom: 4px;">Max. per dag</label>
+                                    <label style="font-size: 14px; color: #64748b; font-weight: 600; display: block; margin-bottom: 4px;">Max. per dag</label>
                                     <input type="number" class="form-input drank-per-dag-input" min="0" step="any" value="${item.aantalPerDag}" style="padding: 10px; font-size: 14px; width: 100%; ${fontStyle}">
                                 </div>
                                 <div>
-                                    <label style="font-size: 12px; color: #64748b; font-weight: 600; display: block; margin-bottom: 4px;">Dagen per week</label>
+                                    <label style="font-size: 14px; color: #64748b; font-weight: 600; display: block; margin-bottom: 4px;">Dagen per week</label>
                                     <input type="number" class="form-input drank-dagen-per-week-input" min="0" max="7" step="1" value="${item.dagenPerWeek}" style="padding: 10px; font-size: 14px; width: 100%; ${fontStyle}">
                                 </div>
                                 <div>
-                                    <label style="font-size: 12px; color: #64748b; font-weight: 600; display: block; margin-bottom: 4px;">Max. per week</label>
+                                    <label style="font-size: 14px; color: #64748b; font-weight: 600; display: block; margin-bottom: 4px;">Max. per week</label>
                                     <input type="number" class="form-input drank-per-week-input" min="0" step="any" value="${item.aantalPerWeek}" style="padding: 10px; font-size: 14px; width: 100%; ${fontStyle}">
                                 </div>
                             </div>
@@ -808,34 +808,34 @@ function renderMinderingRows(term) {
                     <div class="accordion-header" data-index="${index}" style="padding: 14px 16px; background: ${isOpen ? '#f1f5f9' : '#f8fafc'}; display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none;">
                         <span style="font-weight: 600; font-size: 14px; color: #1e293b;">Beperking: ${safeName}</span>
                         <div style="display: flex; align-items: center; gap: 12px;">
-                            ${minderingItems.length > 1 ? `<button type="button" class="btn-remove-mindering" data-index="${index}" style="background: none; border: none; color: #ef4444; cursor: pointer; font-size: 12px; font-weight: 600;">Verwijderen</button>` : ''}
+                            ${minderingItems.length > 1 ? `<button type="button" class="btn-remove-mindering" data-index="${index}" style="background: none; border: none; color: #ef4444; cursor: pointer; font-size: 14px; font-weight: 600;">Verwijderen</button>` : ''}
                             <span style="font-size: 14px; color: #64748b; transition: transform 0.2s; transform: rotate(${isOpen ? '180deg' : '0deg'});">▼</span>
                         </div>
                     </div>
                     <div class="accordion-content" style="padding: 16px; display: ${isOpen ? 'grid' : 'none'}; gap: 16px; border-top: 1px solid #e2e8f0; background: #ffffff;">
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
                             <div>
-                                <label style="font-size: 12px; font-weight: 600; color: #475569; display: block; margin-bottom: 6px;">Wat precies?</label>
+                                <label style="font-size: 14px; font-weight: 600; color: #475569; display: block; margin-bottom: 6px;">Wat precies?</label>
                                 <input type="text" class="form-input drank-type-select generic-input" placeholder="Bijv. Wiet, Gokkast" value="${item.drank}" style="padding: 10px; font-size: 14px; ${fontStyle}">
                             </div>
                             <div>
-                                <label style="font-size: 12px; font-weight: 600; color: #475569; display: block; margin-bottom: 6px;">Eenheid</label>
+                                <label style="font-size: 14px; font-weight: 600; color: #475569; display: block; margin-bottom: 6px;">Eenheid</label>
                                 <input type="text" class="form-input drank-verpakking-select generic-input" placeholder="Bijv. gram, euro's, joints" value="${item.verpakking}" style="padding: 10px; font-size: 14px; ${fontStyle}">
                             </div>
                         </div>
                         <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px; border-radius: 6px; display: grid; gap: 12px;">
-                            <span style="font-size: 13px; font-weight: 700; color: #1e293b;">Maximale inname / inzet</span>
+                            <span style="font-size: 15px; font-weight: 700; color: #1e293b;">Maximale inname / inzet</span>
                             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 12px;">
                                 <div>
-                                    <label style="font-size: 12px; color: #64748b; font-weight: 600; display: block; margin-bottom: 4px;">Max. per dag</label>
+                                    <label style="font-size: 14px; color: #64748b; font-weight: 600; display: block; margin-bottom: 4px;">Max. per dag</label>
                                     <input type="number" class="form-input drank-per-dag-input" min="0" step="any" value="${item.aantalPerDag}" style="padding: 10px; font-size: 14px; width: 100%; ${fontStyle}">
                                 </div>
                                 <div>
-                                    <label style="font-size: 12px; color: #64748b; font-weight: 600; display: block; margin-bottom: 4px;">Dagen per week</label>
+                                    <label style="font-size: 14px; color: #64748b; font-weight: 600; display: block; margin-bottom: 4px;">Dagen per week</label>
                                     <input type="number" class="form-input drank-dagen-per-week-input" min="0" max="7" step="1" value="${item.dagenPerWeek}" style="padding: 10px; font-size: 14px; width: 100%; ${fontStyle}">
                                 </div>
                                 <div>
-                                    <label style="font-size: 12px; color: #64748b; font-weight: 600; display: block; margin-bottom: 4px;">Max. per week</label>
+                                    <label style="font-size: 14px; color: #64748b; font-weight: 600; display: block; margin-bottom: 4px;">Max. per week</label>
                                     <input type="number" class="form-input drank-per-week-input" min="0" step="any" value="${item.aantalPerWeek}" style="padding: 10px; font-size: 14px; width: 100%; ${fontStyle}">
                                 </div>
                             </div>

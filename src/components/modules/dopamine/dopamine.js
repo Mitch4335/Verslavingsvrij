@@ -105,7 +105,7 @@ export function renderDopamineModule(onComplete) {
             <section class="wizard-step active" id="dopa-step-intro" style="display: block;">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 32px;">
-                        <span style="font-size: 12px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Module Introductie</span>
+                        <span style="font-size: 14px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Module Introductie</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Je brein en dopamine</h2>
                     </div>
 
@@ -140,7 +140,7 @@ export function renderDopamineModule(onComplete) {
             <section class="wizard-step" id="dopa-step-1" style="display: none;">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 4</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 4</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">De motor van ons gedrag</h2>
                     </div>
 
@@ -169,7 +169,7 @@ export function renderDopamineModule(onComplete) {
             <section class="wizard-step" id="dopa-step-2" style="display: none;">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 4</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 4</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Een ijzersterke koppeling</h2>
                     </div>
 
@@ -241,7 +241,7 @@ export function renderDopamineModule(onComplete) {
             <section class="wizard-step" id="dopa-step-3" style="display: none;">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #8b5cf6; text-transform: uppercase; letter-spacing: 0.5px;">Stap 3 van 4</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #8b5cf6; text-transform: uppercase; letter-spacing: 0.5px;">Stap 3 van 4</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Het 'Snoepwinkel-effect'</h2>
                     </div>
 
@@ -289,7 +289,7 @@ export function renderDopamineModule(onComplete) {
             <section class="wizard-step" id="dopa-step-4" style="display: none;">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 4 van 4</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 4 van 4</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Je brein is kneedbaar</h2>
                     </div>
 

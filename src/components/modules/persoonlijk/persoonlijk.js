@@ -223,7 +223,7 @@ export function renderPersoonlijkModule() {
                             }
                         }).join('<br>');
                         
-                        doelTekst = `<strong>Minderen met ${config.naam.toLowerCase()}:</strong><br><span style="font-size: 13px; font-weight: normal; line-height: 1.6; display: block; margin-top: 4px;">${itemsSummary}</span>`;
+                        doelTekst = `<strong>Minderen met ${config.naam.toLowerCase()}:</strong><br><span style="font-size: 15px; font-weight: normal; line-height: 1.6; display: block; margin-top: 4px;">${itemsSummary}</span>`;
                     }
                 } catch (e) {
                     doelTekst = savedGoalStr.replace(/"/g, '');
@@ -262,7 +262,7 @@ export function renderPersoonlijkModule() {
                 } catch (e) {}
             }
             if (!top3HTML) {
-                top3HTML = `<div style="text-align: center; padding: 16px; background: #f8fafc; border-radius: 12px; border: 1px dashed #cbd5e1; color: #64748b; font-size: 13px;">Nog geen Top 3 ingesteld.</div>`;
+                top3HTML = `<div style="text-align: center; padding: 16px; background: #f8fafc; border-radius: 12px; border: 1px dashed #cbd5e1; color: #64748b; font-size: 15px;">Nog geen Top 3 ingesteld.</div>`;
             }
 
             const maxWeekAllowed = getMaxAllowedPerWeek(parsedGoalData, traject);
@@ -294,7 +294,7 @@ export function renderPersoonlijkModule() {
 
                 weekBarHTML = `
                     <div style="margin-top: 16px; padding-top: 16px; border-top: 1px dashed #cbd5e1; box-sizing: border-box; max-width: 100%;">
-                        <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: #475569; margin-bottom: 8px;">
+                        <div style="display: flex; justify-content: space-between; font-size: 14px; font-weight: 700; color: #475569; margin-bottom: 8px;">
                             <span>Weekvoortgang (ma-zo)</span>
                             <span>${weekTotal.toFixed(1).replace('.0', '')} / ${maxWeekAllowed.toFixed(1).replace('.0', '')} ${eenheidLabel}</span>
                         </div>
@@ -332,7 +332,7 @@ export function renderPersoonlijkModule() {
                             <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-radius: 14px; padding: 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; box-sizing: border-box; width: 100%; max-width: 100%;">
                                 <div style="min-width: 0; flex: 1;">
                                     <h4 style="margin: 0 0 4px 0; color: #1e40af; font-size: 15px; font-weight: 700;">Slagingspercentage</h4>
-                                    <p style="margin: 0; color: #3b82f6; font-size: 13px; line-height: 1.4; word-break: break-word;">Op <strong>${succesData.gehoudenAanDoel} van de ${succesData.totaal}</strong> geregistreerde dagen hield je je aan je gestelde dagdoel.</p>
+                                    <p style="margin: 0; color: #3b82f6; font-size: 15px; line-height: 1.4; word-break: break-word;">Op <strong>${succesData.gehoudenAanDoel} van de ${succesData.totaal}</strong> geregistreerde dagen hield je je aan je gestelde dagdoel.</p>
                                 </div>
                                 <div style="background: #ffffff; padding: 8px 16px; border-radius: 10px; box-shadow: 0 2px 4px rgb(0 0 0 / 0.05); text-align: center; flex-shrink: 0;">
                                     <span style="display: block; font-size: 24px; font-weight: 800; color: ${succesData.ratio >= 50 ? '#10b981' : '#f59e0b'};">${succesData.ratio}%</span>
@@ -372,19 +372,19 @@ export function renderPersoonlijkModule() {
                         <span style="font-size: 11px; font-weight: 700; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Jouw Persoonlijke Kompas</span>
                         
                         <div style="position: relative; display: inline-block;">
-                            <button type="button" id="btn-toggle-motto" style="background: none; border: none; font-size: 13px; cursor: pointer; color: #64748b; padding: 2px 4px; border-radius: 4px; transition: background 0.2s;" title="Verander motto">✏️</button>
+                            <button type="button" id="btn-toggle-motto" style="background: none; border: none; font-size: 15px; cursor: pointer; color: #64748b; padding: 2px 4px; border-radius: 4px; transition: background 0.2s;" title="Verander motto">✏️</button>
                             
                             <div id="motto-dropdown" class="hidden" style="position: absolute; left: 50%; transform: translateX(-50%); top: 100%; background: white; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); padding: 8px; width: 260px; z-index: 100; max-height: 350px; overflow-y: auto; border: 1px solid #e2e8f0; margin-top: 4px; text-align: left;">
                                 
                                 <div style="font-size: 10px; font-weight: 800; color: #94a3b8; text-transform: uppercase; padding: 4px 8px; margin-bottom: 4px;">Eigen motto invullen</div>
                                 <div style="padding: 0 8px 12px 8px; border-bottom: 1px solid #e2e8f0; margin-bottom: 8px;">
-                                    <input type="text" id="custom-motto-input" placeholder="Typ je eigen motto..." style="width: 100%; padding: 8px 10px; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 13px; box-sizing: border-box; outline: none;">
-                                    <button type="button" id="btn-save-custom-motto" style="margin-top: 6px; width: 100%; background: #2563eb; color: white; border: none; padding: 8px; border-radius: 6px; font-weight: 600; font-size: 12px; cursor: pointer;">Motto opslaan</button>
+                                    <input type="text" id="custom-motto-input" placeholder="Typ je eigen motto..." style="width: 100%; padding: 8px 10px; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 15px; box-sizing: border-box; outline: none;">
+                                    <button type="button" id="btn-save-custom-motto" style="margin-top: 6px; width: 100%; background: #2563eb; color: white; border: none; padding: 8px; border-radius: 6px; font-weight: 600; font-size: 14px; cursor: pointer;">Motto opslaan</button>
                                 </div>
 
                                 <div style="font-size: 10px; font-weight: 800; color: #94a3b8; text-transform: uppercase; padding: 4px 8px; margin-bottom: 4px;">Of kies een voorbeeld</div>
                                 ${mottos.map((m) => `
-                                    <div class="motto-option" data-motto="${m}" style="padding: 8px 10px; font-size: 13px; color: #1e293b; border-radius: 8px; cursor: pointer; transition: background 0.2s; ${m === huidigMotto ? 'background: #eff6ff; font-weight: 600; color: #2563eb;' : ''}">
+                                    <div class="motto-option" data-motto="${m}" style="padding: 8px 10px; font-size: 15px; color: #1e293b; border-radius: 8px; cursor: pointer; transition: background 0.2s; ${m === huidigMotto ? 'background: #eff6ff; font-weight: 600; color: #2563eb;' : ''}">
                                         "${m}"
                                     </div>
                                 `).join('')}
@@ -404,16 +404,16 @@ export function renderPersoonlijkModule() {
             <div class="stagger-3" style="background: #ffffff; border-radius: 20px; padding: 20px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05); box-sizing: border-box; width: 100%; max-width: 100%;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
                     <h3 style="margin: 0; font-size: 18px; font-weight: 700; color: #1e293b;">Inspiratie & Motivatie</h3>
-                    <button type="button" id="btn-add-foto" style="background: #2563eb; color: #ffffff; border: none; border-radius: 20px; padding: 6px 14px; font-weight: 700; font-size: 12px; cursor: pointer; font-family: inherit;">+ Foto toevoegen</button>
+                    <button type="button" id="btn-add-foto" style="background: #2563eb; color: #ffffff; border: none; border-radius: 20px; padding: 6px 14px; font-weight: 700; font-size: 14px; cursor: pointer; font-family: inherit;">+ Foto toevoegen</button>
                 </div>
-                <p style="margin: 0 0 16px 0; font-size: 13px; color: #64748b; line-height: 1.4;">Beelden die je kracht geven en herinneren aan je doelen.</p>
+                <p style="margin: 0 0 16px 0; font-size: 15px; color: #64748b; line-height: 1.4;">Beelden die je kracht geven en herinneren aan je doelen.</p>
                 
                 <div id="fotoalbum-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px;">
-                    <div style="aspect-ratio: 1; border-radius: 14px; background: #f8fafc; border: 2px dashed #e2e8f0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: #94a3b8; font-size: 13px; font-weight: 600; text-align: center;">
+                    <div style="aspect-ratio: 1; border-radius: 14px; background: #f8fafc; border: 2px dashed #e2e8f0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: #94a3b8; font-size: 15px; font-weight: 600; text-align: center;">
                         <span style="font-size: 36px; line-height: 1;">🌄</span>
                         <span>Natuur / Rust</span>
                     </div>
-                    <div style="aspect-ratio: 1; border-radius: 14px; background: #f8fafc; border: 2px dashed #e2e8f0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: #94a3b8; font-size: 13px; font-weight: 600; text-align: center;">
+                    <div style="aspect-ratio: 1; border-radius: 14px; background: #f8fafc; border: 2px dashed #e2e8f0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: #94a3b8; font-size: 15px; font-weight: 600; text-align: center;">
                         <span style="font-size: 36px; line-height: 1;">🎯</span>
                         <span>Doelgericht</span>
                     </div>

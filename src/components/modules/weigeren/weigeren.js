@@ -322,7 +322,7 @@ export function renderWeigerenModule(containerElement, onComplete) {
             
             <div class="module-container weigeren-container" style="max-width: 700px; margin: 0 auto;">
                 <div style="margin-bottom: 32px;" id="we-main-header">
-                    <span style="font-size: 12px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Vaardigheden</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Vaardigheden</span>
                     <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;" id="we-header-title">Nee zeggen</h2>
                 </div>
 
@@ -393,7 +393,7 @@ export function renderWeigerenModule(containerElement, onComplete) {
             headerTitle.textContent = "Inleven in de situatie";
             html = `
                 <div class="stagger-1" style="margin-bottom: 24px;">
-                    <span style="font-size: 12px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 4</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 4</span>
                 </div>
 
                 <div class="stagger-2 info-block info-block-border-orange" style="margin-bottom: 24px;">
@@ -428,7 +428,7 @@ export function renderWeigerenModule(containerElement, onComplete) {
             headerTitle.textContent = "Wát zeg je?";
             html = `
                 <div class="stagger-1" style="margin-bottom: 24px;">
-                    <span style="font-size: 12px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 4</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 4</span>
                     <p style="font-size: 15px; color: #475569; margin-top: 6px;">De inhoud van je boodschap is cruciaal. Houd het bij jezelf.</p>
                 </div>
 
@@ -475,7 +475,7 @@ export function renderWeigerenModule(containerElement, onComplete) {
             headerTitle.textContent = "Hóe zeg je het?";
             html = `
                 <div class="stagger-1" style="margin-bottom: 24px;">
-                    <span style="font-size: 12px; font-weight: 600; color: #8b5cf6; text-transform: uppercase; letter-spacing: 0.5px;">Stap 3 van 4</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #8b5cf6; text-transform: uppercase; letter-spacing: 0.5px;">Stap 3 van 4</span>
                     <p style="font-size: 15px; color: #475569; margin-top: 6px;">Oefening baart kunst. Kijk mee met dit voorbeeld.</p>
                 </div>
 
@@ -541,11 +541,11 @@ export function renderWeigerenModule(containerElement, onComplete) {
             headerTitle.textContent = "Oefenen in de praktijk";
             html = `
                 <div class="stagger-1" style="margin-bottom: 24px;">
-                    <span style="font-size: 12px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Stap 4 van 4</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Stap 4 van 4</span>
                     <p style="font-size: 15px; color: #475569; margin-top: 6px;">Wat is de beste reactie in deze situatie?</p>
                 </div>
 
-                <div class="stagger-2" style="font-size: 13px; font-weight: 700; color: #64748b; margin-bottom: 8px;">Scenario ${currentQuizIndex + 1} van ${quizData.length}</div>
+                <div class="stagger-2" style="font-size: 15px; font-weight: 700; color: #64748b; margin-bottom: 8px;">Scenario ${currentQuizIndex + 1} van ${quizData.length}</div>
                 
                 <div class="stagger-2 info-block info-block-border-orange" style="margin-bottom: 24px;">
                     <h3 style="font-size: 18px; color: #1e293b; margin-top: 0; margin-bottom: 20px; font-weight: 800; line-height: 1.4;">
@@ -712,7 +712,7 @@ export function renderWeigerenModule(containerElement, onComplete) {
                     feedbackBox.style.background = '#fef2f2';
                     feedbackBox.style.border = '1px solid #fecaca';
                     feedbackBox.style.color = '#991b1b';
-                    feedbackBox.innerHTML = `<strong>❌ ${chosenOption.feedback}</strong> <br><span style="font-size: 13px; opacity: 0.8; margin-top: 4px; display: inline-block;">Probeer het nog eens!</span>`;
+                    feedbackBox.innerHTML = `<strong>❌ ${chosenOption.feedback}</strong> <br><span style="font-size: 15px; opacity: 0.8; margin-top: 4px; display: inline-block;">Probeer het nog eens!</span>`;
                     
                     nextQuizBtn.style.display = 'none';
                 }

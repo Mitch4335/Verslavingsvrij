@@ -191,7 +191,7 @@ export function renderEersteStappen(container, onComplete) {
             
             <div class="eerste-stappen-container" style="max-width: 700px; margin: 0 auto; font-family: inherit;">
                 <div style="margin-bottom: 32px;">
-                    <span style="font-size: 12px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Module Introductie</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Module Introductie</span>
                     <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Eerste stappen naar verandering</h2>
                 </div>
 
@@ -268,7 +268,7 @@ export function renderEersteStappen(container, onComplete) {
             
             <div class="eerste-stappen-container" style="max-width: 700px; margin: 0 auto; font-family: inherit;">
                 <div style="margin-bottom: 24px;">
-                    <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #ef4444; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 2</span>
+                    <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #ef4444; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 2</span>
                     <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Te vermijden risico's</h2>
                     <p style="font-size: 14px; color: #64748b; margin-top: 6px;">Selecteer welke situaties of personen je de komende periode beter even kunt mijden.</p>
                 </div>
@@ -498,7 +498,7 @@ export function renderEersteStappen(container, onComplete) {
             
             <div class="eerste-stappen-container" style="max-width: 700px; margin: 0 auto; font-family: inherit;">
                 <div style="margin-bottom: 24px;">
-                    <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 2</span>
+                    <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 2</span>
                     <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Handelingen in risicosituaties</h2>
                     <p style="font-size: 14px; color: #64748b; margin-top: 6px;">Wat ga je concreet doen op een moeilijk moment als je onverwacht in de verleiding komt?</p>
                 </div>

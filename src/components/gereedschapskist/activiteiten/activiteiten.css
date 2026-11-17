@@ -72,7 +72,7 @@
 }
 
 .theme-icon { font-size: 20px; }
-.theme-toggle { font-size: 12px; color: #64748b; transition: transform 0.3s ease; }
+.theme-toggle { font-size: 14px; color: #64748b; transition: transform 0.3s ease; }
 .theme-accordion.open .theme-toggle { transform: rotate(180deg); }
 
 .theme-content {
@@ -203,7 +203,7 @@
     border: 1px solid #cbd5e1; 
     background: #f8fafc; 
     color: #475569; 
-    font-size: 13px; 
+    font-size: 15px; 
     cursor: pointer; 
     transition: all 0.2s;
 }
@@ -258,7 +258,7 @@
 }
 
 .user-act-info h4 { margin: 0 0 4px 0; color: #1e293b; font-size: 16px; font-weight: 700; }
-.user-act-info span { font-size: 12px; font-weight: 700; color: #d97706; background: #fef3c7; padding: 3px 10px; border-radius: 12px; display: inline-block; }
+.user-act-info span { font-size: 14px; font-weight: 700; color: #d97706; background: #fef3c7; padding: 3px 10px; border-radius: 12px; display: inline-block; }
 
 .remove-act-btn {
     background: none; border: none; color: #94a3b8; font-size: 20px; cursor: pointer; padding: 8px; border-radius: 50%; transition: all 0.2s;

@@ -189,7 +189,7 @@ function getDashboardTemplate() {
             
             .route-section span { 
                 color: #64748b; 
-                font-size: 12px; 
+                font-size: 14px; 
                 font-weight: 800; 
                 text-transform: uppercase; 
                 letter-spacing: 1.5px; 

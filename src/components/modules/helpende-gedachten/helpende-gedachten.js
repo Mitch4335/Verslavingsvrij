@@ -144,7 +144,7 @@ export function renderHelpendeGedachtenModule(containerElement, onComplete) {
                 <!-- STAP 0: INTRODUCTIE -->
                 <section class="wizard-step active" id="help-step-intro" style="display: block;">
                     <div style="margin-bottom: 32px;">
-                        <span style="font-size: 12px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Module Introductie</span>
+                        <span style="font-size: 14px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Module Introductie</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Helpende Gedachten</h2>
                     </div>
 
@@ -170,7 +170,7 @@ export function renderHelpendeGedachtenModule(containerElement, onComplete) {
                 <!-- STAP 1: RISICOGEDACHTEN SELECTEREN -->
                 <section class="wizard-step" id="help-step-1" style="display: none;">
                     <div class="stagger-1" style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #ef4444; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 2</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #ef4444; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 2</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Mijn Valkuilen & Smoesjes</h2>
                         <p style="font-size: 15px; color: #475569; margin-top: 6px;">Welke risicogedachten of smoesjes gebruikt jouw brein het vaakst om je over te halen?</p>
                     </div>
@@ -207,7 +207,7 @@ export function renderHelpendeGedachtenModule(containerElement, onComplete) {
                 <!-- STAP 2: KOPPELEN AAN TEGENGIF -->
                 <section class="wizard-step" id="help-step-2" style="display: none;">
                     <div class="stagger-1" style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 2</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 2</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Het Tegengif Koppel-schema</h2>
                         <p style="font-size: 15px; color: #475569; margin-top: 6px;">Selecteer of bedenk voor elke valkuil direct een krachtige, helpende tegenreactie.</p>
                     </div>

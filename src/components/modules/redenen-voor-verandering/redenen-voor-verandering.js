@@ -114,14 +114,24 @@ export function renderRedenenModule(onComplete) {
                 .stagger-4 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.4s; }
                 .info-block { background: #ffffff; border: 1px solid #e2e8f0; border-left: 4px solid #3b82f6; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
                 
-                /* Frisse styling voor de chips in de hele module */
-                .chip-group { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
-                .chip {
-                    display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; border-radius: 9999px;
-                    font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s;
-                    border: 1px solid #cbd5e1; background: #f8fafc; color: #334155; font-family: inherit;
-                }
-                .chip:hover { background: #f1f5f9; transform: translateY(-1px); }
+/* Frisse styling voor de chips in de hele module */
+            .chip-group { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; align-items: flex-start; }
+            .chip {
+                display: flex; /* Vervang inline-flex door flex */
+                align-items: flex-start; /* Zorgt dat de emoji altijd netjes bovenaan de eerste regel staat */
+                gap: 8px; padding: 10px 16px; border-radius: 20px;
+                font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s;
+                border: 1px solid #cbd5e1; background: #f8fafc; color: #334155; font-family: inherit;
+                text-align: left;
+                line-height: 1.4;
+                white-space: normal; /* Laat tekst wrappen */
+                width: max-content; /* Forceert dat de breedte echt stopt na het langste woord/regel */
+                max-width: 100%; /* Voorkomt dat hij toch nog breder dan het scherm wordt */
+            }
+            .chip span {
+                display: inline; /* Zorgt dat de tekst zich als tekst gedraagt en niet als flex-item */
+            }
+            .chip:hover { background: #f1f5f9; transform: translateY(-1px); }
                 
                 /* Nadelen (Stap 1) - Rode accenten */
                 #step-1 .chip.selected { border: 1px solid #ef4444; background: #fef2f2; color: #b91c1c; font-weight: 600; box-shadow: 0 2px 4px rgba(239,68,68,0.1); }
@@ -147,7 +157,7 @@ export function renderRedenenModule(onComplete) {
             <section class="wizard-step active" id="step-intro">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 32px;">
-                        <span style="font-size: 12px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Module Introductie</span>
+                        <span style="font-size: 14px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Module Introductie</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Motivatie & Verandering</h2>
                     </div>
 
@@ -182,7 +192,7 @@ export function renderRedenenModule(onComplete) {
             <section class="wizard-step" id="step-1">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #ef4444; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 3</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #ef4444; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 3</span>
                         <h3 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Nadelen van ${term.werkwoord}</h3>
                         <p class="step-intro" style="font-size: 14px; color: #64748b; margin-top: 6px;">Welke nadelen ervaar je of verwacht je als je blijft ${term.werkwoord} zoals je nu doet?</p>
                     </div>
@@ -193,7 +203,7 @@ export function renderRedenenModule(onComplete) {
                             <span style="font-size: 24px;">⚡</span>
                             <h4 style="font-size: 18px; margin: 0; color: #1e293b;">Korte termijn</h4>
                         </div>
-                        <p style="font-size: 13px; color: #64748b; margin-bottom: 16px;">Tijdens het ${term.werkwoord} of kort daarna</p>
+                        <p style="font-size: 15px; color: #64748b; margin-bottom: 16px;">Tijdens het ${term.werkwoord} of kort daarna</p>
                         
                         <div class="chip-group" id="chips-nadelen-kt">
                             ${renderReasonChips(redenen.nadelenKorteTermijn?.shown)}
@@ -217,7 +227,7 @@ export function renderRedenenModule(onComplete) {
                             <span style="font-size: 24px;">🌪️</span>
                             <h4 style="font-size: 18px; margin: 0; color: #1e293b;">Lange termijn</h4>
                         </div>
-                        <p style="font-size: 13px; color: #64748b; margin-bottom: 16px;">Als het gedrag de komende jaren niet verandert</p>
+                        <p style="font-size: 15px; color: #64748b; margin-bottom: 16px;">Als het gedrag de komende jaren niet verandert</p>
                         
                         <div class="chip-group" id="chips-nadelen-lt">
                             ${renderReasonChips(redenen.nadelenLangeTermijn?.shown)}
@@ -246,7 +256,7 @@ export function renderRedenenModule(onComplete) {
             <section class="wizard-step" id="step-2">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 3</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 3</span>
                         <h3 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Voordelen van verandering</h3>
                         <p class="step-intro" style="font-size: 14px; color: #64748b; margin-top: 6px;">Welke voordelen levert het jou op als je stopt of mindert met ${term.werkwoord}?</p>
                     </div>
@@ -257,7 +267,7 @@ export function renderRedenenModule(onComplete) {
                             <span style="font-size: 24px;">🌱</span>
                             <h4 style="font-size: 18px; margin: 0; color: #1e293b;">Korte termijn</h4>
                         </div>
-                        <p style="font-size: 13px; color: #64748b; margin-bottom: 16px;">Binnen een paar dagen tot weken</p>
+                        <p style="font-size: 15px; color: #64748b; margin-bottom: 16px;">Binnen een paar dagen tot weken</p>
                         
                         <div class="chip-group" id="chips-voordelen-kt">
                             ${renderReasonChips(redenen.voordelenKorteTermijn?.shown)}
@@ -281,7 +291,7 @@ export function renderRedenenModule(onComplete) {
                             <span style="font-size: 24px;">🌳</span>
                             <h4 style="font-size: 18px; margin: 0; color: #1e293b;">Lange termijn</h4>
                         </div>
-                        <p style="font-size: 13px; color: #64748b; margin-bottom: 16px;">Binnen enkele maanden tot jaren</p>
+                        <p style="font-size: 15px; color: #64748b; margin-bottom: 16px;">Binnen enkele maanden tot jaren</p>
                         
                         <div class="chip-group" id="chips-voordelen-lt">
                             ${renderReasonChips(redenen.voordelenLangeTermijn?.shown)}
@@ -310,7 +320,7 @@ export function renderRedenenModule(onComplete) {
             <section class="wizard-step" id="step-3">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 24px;">
-                        <span class="step-indicator" style="font-size: 12px; font-weight: 600; color: #8b5cf6; text-transform: uppercase; letter-spacing: 0.5px;">Stap 3 van 3</span>
+                        <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #8b5cf6; text-transform: uppercase; letter-spacing: 0.5px;">Stap 3 van 3</span>
                         <h3 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Jouw persoonlijke Top 3</h3>
                     </div>
 
@@ -323,7 +333,7 @@ export function renderRedenenModule(onComplete) {
                             <span style="font-size: 24px;">🏆</span>
                             <h4 style="font-size: 18px; margin: 0; color: #1e293b;">Jouw Top 3 Motivaties</h4>
                         </div>
-                        <p class="sub-text" style="font-size: 13px; color: #64748b; margin-bottom: 16px;">Sleep de kaarten om de volgorde aan te passen.</p>
+                        <p class="sub-text" style="font-size: 15px; color: #64748b; margin-bottom: 16px;">Sleep de kaarten om de volgorde aan te passen.</p>
                         
                         <ul class="top3-list" id="top3-draggable-list">
                             <li class="top3-slot" id="top-rank-1" draggable="true" data-index="0">
@@ -567,7 +577,7 @@ function buildStep3Items() {
             <span style="font-size: 24px;">⚖️</span>
             <h4 style="font-size: 18px; margin: 0; color: #1e293b;">Geselecteerde redenen</h4>
         </div>
-        <p class="sub-text" style="font-size: 13px; color: #64748b; margin-bottom: 16px;">Klik op een reden om hem toe te voegen aan je Top 3. Klik nogmaals om te verwijderen.</p>
+        <p class="sub-text" style="font-size: 15px; color: #64748b; margin-bottom: 16px;">Klik op een reden om hem toe te voegen aan je Top 3. Klik nogmaals om te verwijderen.</p>
         
         <div class="reasons-columns-grid">
             <div class="reason-col disadvantages-col">

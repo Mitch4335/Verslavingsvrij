@@ -141,7 +141,7 @@ export function renderFasenVanVerandering(container, onComplete) {
             <section class="wizard-step active" id="fase-step-intro">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px; font-family: inherit;">
                     <div style="margin-bottom: 32px;">
-                        <span style="font-size: 12px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Psycho-educatie</span>
+                        <span style="font-size: 14px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Psycho-educatie</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">De Cyclus van Verandering</h2>
                     </div>
 
@@ -170,7 +170,7 @@ export function renderFasenVanVerandering(container, onComplete) {
             <section class="wizard-step" id="fase-step-interactive" style="display: none;">
                 <div style="max-width: 700px; margin: 0 auto; padding: 20px;">
                     <div style="margin-bottom: 24px;">
-                        <span style="font-size: 12px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 2</span>
+                        <span style="font-size: 14px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 2</span>
                         <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Ontdek de fasen</h2>
                         <p style="font-size: 15px; color: #475569; line-height: 1.6; margin-top: 8px;">
                             Klik op de iconen in het wiel om te zien wat elke fase inhoudt. Bepaal daarna onderaan in welke fase jij je bevindt.

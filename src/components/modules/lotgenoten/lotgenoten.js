@@ -125,7 +125,7 @@ export function renderLotgenotenModule(containerElement, onComplete) {
             
             <div class="module-container lotgenoten-container" style="max-width: 700px; margin: 0 auto;">
                 <div style="margin-bottom: 32px;" id="lo-main-header">
-                    <span style="font-size: 12px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Omgeving & Steun</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Omgeving & Steun</span>
                     <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;" id="lo-header-title">Lotgenoten</h2>
                 </div>
 
@@ -196,7 +196,7 @@ export function renderLotgenotenModule(containerElement, onComplete) {
             headerTitle.textContent = "Soorten meetings";
             html = `
                 <div class="stagger-1" style="margin-bottom: 24px;">
-                    <span style="font-size: 12px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 4</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 4</span>
                     <p style="font-size: 15px; color: #475569; margin-top: 6px;">Er zijn grofweg twee soorten zelfhulpgroepen. Zoek vooral naar de insteek die het beste bij jou past.</p>
                 </div>
 
@@ -235,7 +235,7 @@ export function renderLotgenotenModule(containerElement, onComplete) {
             headerTitle.textContent = "Hoe ziet een avond eruit?";
             html = `
                 <div class="stagger-1" style="margin-bottom: 24px;">
-                    <span style="font-size: 12px; font-weight: 600; color: #ec4899; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 4</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #ec4899; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 4</span>
                     <p style="font-size: 15px; color: #475569; margin-top: 6px;">Meetings worden vaak gehouden in laagdrempelige, anonieme ruimtes zoals buurthuizen. Dit is hoe een typische bijeenkomst verloopt:</p>
                 </div>
 
@@ -302,7 +302,7 @@ export function renderLotgenotenModule(containerElement, onComplete) {
             headerTitle.textContent = "Tips voor je eerste keer";
             html = `
                 <div class="stagger-1" style="margin-bottom: 24px;">
-                    <span style="font-size: 12px; font-weight: 600; color: #8b5cf6; text-transform: uppercase; letter-spacing: 0.5px;">Stap 3 van 4</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #8b5cf6; text-transform: uppercase; letter-spacing: 0.5px;">Stap 3 van 4</span>
                     <p style="font-size: 15px; color: #475569; margin-top: 6px;">Het is heel logisch als je dit nog spannend vindt. Gebruik deze tips om de drempel voor jezelf zo laag mogelijk te maken.</p>
                 </div>
 
@@ -351,7 +351,7 @@ export function renderLotgenotenModule(containerElement, onComplete) {
             headerTitle.textContent = "Een groep bij jou in de buurt";
             html = `
                 <div class="stagger-1" style="margin-bottom: 24px;">
-                    <span style="font-size: 12px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 4 van 4</span>
+                    <span style="font-size: 14px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 4 van 4</span>
                 </div>
 
                 <div class="stagger-2" style="margin-bottom: 24px;">
@@ -373,14 +373,14 @@ export function renderLotgenotenModule(containerElement, onComplete) {
                     <a href="https://www.zelfhelp.nl/" target="_blank" rel="noopener noreferrer" class="alt-link-card">
                         <div>
                             <strong style="display: block; font-size: 15px;">Buitenveldertgroepen</strong>
-                            <span style="font-size: 13px; color: #64748b;">Zelfhelp.nl</span>
+                            <span style="font-size: 15px; color: #64748b;">Zelfhelp.nl</span>
                         </div>
                         <span style="color: #3b82f6; font-weight: 800;">&nearr;</span>
                     </a>
                 </div>
 
                 <div class="stagger-4" style="text-align: center; margin-bottom: 32px; padding: 0 20px;">
-                    <p style="font-size: 13px; color: #64748b; font-style: italic; line-height: 1.5; margin: 0;">
+                    <p style="font-size: 15px; color: #64748b; font-style: italic; line-height: 1.5; margin: 0;">
                         Natuurlijk zijn er nog talloze andere (lokale) initiatieven, zoals bijvoorbeeld het 'Zelfregiecentrum'. 
                         Google gerust eens op <strong>'lotgenoten verslaving [jouw woonplaats]'</strong>.
                     </p>

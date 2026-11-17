@@ -124,7 +124,7 @@
     cursor: pointer; 
     transition: background 0.2s; 
     flex-shrink: 0;
-    font-size: 13px;
+    font-size: 15px;
 }
 .btn-add-custom:hover { background: #334155; }
 
