@@ -1081,3 +1081,54 @@ if (document.readyState === 'loading') {
     initAddictionSwitcher();
     renderDashboard(); 
 }
+
+// =========================================================
+// --- TERUGKNOP (HISTORY API) VOOR MOBIEL ---
+// =========================================================
+function pushAppHistory(viewName) {
+    if (history.state?.view !== viewName) {
+        history.pushState({ view: viewName }, '', `#${viewName}`);
+    }
+}
+
+// Stel het startpunt in zodra de app laadt
+history.replaceState({ view: 'dashboard' }, '', '#dashboard');
+
+// Leg automatisch een kruimelspoor neer bij het klikken op tabs of modules
+document.addEventListener('click', (e) => {
+    if (e.target.closest('#btn-home')) pushAppHistory('dashboard');
+    else if (e.target.closest('#btn-tools')) pushAppHistory('tools');
+    else if (e.target.closest('#btn-logbook')) pushAppHistory('logbook');
+    else if (e.target.closest('#btn-noodknop')) pushAppHistory('noodknop');
+    else if (e.target.closest('#btn-profile')) pushAppHistory('profile');
+    else if (e.target.closest('.path-node:not(.locked)')) pushAppHistory('module');
+});
+
+// Vang de fysieke terugknop (of swipe) van de telefoon op
+window.addEventListener('popstate', (e) => {
+    const targetView = e.state?.view || 'dashboard';
+    const appContent = document.getElementById('app-content');
+
+    if (targetView === 'tools' && appContent) {
+        updateBottomNav('btn-tools');
+        renderGereedschapskist(appContent);
+    } else if (targetView === 'logbook') {
+        updateBottomNav('btn-logbook');
+        renderRegistratiesModule(() => {
+            const actief = getActiefTraject();
+            localStorage.setItem(`arminius_module_registraties_completed_${actief}`, 'true');
+            renderDashboard();
+        });
+    } else if (targetView === 'noodknop') {
+        updateBottomNav('btn-noodknop');
+        renderNoodkit();
+    } else if (targetView === 'profile' && appContent) {
+        updateBottomNav('btn-profile');
+        appContent.innerHTML = renderPersoonlijkModule();
+    } else {
+        renderDashboard();
+    }
+});
+
+// Maak beschikbaar voor sub-pagina's (zoals Achtergrondgeluiden in Hulpmiddelen)
+window.pushAppHistory = pushAppHistory;
