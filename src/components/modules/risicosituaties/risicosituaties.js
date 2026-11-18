@@ -241,7 +241,16 @@ export function renderRisicosituaties(containerElement, onComplete) {
                         </p>
                     </div>
 
-                    ${categorieen.map((cat, idx) => `
+${categorieen.map((cat, idx) => {
+                        const customOpties = data[cat.id].filter(optie => !cat.opties.includes(optie));
+                        const allItems = [
+                            ...cat.opties.map(optie => ({ val: optie, label: optie, isSelected: data[cat.id].includes(optie) })),
+                            ...customOpties.map(optie => ({ val: optie, label: `✏️ ${optie}`, isSelected: true }))
+                        ];
+                        const visibleItems = allItems.slice(0, 4);
+                        const hiddenItems = allItems.slice(4);
+
+                        return `
                         <div class="info-block stagger-${idx + 1} ${cat.color}" data-cat="${cat.id}">
                             <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
                                 <span style="font-size: 24px;">${cat.icon}</span>
@@ -250,23 +259,26 @@ export function renderRisicosituaties(containerElement, onComplete) {
                             <p style="font-size: 14px; color: #64748b; margin-bottom: 16px;">${cat.desc}</p>
                             
                             <div class="chip-group risico-category" data-cat="${cat.id}">
-                                ${cat.opties.map(optie => {
-                                    const isSelected = data[cat.id].includes(optie);
-                                    return `<div class="risico-chip ${isSelected ? 'selected' : ''}" data-value="${optie}">${optie}</div>`;
-                                }).join('')}
-                                
-                                ${data[cat.id]
-                                    .filter(optie => !cat.opties.includes(optie))
-                                    .map(optie => `<div class="risico-chip selected" data-value="${optie}">✏️ ${optie}</div>`)
-                                    .join('')}
+                                ${visibleItems.map(item => `<div class="risico-chip ${item.isSelected ? 'selected' : ''}" data-value="${item.val}">${item.label}</div>`).join('')}
+
+                                ${hiddenItems.length > 0 ? `
+                                    <div class="chip-group more-risico-${cat.id}" style="display: none; margin: 0; width: 100%;">
+                                        ${hiddenItems.map(item => `<div class="risico-chip ${item.isSelected ? 'selected' : ''}" data-value="${item.val}">${item.label}</div>`).join('')}
+                                    </div>
+                                ` : ''}
                             </div>
+
+                            ${hiddenItems.length > 0 ? `
+                                <button type="button" class="btn-more-risico" data-target="more-risico-${cat.id}" style="background: none; border: none; color: #2563eb; font-weight: 600; cursor: pointer; padding: 0; font-size: 14px; margin-bottom: 16px;">+ Meer voorbeelden...</button>
+                            ` : ''}
 
                             <div class="custom-input-wrapper">
                                 <input type="text" class="custom-risico-input input-custom-${cat.id}" placeholder="+ Voeg eigen situatie toe...">
                                 <button class="btn-add-custom btn-add-cat" data-target="${cat.id}">Toevoegen</button>
                             </div>
                         </div>
-                    `).join('')}
+                        `;
+                    }).join('')}
 
                     <div class="stagger-4 button-group" style="display: flex; justify-content: space-between; margin-top: 32px;">
                         <button class="btn-secondary prev-step" data-prev="step-0-intro" style="background-color: #64748b; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">&larr; Vorige</button>
@@ -395,6 +407,21 @@ export function renderRisicosituaties(containerElement, onComplete) {
                     pageContainer.querySelector(`.risico-category[data-cat="${categoryId}"]`).appendChild(newChip);
                 }
                 inputEl.value = '';
+                return;
+            }
+            // Stap 1: Meer voorbeelden tonen/verbergen
+// Stap 1: Meer voorbeelden tonen/verbergen
+            const btnMoreRisico = e.target.closest('.btn-more-risico');
+            if (btnMoreRisico) {
+                const targetClass = btnMoreRisico.getAttribute('data-target');
+                const targetDiv = btnMoreRisico.closest('.info-block').querySelector(`.${targetClass}`);
+                if (targetDiv) {
+                    const isHidden = targetDiv.style.display === 'none';
+                    targetDiv.style.display = isHidden ? 'flex' : 'none';
+                    btnMoreRisico.textContent = isHidden
+                        ? '- Minder voorbeelden...'
+                        : '+ Meer voorbeelden...';
+                }
                 return;
             }
 
