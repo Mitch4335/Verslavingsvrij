@@ -82,56 +82,81 @@ export function renderDopamineModule(onComplete) {
 
     const htmlContent = `
         <div class="module-container dopamine-container">
-            <style>
+     <style>
                 @keyframes slideUpFade { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
                 .stagger-1 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.1s; }
                 .stagger-2 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.2s; }
                 .stagger-3 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.3s; }
                 .stagger-4 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.4s; }
                 
-                .dopamine-container, .info-block, .g-schema-container, .dopamine-chart {
+                .dopamine-container {
+                    box-sizing: border-box;
+                    max-width: 100%;
+                    overflow-x: hidden;
+                }
+
+                .info-block, .g-schema-container, .dopamine-chart {
                     box-sizing: border-box;
                     max-width: 100%;
                 }
 
-                .info-block { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); overflow-x: hidden; }
+                .info-block { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; margin-bottom: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); overflow-x: hidden; }
                 .info-block-border-blue { border-left: 4px solid #3b82f6; }
                 .info-block-border-orange { border-left: 4px solid #f59e0b; }
                 .info-block-border-green { border-left: 4px solid #10b981; }
                 .info-block-border-red { border-left: 4px solid #ef4444; }
                 .info-block-border-purple { border-left: 4px solid #8b5cf6; }
 
-                /* Mobiele fix voor het Situatie -> Gedrag -> Gevolg schema */
-                @media (max-width: 600px) {
+                /* Standaard (mobiel): verticaal onder elkaar */
+                .g-schema-container {
+                    padding: 16px 12px !important;
+                }
+                .g-schema-flow {
+                    display: flex !important;
+                    flex-direction: column !important;
+                    align-items: center !important;
+                    gap: 8px !important;
+                }
+                .schema-node {
+                    width: 100% !important;
+                    max-width: 240px !important;
+                    box-sizing: border-box !important;
+                    text-align: center !important;
+                }
+                .schema-arrow {
+                    transform: rotate(90deg) !important;
+                    margin: 2px 0 !important;
+                }
+                .schema-feedback .feedback-line {
+                    display: none !important;
+                }
+                .schema-feedback .feedback-text {
+                    white-space: normal !important;
+                    text-align: center !important;
+                    margin-top: 12px !important;
+                    font-size: 14px !important;
+                }
+
+                /* Laptop / desktop (vanaf 768px): horizontaal naast elkaar */
+                @media (min-width: 768px) {
                     .info-block {
-                        padding: 16px !important;
-                    }
-                    .g-schema-container {
-                        padding: 16px 12px !important;
+                        padding: 24px;
                     }
                     .g-schema-flow {
-                        flex-direction: column !important;
-                        align-items: center !important;
-                        gap: 8px !important;
+                        flex-direction: row !important;
+                        justify-content: center !important;
+                        gap: 12px !important;
                     }
                     .schema-node {
-                        width: 100% !important;
-                        max-width: 240px !important;
-                        box-sizing: border-box !important;
-                        text-align: center !important;
+                        width: auto !important;
+                        max-width: none !important;
                     }
                     .schema-arrow {
-                        transform: rotate(90deg) !important;
-                        margin: 2px 0 !important;
+                        transform: none !important;
+                        margin: 0 !important;
                     }
                     .schema-feedback .feedback-line {
-                        display: none !important;
-                    }
-                    .schema-feedback .feedback-text {
-                        white-space: normal !important;
-                        text-align: center !important;
-                        margin-top: 12px !important;
-                        font-size: 14px !important;
+                        display: block !important;
                     }
                 }
             </style>
