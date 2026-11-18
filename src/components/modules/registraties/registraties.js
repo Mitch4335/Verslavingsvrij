@@ -514,6 +514,7 @@ window.restoreChips = function(type, values) {
 };
 
 window.renderFormulier = function(editData = null) {
+    if (window.pushAppHistory) window.pushAppHistory('logbook-new');
     window.scrollTo(0, 0);
 
     if (editData) {

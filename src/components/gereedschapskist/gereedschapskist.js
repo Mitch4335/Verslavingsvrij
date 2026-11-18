@@ -108,6 +108,8 @@ export function renderGereedschapskist(containerElement) {
     };
 
     function openTool(toolId) {
+        if (window.pushAppHistory) window.pushAppHistory('tools-sub');
+
         if (toolId === 'dagboek') {
             renderDagboekModule(container, () => renderGereedschapskist(container));
         } else if (toolId === 'activiteiten') {
