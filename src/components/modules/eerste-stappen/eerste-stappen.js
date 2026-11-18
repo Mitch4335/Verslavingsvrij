@@ -377,7 +377,7 @@ export function renderEersteStappen(container, onComplete) {
             });
         }
 
-        pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
+pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
             btn.addEventListener('click', () => {
                 const item = btn.getAttribute('data-item');
                 const idx = savedVermijding.indexOf(item);
@@ -387,7 +387,7 @@ export function renderEersteStappen(container, onComplete) {
                     savedVermijding.push(item);
                 }
                 localStorage.setItem('arminius_vermijding_items', JSON.stringify(savedVermijding));
-                render(true);
+                btn.classList.toggle('selected-red');
             });
         });
 

@@ -550,7 +550,7 @@ window.renderFormulier = function(editData = null) {
         { text: "Sporten", icon: "💪" }, 
         { text: "Telefoongebruik", icon: "📱" }, 
         { text: "Muziek", icon: "🎧" }, 
-        { text: "Iets anders drinken (water/fris/thee)", icon: "🥤" }, 
+        { text: "Iets anders drinken (water / fris / thee)", icon: "🥤" }, 
         { text: "Weggaan uit de situatie", icon: "🚪" }, 
         { text: "Afleiding zoeken", icon: "🧩" }, 
         { text: "Er met iemand over praten", icon: "💬" }
@@ -675,10 +675,11 @@ window.renderFormulier = function(editData = null) {
             input[type="datetime-local"] { font-family: 'Nunito', sans-serif !important; font-size: 15px !important; font-weight: 600 !important; color: #1e293b !important; }
             
             /* Frisse styling voor alle chips, standaard display inline-flex */
-            .reg-chip {
-                display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; border-radius: 9999px;
+           .reg-chip {
+                display: inline-flex; align-items: flex-start; gap: 8px; padding: 10px 16px; border-radius: 20px;
                 font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s;
                 border: 1px solid #cbd5e1; background: #ffffff; color: #334155; font-family: inherit;
+                text-align: left; line-height: 1.4; max-width: 100%;
             }
             .reg-chip:hover { background: #f8fafc; transform: translateY(-1px); box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
             
@@ -1138,12 +1139,16 @@ window.renderFormulier = function(editData = null) {
         let hasHidden = false;
 
         suggesties.forEach((sug, index) => {
+            const text = typeof sug === 'object' ? sug.text : sug;
+            const icon = (typeof sug === 'object' && sug.icon) ? sug.icon : getUniqueEmoji(text);
+            const safeVal = text.replace(/'/g, "\\'");
+
             const isExtra = index >= 4;
             const extraClass = isExtra ? ` extra-chip-${targetId}` : '';
             const extraStyle = isExtra ? 'display: none;' : 'display: inline-flex;';
             if (isExtra) hasHidden = true;
 
-            html += `<button type="button" class="reg-chip${extraClass}" style="${extraStyle}" data-val="${sug}" onclick="selectChip('${targetId}', '${sug}', this)"><span>${getUniqueEmoji(sug)}</span><span>${sug}</span></button> `;
+            html += `<button type="button" class="reg-chip${extraClass}" style="${extraStyle}" data-val="${safeVal}" onclick="selectChip('${targetId}', '${safeVal}', this)"><span>${icon}</span><span>${text}</span></button> `;
         });
         
         const targetContainer = document.getElementById(`container-${targetId}`);
