@@ -112,26 +112,36 @@ export function renderRedenenModule(onComplete) {
                 .stagger-2 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.2s; }
                 .stagger-3 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.3s; }
                 .stagger-4 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.4s; }
-                .info-block { background: #ffffff; border: 1px solid #e2e8f0; border-left: 4px solid #3b82f6; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+
+                /* Voorkomt horizontaal scrollen in de hele module */
+                .module-container, .module-container * {
+                    box-sizing: border-box;
+                }
+                .module-container {
+                    max-width: 100%;
+                    overflow-x: hidden;
+                }
+
+                .info-block { background: #ffffff; border: 1px solid #e2e8f0; border-left: 4px solid #3b82f6; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); max-width: 100%; overflow-x: hidden; }
                 
-/* Frisse styling voor de chips in de hele module */
-            .chip-group { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; align-items: flex-start; }
-            .chip {
-                display: flex; /* Vervang inline-flex door flex */
-                align-items: flex-start; /* Zorgt dat de emoji altijd netjes bovenaan de eerste regel staat */
-                gap: 8px; padding: 10px 16px; border-radius: 20px;
-                font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s;
-                border: 1px solid #cbd5e1; background: #f8fafc; color: #334155; font-family: inherit;
-                text-align: left;
-                line-height: 1.4;
-                white-space: normal; /* Laat tekst wrappen */
-                width: max-content; /* Forceert dat de breedte echt stopt na het langste woord/regel */
-                max-width: 100%; /* Voorkomt dat hij toch nog breder dan het scherm wordt */
-            }
-            .chip span {
-                display: inline; /* Zorgt dat de tekst zich als tekst gedraagt en niet als flex-item */
-            }
-            .chip:hover { background: #f1f5f9; transform: translateY(-1px); }
+                /* Frisse styling voor de chips in de hele module */
+                .chip-group { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; align-items: flex-start; max-width: 100%; }
+                .chip {
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 8px; padding: 10px 16px; border-radius: 20px;
+                    font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s;
+                    border: 1px solid #cbd5e1; background: #f8fafc; color: #334155; font-family: inherit;
+                    text-align: left;
+                    line-height: 1.4;
+                    white-space: normal;
+                    width: max-content;
+                    max-width: 100%;
+                }
+                .chip span {
+                    display: inline;
+                }
+                .chip:hover { background: #f1f5f9; transform: translateY(-1px); }
                 
                 /* Nadelen (Stap 1) - Rode accenten */
                 #step-1 .chip.selected { border: 1px solid #ef4444; background: #fef2f2; color: #b91c1c; font-weight: 600; box-shadow: 0 2px 4px rgba(239,68,68,0.1); }
@@ -139,14 +149,27 @@ export function renderRedenenModule(onComplete) {
                 /* Voordelen (Stap 2) - Groene accenten */
                 #step-2 .chip.selected { border: 1px solid #10b981; background: #f0fdf4; color: #047857; font-weight: 600; box-shadow: 0 2px 4px rgba(16,185,129,0.1); }
 
-                /* Moderne invoervelden */
-                .custom-input-wrapper { display: flex; gap: 10px; align-items: center; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 6px 6px 6px 16px; margin-top: 16px; }
-                .custom-input-wrapper input { flex: 1; border: none; background: transparent; outline: none; font-size: 14px; color: #334155; font-family: inherit; }
-                .custom-input-wrapper .btn-add { background: #1e293b; color: white; border: none; padding: 10px 18px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 14px; transition: background 0.2s; }
+                /* Moderne invoervelden (mobielvriendelijk) */
+                .custom-input-wrapper { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 6px 6px 6px 12px; margin-top: 16px; max-width: 100%; }
+                .custom-input-wrapper input { flex: 1; min-width: 0; border: none; background: transparent; outline: none; font-size: 14px; color: #334155; font-family: inherit; }
+                .custom-input-wrapper .btn-add { background: #1e293b; color: white; border: none; padding: 10px 16px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 14px; transition: background 0.2s; flex-shrink: 0; }
                 .custom-input-wrapper .btn-add:hover { background: #334155; }
                 
                 .btn-more { background: none; border: none; color: #2563eb; font-weight: 600; cursor: pointer; padding: 0; font-size: 14px; margin-top: 8px; }
                 .hidden { display: none !important; }
+
+                /* Compactere marges op mobiel */
+                @media (max-width: 600px) {
+                    .module-container {
+                        padding: 12px !important;
+                    }
+                    .wizard-step > div {
+                        padding: 0 !important;
+                    }
+                    .info-block {
+                        padding: 16px !important;
+                    }
+                }
             </style>
 
             <div class="progress-bar-container">
