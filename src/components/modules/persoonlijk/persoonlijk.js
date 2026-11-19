@@ -140,44 +140,40 @@ export function renderPersoonlijkModule() {
     function berekenSuccesRatio(regs, middel, goalData) {
         const trajectRegs = regs.filter(r => r.middel === middel);
         if (!trajectRegs || trajectRegs.length === 0) return { ratio: 0, totaal: 0, gehoudenAanDoel: 0 };
-        
+
         const maxAllowed = getMaxAllowedPerDag(goalData, middel);
+        const toDateKey = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
         const groupedByDate = {};
-        
+        let minTs = Infinity;
+
         trajectRegs.forEach(reg => {
             const dateObj = new Date(reg.tijdstip);
-            dateObj.setHours(0,0,0,0);
+            dateObj.setHours(0, 0, 0, 0);
             const ts = dateObj.getTime();
-            if (!groupedByDate[ts]) groupedByDate[ts] = 0;
+            if (ts < minTs) minTs = ts;
+
+            const key = toDateKey(dateObj);
+            if (!groupedByDate[key]) groupedByDate[key] = 0;
             if (reg.actieType !== 'alternatief') {
-                groupedByDate[ts] += getRegAmount(reg, middel);
+                groupedByDate[key] += getRegAmount(reg, middel);
             }
         });
 
-        const minTs = Math.min(...trajectRegs.map(r => new Date(r.tijdstip).setHours(0,0,0,0)));
-        let curr = new Date(minTs);
-        const maxDateObj = new Date();
-        maxDateObj.setHours(0,0,0,0);
+        const curr = new Date();
+        curr.setHours(0, 0, 0, 0);
+        let dagenOpRij = 0;
 
-        while (curr <= maxDateObj) {
-            const ts = curr.getTime();
-            if (groupedByDate[ts] === undefined) {
-                groupedByDate[ts] = 0;
+        while (curr.getTime() >= minTs) {
+            const dailyAmount = groupedByDate[toDateKey(curr)] || 0;
+            if (dailyAmount <= maxAllowed + 0.01) {
+                dagenOpRij++;
+            } else {
+                break; // Stop bij de laatste overschrijding
             }
-            curr.setDate(curr.getDate() + 1);
+            curr.setDate(curr.getDate() - 1);
         }
 
-        let gehoudenAanDoel = 0;
-        const totalDays = Object.keys(groupedByDate).length;
-
-        Object.values(groupedByDate).forEach(dailyAmount => {
-            if (dailyAmount <= maxAllowed + 0.01) { 
-                gehoudenAanDoel++;
-            }
-        });
-
-        const ratio = totalDays > 0 ? Math.round((gehoudenAanDoel / totalDays) * 100) : 0;
-        return { ratio, totaal: totalDays, gehoudenAanDoel };
+        return { ratio: 100, totaal: dagenOpRij, gehoudenAanDoel: dagenOpRij };
     }
 
     let trajectenHTML = '';
@@ -331,12 +327,14 @@ export function renderPersoonlijkModule() {
                         <div style="flex: 1 1 280px; min-width: 0; max-width: 100%; display: flex; flex-direction: column; gap: 16px; box-sizing: border-box;">
                             <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-radius: 14px; padding: 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; box-sizing: border-box; width: 100%; max-width: 100%;">
                                 <div style="min-width: 0; flex: 1;">
-                                    <h4 style="margin: 0 0 4px 0; color: #1e40af; font-size: 15px; font-weight: 700;">Slagingspercentage</h4>
-                                    <p style="margin: 0; color: #3b82f6; font-size: 15px; line-height: 1.4; word-break: break-word;">Op <strong>${succesData.gehoudenAanDoel} van de ${succesData.totaal}</strong> geregistreerde dagen hield je je aan je gestelde dagdoel.</p>
+                                    <h4 style="margin: 0 0 4px 0; color: #1e40af; font-size: 15px; font-weight: 700;">Succesvolle dagen</h4>
+                                    <p style="margin: 0; color: #3b82f6; font-size: 15px; line-height: 1.4; word-break: break-word;">Dagen zonder gebruik of binnen jouw gestelde dagdoel.</p>
                                 </div>
-                                <div style="background: #ffffff; padding: 8px 16px; border-radius: 10px; box-shadow: 0 2px 4px rgb(0 0 0 / 0.05); text-align: center; flex-shrink: 0;">
-                                    <span style="display: block; font-size: 24px; font-weight: 800; color: ${succesData.ratio >= 50 ? '#10b981' : '#f59e0b'};">${succesData.ratio}%</span>
+                                <div style="background: #ffffff; padding: 8px 16px; border-radius: 10px; box-shadow: 0 2px 4px rgb(0 0 0 / 0.05); text-align: center; flex-shrink: 0; min-width: 72px;">
+                                    <span style="display: block; font-size: 24px; font-weight: 800; line-height: 1.1; color: ${succesData.gehoudenAanDoel > 0 ? '#10b981' : '#64748b'};">${succesData.gehoudenAanDoel}</span>
+                                    <span style="display: block; font-size: 12px; font-weight: 700; color: #64748b;">${succesData.gehoudenAanDoel === 1 ? 'dag' : 'dagen'}</span>
                                 </div>
+                            </div>
                             </div>
 
                             <div style="box-sizing: border-box; width: 100%; min-width: 0; max-width: 100%;">

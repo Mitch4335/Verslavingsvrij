@@ -526,6 +526,19 @@ export function renderSignaleringsplan(containerElement, onComplete) {
                 return;
             }
 
+      const updateNextButton = (fase) => {
+                const hasSignalen = savedState[`${fase}_signalen`]?.length > 0;
+                const hasSituaties = savedState[`${fase}_situaties`]?.length > 0;
+                const hasZelf = savedState[`${fase}_zelf`]?.length > 0;
+                const isStepValid = hasSignalen && hasSituaties && hasZelf;
+                const nextBtn = pageContent.querySelector('#btn-volgende, #btn-overzicht');
+                if (nextBtn) {
+                    nextBtn.disabled = !isStepValid;
+                    nextBtn.style.cursor = isStepValid ? 'pointer' : 'not-allowed';
+                    nextBtn.style.opacity = isStepValid ? '1' : '0.5';
+                }
+            };
+
             // Chip klikken
             const chip = e.target.closest('.sp-chip');
             if (chip) {
@@ -537,11 +550,20 @@ export function renderSignaleringsplan(containerElement, onComplete) {
                 if (!savedState[sKey]) savedState[sKey] = [];
 
                 const index = savedState[sKey].indexOf(value);
-                if (index > -1) savedState[sKey].splice(index, 1);
-                else savedState[sKey].push(value);
+                const isNowSelected = index === -1;
+                if (isNowSelected) savedState[sKey].push(value);
+                else savedState[sKey].splice(index, 1);
 
                 localStorage.setItem(storageKeyName, JSON.stringify(savedState));
-                renderStep(true);
+
+                if (chip.title === 'Klik om te verwijderen') {
+                    chip.remove();
+                } else {
+                    chip.classList.toggle('selected', isNowSelected);
+                    chip.textContent = isNowSelected ? `${value} ✓` : value;
+                }
+
+                updateNextButton(fase);
                 return;
             }
 
@@ -549,9 +571,28 @@ export function renderSignaleringsplan(containerElement, onComplete) {
             const toggleBtn = e.target.closest('.toggle-hidden-btn');
             if (toggleBtn) {
                 const sKey = toggleBtn.dataset.storagekey;
-                if (expandedThemas.has(sKey)) expandedThemas.delete(sKey); 
-                else expandedThemas.add(sKey);
-                renderStep(true);
+                const infoBlock = toggleBtn.closest('.info-block');
+                const chipGroup = infoBlock.querySelector('.chip-group');
+                const hiddenBox = chipGroup.querySelector(':scope > div');
+
+                if (expandedThemas.has(sKey)) {
+                    expandedThemas.delete(sKey);
+                    if (hiddenBox) {
+                        hiddenBox.querySelectorAll('.sp-chip.selected').forEach(selChip => {
+                            chipGroup.insertBefore(selChip, hiddenBox);
+                        });
+                        hiddenBox.style.display = 'none';
+                        if (hiddenBox.children.length === 0) {
+                            toggleBtn.style.display = 'none';
+                        } else {
+                            toggleBtn.textContent = '+ Meer voorbeelden tonen...';
+                        }
+                    }
+                } else {
+                    expandedThemas.add(sKey);
+                    if (hiddenBox) hiddenBox.style.display = 'contents';
+                    toggleBtn.textContent = '- Minder voorbeelden tonen';
+                }
                 return;
             }
 
@@ -570,9 +611,22 @@ export function renderSignaleringsplan(containerElement, onComplete) {
                     if (!savedState[sKey].includes(val)) {
                         savedState[sKey].push(val);
                         localStorage.setItem(storageKeyName, JSON.stringify(savedState));
+
+                        const chipGroup = addBtn.closest('.info-block').querySelector('.chip-group');
+                        if (chipGroup) {
+                            const newChip = document.createElement('button');
+                            newChip.type = 'button';
+                            newChip.className = `sp-chip fase-${fase} selected`;
+                            newChip.dataset.fase = fase;
+                            newChip.dataset.thema = thema;
+                            newChip.dataset.value = val;
+                            newChip.title = 'Klik om te verwijderen';
+                            newChip.textContent = `✏️ ${val} ×`;
+                            chipGroup.appendChild(newChip);
+                        }
+                        updateNextButton(fase);
                     }
                     input.value = '';
-                    renderStep(true);
                 }
                 return;
             }

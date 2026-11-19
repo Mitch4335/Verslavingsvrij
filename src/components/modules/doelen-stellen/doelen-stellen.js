@@ -94,13 +94,27 @@ export function renderDoelenModule(onComplete) {
                 .stagger-2 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.2s; }
                 .stagger-3 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.3s; }
                 .stagger-4 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.4s; }
-                
-                .info-block { background: #ffffff; border: 1px solid #e2e8f0; border-left: 4px solid #3b82f6; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+
+                /* Voorkomt horizontaal scrollen in de hele module */
+                .module-container, .module-container * {
+                    box-sizing: border-box;
+                }
+                .module-container {
+                    max-width: 100%;
+                    overflow-x: hidden;
+                }
+
+                .info-block { background: #ffffff; border: 1px solid #e2e8f0; border-left: 4px solid #3b82f6; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); max-width: 100%; overflow-x: hidden; }
                 
                 /* Verbeterde Formulier Inputs */
-                .form-input { width: 100%; padding: 14px 16px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 15px; color: #1e293b; background-color: #f8fafc; transition: all 0.2s ease; box-sizing: border-box; }
+                .form-input { width: 100%; max-width: 100%; min-width: 0; padding: 14px 16px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 15px; color: #1e293b; background-color: #f8fafc; transition: all 0.2s ease; box-sizing: border-box; }
                 .form-input:focus { outline: none; border-color: #3b82f6; background-color: #ffffff; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); }
                 
+                /* Accordeon & dagknoppen mobielvriendelijk maken */
+                .accordion-header { flex-wrap: wrap; gap: 8px; }
+                .accordion-item, .accordion-content, .accordion-content div { max-width: 100%; min-width: 0; }
+                .day-chip { padding: 10px 4px !important; min-width: 0 !important; font-size: 14px; }
+
                 /* Interactieve Goal Cards met Nudging (Stoppen = Groen, Minderen = Oranje/Geel) */
                 .goal-options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
                 .goal-card { background: #ffffff; border: 2px solid #e2e8f0; border-radius: 12px; padding: 20px; text-align: left; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
@@ -113,7 +127,16 @@ export function renderDoelenModule(onComplete) {
                 .goal-card h4 { margin: 0 0 8px 0; font-size: 16px; color: #1e293b; }
                 .goal-card p { margin: 0; font-size: 15px; color: #475569; line-height: 1.5; }
                 
-                @media(max-width: 600px) { .goal-options-grid { grid-template-columns: 1fr; } }
+                @media (max-width: 600px) {
+                    .goal-options-grid { grid-template-columns: 1fr; }
+                    .module-container { padding: 12px !important; }
+                    .wizard-step > div { padding: 0 !important; }
+                    .info-block { padding: 16px !important; }
+                    .accordion-content { padding: 12px !important; }
+                    .accordion-content div[style*="grid-template-columns: 1fr 1fr"] {
+                        grid-template-columns: 1fr !important;
+                    }
+                }
             </style>
 
             <!-- STAP 0: ZACHTE INTRODUCTIE -->

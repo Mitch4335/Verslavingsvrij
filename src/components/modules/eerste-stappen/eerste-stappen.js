@@ -92,6 +92,36 @@ export function renderEersteStappen(container, onComplete) {
         }
     }
 
+    function fitMultilineChips() {
+        pageContainer.querySelectorAll('.es-chip').forEach(chip => {
+            const textSpan = chip.querySelector('span:last-child');
+            if (!textSpan || chip.offsetParent === null) return;
+            textSpan.style.width = '';
+            const range = document.createRange();
+            range.selectNodeContents(textSpan);
+            const lines = [];
+            Array.from(range.getClientRects()).forEach(r => {
+                const line = lines.find(l => Math.abs(l.top - r.top) < 5);
+                if (line) {
+                    line.left = Math.min(line.left, r.left);
+                    line.right = Math.max(line.right, r.right);
+                } else {
+                    lines.push({ top: r.top, left: r.left, right: r.right });
+                }
+            });
+            if (lines.length > 1) {
+                const maxWidth = Math.max(...lines.map(l => l.right - l.left));
+                textSpan.style.width = `${Math.ceil(maxWidth) + 2}px`;
+            }
+        });
+    }
+
+    pageContainer.addEventListener('click', (e) => {
+        if (e.target.closest('.es-chip, .es-btn-more')) {
+            requestAnimationFrame(fitMultilineChips);
+        }
+    });
+
     function render(preserveScroll = false) {
         const scrollY = window.scrollY;
         
@@ -108,6 +138,8 @@ export function renderEersteStappen(container, onComplete) {
             updateProgress(999); // Verbergt de balk
             renderCompletionPage();
         }
+
+        requestAnimationFrame(fitMultilineChips);
 
         if (preserveScroll) {
             window.scrollTo(0, scrollY);
@@ -249,12 +281,13 @@ export function renderEersteStappen(container, onComplete) {
                 .info-block { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
                 
                 .es-chip-group { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
-                .es-chip {
-                    display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; border-radius: 9999px;
+.es-chip {
+                    display: inline-flex; align-items: flex-start; gap: 8px; padding: 10px 14px; border-radius: 20px;
                     font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s;
                     border: 1px solid #cbd5e1; background: #ffffff; color: #334155; font-family: inherit;
+                    text-align: left; line-height: 1.4; max-width: 100%; box-sizing: border-box;
                 }
-                .es-chip:hover { background: #f8fafc; transform: translateY(-1px); box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+                .es-chip span:first-child { flex-shrink: 0; }
                 
                 .es-chip.selected-red { border: 1px solid #ef4444; background: #fef2f2; color: #b91c1c; font-weight: 600; box-shadow: 0 2px 4px rgba(239,68,68,0.1); }
 
@@ -479,11 +512,12 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
                 
                 .es-chip-group { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
                 .es-chip {
-                    display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; border-radius: 9999px;
+                    display: inline-flex; align-items: flex-start; gap: 8px; padding: 10px 14px; border-radius: 20px;
                     font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s;
                     border: 1px solid #cbd5e1; background: #ffffff; color: #334155; font-family: inherit;
+                    text-align: left; line-height: 1.4; max-width: 100%; box-sizing: border-box;
                 }
-                .es-chip:hover { background: #f8fafc; transform: translateY(-1px); box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+                .es-chip span:first-child { flex-shrink: 0; }
                 
                 .es-chip.selected-green { border: 1px solid #10b981; background: #f0fdf4; color: #047857; font-weight: 600; box-shadow: 0 2px 4px rgba(16,185,129,0.1); }
                 .es-chip.selected-purple { border: 1px solid #8b5cf6; background: #f5f3ff; color: #6d28d9; font-weight: 600; box-shadow: 0 2px 4px rgba(139,92,246,0.1); }
@@ -647,7 +681,7 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
                     savedHandelingen.push(item);
                 }
                 localStorage.setItem('arminius_handelingen_items', JSON.stringify(savedHandelingen));
-                render(true);
+                btn.classList.toggle('selected-green');
             });
         });
 
@@ -656,7 +690,7 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
                 const item = btn.getAttribute('data-item');
                 savedHandelingen = savedHandelingen.filter(i => i !== item);
                 localStorage.setItem('arminius_handelingen_items', JSON.stringify(savedHandelingen));
-                render(true);
+                btn.remove();
             });
         });
 
@@ -668,7 +702,30 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
             if (val && !savedHandelingen.includes(val)) {
                 savedHandelingen.push(val);
                 localStorage.setItem('arminius_handelingen_items', JSON.stringify(savedHandelingen));
-                render(true);
+
+                const infoBlock = addHandelingBtn.closest('.info-block');
+                const wrapper = infoBlock.querySelector('.custom-input-wrapper');
+                let customGroup = infoBlock.querySelector('.custom-handelingen-group');
+                if (!customGroup) {
+                    customGroup = document.createElement('div');
+                    customGroup.className = 'es-chip-group custom-handelingen-group';
+                    infoBlock.insertBefore(customGroup, wrapper);
+                }
+
+                const newBtn = document.createElement('button');
+                newBtn.type = 'button';
+                newBtn.className = 'es-chip custom-pill-handeling selected-green';
+                newBtn.setAttribute('data-item', val);
+                newBtn.title = 'Klik om te verwijderen';
+                newBtn.innerHTML = `<span>✏️</span><span>${escapeHtml(val)}</span>`;
+                newBtn.addEventListener('click', () => {
+                    savedHandelingen = savedHandelingen.filter(i => i !== val);
+                    localStorage.setItem('arminius_handelingen_items', JSON.stringify(savedHandelingen));
+                    newBtn.remove();
+                });
+                customGroup.appendChild(newBtn);
+                customHandelingInput.value = '';
+                requestAnimationFrame(fitMultilineChips);
             }
         };
 
@@ -699,7 +756,7 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
                     savedAfleiding.push(item);
                 }
                 localStorage.setItem('arminius_afleiding_items', JSON.stringify(savedAfleiding));
-                render(true);
+                btn.classList.toggle('selected-purple');
             });
         });
 
@@ -708,7 +765,7 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
                 const item = btn.getAttribute('data-item');
                 savedAfleiding = savedAfleiding.filter(i => i !== item);
                 localStorage.setItem('arminius_afleiding_items', JSON.stringify(savedAfleiding));
-                render(true);
+                btn.remove();
             });
         });
 
@@ -720,7 +777,30 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
             if (val && !savedAfleiding.includes(val)) {
                 savedAfleiding.push(val);
                 localStorage.setItem('arminius_afleiding_items', JSON.stringify(savedAfleiding));
-                render(true);
+
+                const infoBlock = addAfleidingBtn.closest('.info-block');
+                const wrapper = infoBlock.querySelector('.custom-input-wrapper');
+                let customGroup = infoBlock.querySelector('.custom-afleiding-group');
+                if (!customGroup) {
+                    customGroup = document.createElement('div');
+                    customGroup.className = 'es-chip-group custom-afleiding-group';
+                    infoBlock.insertBefore(customGroup, wrapper);
+                }
+
+                const newBtn = document.createElement('button');
+                newBtn.type = 'button';
+                newBtn.className = 'es-chip custom-pill-afleiding selected-purple';
+                newBtn.setAttribute('data-item', val);
+                newBtn.title = 'Klik om te verwijderen';
+                newBtn.innerHTML = `<span>✏️</span><span>${escapeHtml(val)}</span>`;
+                newBtn.addEventListener('click', () => {
+                    savedAfleiding = savedAfleiding.filter(i => i !== val);
+                    localStorage.setItem('arminius_afleiding_items', JSON.stringify(savedAfleiding));
+                    newBtn.remove();
+                });
+                customGroup.appendChild(newBtn);
+                customAfleidingInput.value = '';
+                requestAnimationFrame(fitMultilineChips);
             }
         };
 
