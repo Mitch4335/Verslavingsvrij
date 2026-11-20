@@ -86,6 +86,39 @@ export function renderActiviteitenModule(containerElement, onBackToKist) {
     }
 
     container.innerHTML = `
+        <style>
+            .custom-act-wrapper {
+                display: flex !important;
+                align-items: center !important;
+                gap: 8px !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            .custom-act-input {
+                flex: 1 1 0% !important;
+                min-width: 0 !important;
+                width: auto !important;
+                box-sizing: border-box !important;
+            }
+            .custom-act-wrapper .btn-add-custom {
+                flex: 0 0 42px !important;
+                width: 42px !important;
+                height: 42px !important;
+                padding: 0 !important;
+                border-radius: 50% !important;
+                background: #1e293b !important;
+                color: #ffffff !important;
+                border: none !important;
+                font-size: 22px !important;
+                font-weight: 700 !important;
+                line-height: 1 !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                cursor: pointer !important;
+            }
+        </style>
         <div style="padding: 20px;">
             <div class="module-container act-container" style="max-width: 700px; margin: 0 auto;">
                 <div style="margin-bottom: 32px;" id="act-main-header">

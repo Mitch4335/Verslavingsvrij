@@ -475,8 +475,8 @@ export function renderUitglijderModule(containerElement, onComplete) {
     }
 
     // --- EVENT DELEGATION VOOR DE HELE MODULE ---
-    if (container) {
-        container.addEventListener('click', (e) => {
+    if (pageContent) {
+        pageContent.addEventListener('click', (e) => {
             // --- Navigatie Knoppen ---
             if (e.target.closest('#btn-start')) {
                 currentStepIndex = 1;
@@ -531,12 +531,29 @@ export function renderUitglijderModule(containerElement, onComplete) {
             if (chip) {
                 const stepKey = chip.getAttribute('data-step');
                 const val = chip.getAttribute('data-val');
+                const colorClass = stepKey === 'gedachten' ? 'selected-green' : 'selected-orange';
+
+                if (!savedData[stepKey]) savedData[stepKey] = [];
                 const idx = savedData[stepKey].indexOf(val);
-                
-                if (idx > -1) savedData[stepKey].splice(idx, 1);
-                else savedData[stepKey].push(val);
-                
-                renderStep(true);
+                const isNowSelected = idx === -1;
+
+                if (isNowSelected) savedData[stepKey].push(val);
+                else savedData[stepKey].splice(idx, 1);
+
+                if (chip.title === 'Klik om te verwijderen') {
+                    chip.remove();
+                } else {
+                    chip.classList.toggle(colorClass, isNowSelected);
+                    const existingCheck = chip.querySelector(':scope > span');
+                    if (isNowSelected && !existingCheck) {
+                        const check = document.createElement('span');
+                        check.style.fontWeight = 'bold';
+                        check.textContent = '✓';
+                        chip.appendChild(check);
+                    } else if (!isNowSelected && existingCheck) {
+                        existingCheck.remove();
+                    }
+                }
                 return;
             }
 
@@ -545,7 +562,27 @@ export function renderUitglijderModule(containerElement, onComplete) {
             if (toggleBtn) {
                 const stepKey = toggleBtn.getAttribute('data-step');
                 expandedSteps[stepKey] = !expandedSteps[stepKey];
-                renderStep(true);
+
+                const chipGroup = toggleBtn.closest('.info-block').querySelector('.chip-group');
+                const hiddenBox = chipGroup ? chipGroup.querySelector(':scope > div') : null;
+
+                if (hiddenBox) {
+                    if (expandedSteps[stepKey]) {
+                        hiddenBox.style.display = 'contents';
+                        toggleBtn.textContent = '- Minder opties bekijken';
+                    } else {
+                        hiddenBox.querySelectorAll('.ug-chip.selected-green, .ug-chip.selected-orange').forEach(selChip => {
+                            chipGroup.insertBefore(selChip, hiddenBox);
+                        });
+                        hiddenBox.style.display = 'none';
+                        const remaining = hiddenBox.querySelectorAll('.ug-chip').length;
+                        if (remaining === 0) {
+                            toggleBtn.style.display = 'none';
+                        } else {
+                            toggleBtn.textContent = `+ ${remaining} andere opties bekijken...`;
+                        }
+                    }
+                }
                 return;
             }
 
@@ -553,13 +590,33 @@ export function renderUitglijderModule(containerElement, onComplete) {
             const addBtn = e.target.closest('.btn-add-custom');
             if (addBtn) {
                 const stepKey = addBtn.getAttribute('data-step');
-                const inputEl = container.querySelector(`.input-custom-${stepKey}`);
+                const inputEl = pageContent.querySelector(`.input-custom-${stepKey}`);
                 if (inputEl) {
                     const val = inputEl.value.trim();
+                    if (!savedData[stepKey]) savedData[stepKey] = [];
                     if (val && !savedData[stepKey].includes(val)) {
                         savedData[stepKey].push(val);
                         inputEl.value = '';
-                        renderStep(true);
+
+                        const chipGroup = addBtn.closest('.info-block').querySelector('.chip-group');
+                        if (chipGroup) {
+                            const colorClass = stepKey === 'gedachten' ? 'selected-green' : 'selected-orange';
+                            const newChip = document.createElement('button');
+                            newChip.type = 'button';
+                            newChip.className = `ug-chip ${colorClass}`;
+                            newChip.setAttribute('data-step', stepKey);
+                            newChip.setAttribute('data-val', val);
+                            newChip.style.width = '100%';
+                            newChip.title = 'Klik om te verwijderen';
+                            newChip.innerHTML = `
+                                <div style="display: flex; align-items: center; gap: 12px; flex: 1;">
+                                    <span style="font-size: 18px;">✏️</span>
+                                    <span>${escapeHtml(val)}</span>
+                                </div>
+                                <span style="font-weight: bold;">&times;</span>
+                            `;
+                            chipGroup.appendChild(newChip);
+                        }
                     }
                 }
                 return;
@@ -597,10 +654,10 @@ export function renderUitglijderModule(containerElement, onComplete) {
         });
 
         // Enter toets voor custom fields
-        container.addEventListener('keypress', (e) => {
+        pageContent.addEventListener('keypress', (e) => {
             if (e.key === 'Enter' && e.target.classList.contains('custom-ug-input')) {
                 const addBtn = e.target.nextElementSibling;
-                if(addBtn) addBtn.click();
+                if (addBtn) addBtn.click();
             }
         });
     }

@@ -479,13 +479,14 @@ export function renderBespreekbaarModule(containerElement, onComplete) {
                 </div>
             `;
 
-            // Setup chat animation Na render
-            setTimeout(() => {
-                const chatBox = container.querySelector('#chat-box');
+            // Setup chat animation na render
+            const initTimeout = setTimeout(() => {
+                const chatBox = pageContent.querySelector('#chat-box');
                 if (!chatBox) return;
+                chatBox.innerHTML = '';
                 chatScenario.forEach((msg, index) => {
                     const timeoutId = setTimeout(() => {
-                        if (!document.getElementById('chat-box')) return;
+                        if (!chatBox.isConnected) return;
                         const cssClass = msg.sender === 'user' ? 'chat-user' : 'chat-other';
                         const titleStr = msg.sender === 'user' ? '<strong>Jij:</strong><br>' : `<strong>${escapeHtml(huidigPlan.persoon) || 'De ander'}:</strong><br>`;
                         const bubble = document.createElement('div');
@@ -496,6 +497,7 @@ export function renderBespreekbaarModule(containerElement, onComplete) {
                     chatTimeouts.push(timeoutId);
                 });
             }, 0);
+            chatTimeouts.push(initTimeout);
         }
         else if (currentStepIndex === 5) {
             // ALTERNATIEF PAD
@@ -616,10 +618,12 @@ export function renderBespreekbaarModule(containerElement, onComplete) {
     }
 
     // --- EVENT DELEGATION VOOR DE HELE MODULE ---
-    if (container) {
-        container.addEventListener('click', (e) => {
+    if (pageContent) {
+        pageContent.addEventListener('click', (e) => {
             // -- Globale Navigatie --
             if (e.target.closest('#back-route-btn') || e.target.closest('#btn-route') || e.target.closest('#btn-afronden-alt')) {
+                chatTimeouts.forEach(clearTimeout);
+                chatTimeouts = [];
                 if (onComplete) onComplete();
                 return;
             }
@@ -648,15 +652,14 @@ export function renderBespreekbaarModule(containerElement, onComplete) {
                 if (currentStepIndex === 1 || currentStepIndex === 5) {
                     currentStepIndex = 0;
                 } else if (currentStepIndex === 4) {
-                    // Sla data op voordat we terug gaan
-                    const opInp = container.querySelector('#openingszin-input');
-                    if(opInp) huidigPlan.openingszin = opInp.value;
+                    const opInp = pageContent.querySelector('#openingszin-input');
+                    if (opInp) huidigPlan.openingszin = opInp.value;
                     currentStepIndex--;
                 } else if (currentStepIndex === 3) {
-                    const momInp = container.querySelector('#moment-input');
-                    const locInp = container.querySelector('#locatie-input');
-                    if(momInp) huidigPlan.moment = momInp.value;
-                    if(locInp) huidigPlan.locatie = locInp.value;
+                    const momInp = pageContent.querySelector('#moment-input');
+                    const locInp = pageContent.querySelector('#locatie-input');
+                    if (momInp) huidigPlan.moment = momInp.value;
+                    if (locInp) huidigPlan.locatie = locInp.value;
                     currentStepIndex--;
                 } else {
                     currentStepIndex--;
@@ -667,7 +670,7 @@ export function renderBespreekbaarModule(containerElement, onComplete) {
 
             if (e.target.closest('#btn-volgende')) {
                 if (currentStepIndex === 1) {
-                    const inp = container.querySelector('#persoon-input');
+                    const inp = pageContent.querySelector('#persoon-input');
                     if (inp && inp.value.trim() === '') {
                         alert("Vul een naam in om door te gaan.");
                         return;
@@ -681,10 +684,10 @@ export function renderBespreekbaarModule(containerElement, onComplete) {
                     }
                 }
                 else if (currentStepIndex === 3) {
-                    const momInp = container.querySelector('#moment-input');
-                    const locInp = container.querySelector('#locatie-input');
-                    if(momInp) huidigPlan.moment = momInp.value;
-                    if(locInp) huidigPlan.locatie = locInp.value;
+                    const momInp = pageContent.querySelector('#moment-input');
+                    const locInp = pageContent.querySelector('#locatie-input');
+                    if (momInp) huidigPlan.moment = momInp.value;
+                    if (locInp) huidigPlan.locatie = locInp.value;
                 }
                 currentStepIndex++;
                 renderStep();
@@ -693,8 +696,8 @@ export function renderBespreekbaarModule(containerElement, onComplete) {
 
             // -- Opslaan in stap 4 --
             if (e.target.closest('#btn-opslaan')) {
-                const opInp = container.querySelector('#openingszin-input');
-                if(opInp) huidigPlan.openingszin = opInp.value;
+                const opInp = pageContent.querySelector('#openingszin-input');
+                if (opInp) huidigPlan.openingszin = opInp.value;
                 plannen.push({...huidigPlan});
                 savePlannen();
                 
@@ -709,17 +712,17 @@ export function renderBespreekbaarModule(containerElement, onComplete) {
             if (naamChip) {
                 const naam = naamChip.getAttribute('data-naam');
                 huidigPlan.persoon = naam;
-                const inputEl = container.querySelector('#persoon-input');
+                const inputEl = pageContent.querySelector('#persoon-input');
                 if (inputEl) inputEl.value = naam;
                 
-                container.querySelectorAll('.naam-chip').forEach(c => c.classList.remove('selected'));
+                pageContent.querySelectorAll('.naam-chip').forEach(c => c.classList.remove('selected'));
                 naamChip.classList.add('selected');
                 return;
             }
 
             const keuzeCard = e.target.closest('.keuze-card');
             if (keuzeCard) {
-                container.querySelectorAll('.keuze-card').forEach(c => c.classList.remove('active'));
+                pageContent.querySelectorAll('.keuze-card').forEach(c => c.classList.remove('active'));
                 keuzeCard.classList.add('active');
                 huidigPlan.doel = keuzeCard.getAttribute('data-doel');
                 return;
@@ -728,7 +731,7 @@ export function renderBespreekbaarModule(containerElement, onComplete) {
             // -- Dashboard Acties --
             const deleteBtn = e.target.closest('.delete-plan-btn');
             if (deleteBtn) {
-                if(confirm("Weet je zeker dat je dit plan wilt verwijderen?")) {
+                if (confirm("Weet je zeker dat je dit plan wilt verwijderen?")) {
                     const idx = parseInt(deleteBtn.getAttribute('data-index'));
                     plannen.splice(idx, 1);
                     savePlannen();
