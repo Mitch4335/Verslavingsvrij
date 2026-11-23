@@ -10,6 +10,18 @@ function escapeHtml(str) {
     );
 }
 
+function parseContact(raw) {
+    if (typeof raw === 'object' && raw !== null) {
+        return { naam: raw.naam || '', tel: raw.tel || '' };
+    }
+    const str = String(raw || '');
+    const parts = str.split(' | ');
+    return {
+        naam: parts[0].trim(),
+        tel: parts[1] ? parts[1].trim() : ''
+    };
+}
+
 export function renderNoodkit(containerElement, isInternal = false) {
     const container = containerElement || document.getElementById('app-content');
     if (!container) return;
@@ -25,7 +37,6 @@ export function renderNoodkit(containerElement, isInternal = false) {
     const savedState = JSON.parse(localStorage.getItem(`signaleringsplan_state_${actiefTraject}`)) || {};
     const savedRedenenStr = localStorage.getItem(`arminius_module_redenen_data_${actiefTraject}`);
     
-    // --- BELANGRIJKE FIX: Noodkit checkt nu of de risicogedachte daadwerkelijk nog actief is ---
     const savedHelpendeStr = localStorage.getItem(`arminius_module_helpende_gedachten_data_${actiefTraject}`);
     let helpendeKoppelingen = {};
     let actieveRisicos = [];
@@ -38,7 +49,6 @@ export function renderNoodkit(containerElement, isInternal = false) {
         } catch (e) { console.error(e); }
     }
     
-    // Filter out wees-data (orphan data)
     const risicos = Object.keys(helpendeKoppelingen).filter(r => actieveRisicos.includes(r));
     const heeftHelpendeGedachten = risicos.length > 0;
 
@@ -91,6 +101,14 @@ export function renderNoodkit(containerElement, isInternal = false) {
                 border: 2px solid #16a34a !important;
                 background: #dcfce7 !important;
             }
+            .contact-call-link {
+                text-decoration: none;
+                cursor: pointer;
+                transition: transform 0.15s ease;
+            }
+            .contact-call-link:active {
+                transform: scale(0.98);
+            }
         </style>
         <div style="padding-bottom: 80px; font-family: inherit;">
             <div style="margin-bottom: 24px; text-align: center;">
@@ -137,12 +155,41 @@ export function renderNoodkit(containerElement, isInternal = false) {
                             <div style="margin-top: 24px;">
                                 <div style="font-size: 0.95rem; font-weight: 900; color: #1e293b; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;">${thema.label}</div>
                                 <div style="display: flex; flex-direction: column; gap: 12px;">
-                                    ${items.map(item => `
-                                        <div class="${isContact ? 'contact-pulse' : ''}" style="background: #ffffff; border: 2px solid ${isContact ? '#16a34a' : '#cbd5e1'}; padding: 16px 20px; border-radius: 12px; color: ${isContact ? '#166534' : '#0f172a'}; font-weight: 800; font-size: 1.1rem; display: flex; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                                            <span style="margin-right: 16px; font-size: 1.4rem; color: ${isContact ? '#16a34a' : fase.bgHeader};">${isContact ? '📞' : '➤'}</span> 
-                                            ${escapeHtml(item)}
-                                        </div>
-                                    `).join('')}
+                                    ${items.map(item => {
+                                        if (isContact) {
+                                            const contact = parseContact(item);
+                                            const cleanTel = contact.tel.replace(/[^\d+]/g, '');
+
+                                            if (cleanTel) {
+                                                return `
+                                                    <a href="tel:${escapeHtml(cleanTel)}" class="contact-pulse contact-call-link" style="background: #dcfce7; border: 2px solid #16a34a; padding: 16px 20px; border-radius: 12px; color: #166534; font-weight: 800; font-size: 1.1rem; display: flex; align-items: center; justify-content: space-between; gap: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                                                        <div style="display: flex; align-items: center; min-width: 0;">
+                                                            <span style="margin-right: 14px; font-size: 1.4rem; flex-shrink: 0;">📞</span>
+                                                            <div style="min-width: 0;">
+                                                                <div style="word-break: break-word;">${escapeHtml(contact.naam)}</div>
+                                                                <div style="font-size: 0.9rem; font-weight: 600; color: #15803d; margin-top: 2px;">${escapeHtml(contact.tel)}</div>
+                                                            </div>
+                                                        </div>
+                                                        <span style="background: #16a34a; color: #ffffff; padding: 6px 12px; border-radius: 9999px; font-size: 0.85rem; font-weight: 800; flex-shrink: 0;">BEL NU</span>
+                                                    </a>
+                                                `;
+                                            }
+
+                                            return `
+                                                <div class="contact-pulse" style="background: #dcfce7; border: 2px solid #16a34a; padding: 16px 20px; border-radius: 12px; color: #166534; font-weight: 800; font-size: 1.1rem; display: flex; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                                                    <span style="margin-right: 16px; font-size: 1.4rem; color: #16a34a;">📞</span> 
+                                                    ${escapeHtml(contact.naam)}
+                                                </div>
+                                            `;
+                                        }
+
+                                        return `
+                                            <div style="background: #ffffff; border: 2px solid #cbd5e1; padding: 16px 20px; border-radius: 12px; color: #0f172a; font-weight: 800; font-size: 1.1rem; display: flex; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                                                <span style="margin-right: 16px; font-size: 1.4rem; color: ${fase.bgHeader};">➤</span> 
+                                                ${escapeHtml(item)}
+                                            </div>
+                                        `;
+                                    }).join('')}
                                 </div>
                             </div>
                         `;

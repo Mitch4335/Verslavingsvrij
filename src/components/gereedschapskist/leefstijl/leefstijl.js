@@ -1,13 +1,27 @@
 // src/components/gereedschapskist/leefstijl/leefstijl.js
 
+
 function loadCSS() {
     const cssUrl = new URL('./leefstijl.css', import.meta.url).href;
-    if (!document.querySelector(`link[href="${cssUrl}"]`)) {
+    const existing = document.querySelector(`link[href="${cssUrl}"]`);
+    if (existing) {
+        if (existing.dataset.loaded === 'true' || existing.sheet) return Promise.resolve();
+        return new Promise((resolve) => {
+            existing.addEventListener('load', resolve, { once: true });
+            existing.addEventListener('error', resolve, { once: true });
+        });
+    }
+    return new Promise((resolve) => {
         const link = document.createElement('link');
         link.rel = 'stylesheet';
         link.href = cssUrl;
+        link.onload = () => {
+            link.dataset.loaded = 'true';
+            resolve();
+        };
+        link.onerror = resolve;
         document.head.appendChild(link);
-    }
+    });
 }
 
 // --- DATA VOOR DE INTERACTIEVE SCAN & TIPS ---
@@ -153,8 +167,8 @@ function getMediaHtml(mediaType) {
     if (mediaType === 'buiten') return `<div style="display:flex; justify-content:center; width:100%;"><span class="anim-float">☀️</span><span class="anim-float" style="animation-delay:1.5s;">🌳</span><span class="anim-float" style="animation-delay:0.7s;">🌲</span></div>`;
     return `<div style="font-size: 48px;">✨</div>`;
 }
-export function renderLeefstijlModule(containerElement, onBackToKist) {
-    loadCSS();
+export async function renderLeefstijlModule(containerElement, onBackToKist) {
+    await loadCSS();
     window.scrollTo(0, 0);
 
     const container = containerElement || document.getElementById('app-content');

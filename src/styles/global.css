@@ -149,3 +149,190 @@ body {
 #app-content {
     padding-bottom: 80px; 
 }
+
+/* =========================================
+   --- MOBIELE LEESBAARHEID & RUIMTE ---
+   ========================================= */
+
+/* =========================================
+   --- MOBIELE LEESBAARHEID & RUIMTE ---
+   ========================================= */
+
+/* =========================================
+   --- MOBIELE LEESBAARHEID & RUIMTE ---
+   ========================================= */
+
+@media (max-width: 600px) {
+    :root {
+        --mobiel-tekstformaat: 16.5px;
+        --mobiel-chipformaat: 15.5px;
+    }
+
+    /* 1. Opgestapelde zijmarges verkleinen zodat tekstvakken breder worden */
+    #app-content {
+        padding-left: 6px !important;
+        padding-right: 6px !important;
+    }
+
+    #app-content > div[style*="padding"] {
+        padding-left: 6px !important;
+        padding-right: 6px !important;
+    }
+
+    .module-container,
+    .eerste-stappen-container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    /* 2. Iets minder witruimte aan de binnenkant van de witte blokken */
+    .info-block,
+    .act-info-block,
+    .db-info-block,
+    .adem-intro-card,
+    .geluiden-intro-card,
+    .scan-card,
+    .vraag-card,
+    .log-card {
+        padding: 18px 16px !important;
+    }
+
+    /* 3. Grotere leestekst in kaarten, wizard-stappen en modules met eigen container */
+    #app-content .wizard-step p,
+    #app-content .eerste-stappen-container p,
+    #app-content .sp-container p,
+    #app-content .sp-container .thema-subtitle,
+    #app-content .ug-container p,
+    #app-content .bespreekbaar-container p,
+    .info-block p,
+    .act-info-block p,
+    .db-info-block p,
+    .adem-intro-card p,
+    .geluiden-intro-card p,
+    .scan-card p,
+    .lesson-content p,
+    .lesson-content li,
+    .tip-text,
+    .log-text {
+        font-size: var(--mobiel-tekstformaat) !important;
+        line-height: 1.55 !important;
+    }
+
+    /* Thema-titels in Signaleringsplan duidelijk boven de chips laten uitkomen */
+    #app-content .sp-container .thema-title,
+    #app-content .sp-container .sp-overview-title {
+        font-size: 17px !important;
+        line-height: 1.35 !important;
+    }
+
+    /* 4. Chips, knoppen en invoervelden meeschalen */
+    #app-content .risico-chip,
+    #app-content .top3-source-chip,
+    #app-content .es-chip,
+    #app-content .ug-chip,
+    #app-content .sp-chip,
+    #app-content .sp-overview-chip,
+    #app-content .act-chip,
+    #app-content .slot-text,
+    #app-content .btn-more-risico,
+    #app-content .btn-more-coping,
+    #app-content .es-btn-more,
+    #app-content .toggle-hidden-btn,
+    #app-content .custom-risico-input,
+    #app-content .custom-ug-input,
+    #app-content .custom-sp-input,
+    #app-content .custom-input-wrapper input {
+        font-size: var(--mobiel-chipformaat) !important;
+        line-height: 1.4 !important;
+    }
+
+    /* Iets donkerder contrast voor betere leesbaarheid (behalve rode kaderblokken) */
+    .info-block:not(.info-block-border-red) p,
+    .act-info-block p,
+    .db-info-block p,
+    .adem-intro-card p,
+    .geluiden-intro-card p,
+    .lesson-content p,
+    .tip-text {
+        color: #1e293b !important;
+    }
+}@media (max-width: 600px) {
+    :root {
+        --mobiel-tekstformaat: 16.5px;
+        --mobiel-chipformaat: 15.5px;
+    }
+
+    /* 1. Opgestapelde zijmarges verkleinen zodat tekstvakken breder worden */
+    #app-content {
+        padding-left: 6px !important;
+        padding-right: 6px !important;
+    }
+
+    #app-content > div[style*="padding"] {
+        padding-left: 6px !important;
+        padding-right: 6px !important;
+    }
+
+    .module-container,
+    .eerste-stappen-container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    /* 2. Iets minder witruimte aan de binnenkant van de witte blokken */
+    .info-block,
+    .act-info-block,
+    .db-info-block,
+    .adem-intro-card,
+    .geluiden-intro-card,
+    .scan-card,
+    .vraag-card,
+    .log-card {
+        padding: 18px 16px !important;
+    }
+
+    /* 3. Grotere leestekst in kaarten én in losse wizard-stappen */
+    #app-content .wizard-step p,
+    #app-content .eerste-stappen-container p,
+    .info-block p,
+    .act-info-block p,
+    .db-info-block p,
+    .adem-intro-card p,
+    .geluiden-intro-card p,
+    .scan-card p,
+    .lesson-content p,
+    .lesson-content li,
+    .tip-text,
+    .log-text {
+        font-size: var(--mobiel-tekstformaat) !important;
+        line-height: 1.55 !important;
+    }
+
+    /* 4. Chips, invoervelden en Top 3-titels meeschalen */
+    #app-content .risico-chip,
+    #app-content .top3-source-chip,
+    #app-content .es-chip,
+    #app-content .ug-chip,
+    #app-content .act-chip,
+    #app-content .slot-text,
+    #app-content .btn-more-risico,
+    #app-content .btn-more-coping,
+    #app-content .es-btn-more,
+    #app-content .custom-risico-input,
+    #app-content .custom-ug-input,
+    #app-content .custom-input-wrapper input {
+        font-size: var(--mobiel-chipformaat) !important;
+        line-height: 1.4 !important;
+    }
+
+    /* Iets donkerder contrast voor betere leesbaarheid (behalve rode kaderblokken) */
+    .info-block:not(.info-block-border-red) p,
+    .act-info-block p,
+    .db-info-block p,
+    .adem-intro-card p,
+    .geluiden-intro-card p,
+    .lesson-content p,
+    .tip-text {
+        color: #1e293b !important;
+    }
+}

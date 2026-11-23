@@ -2,12 +2,25 @@
 
 function loadCSS() {
     const cssUrl = new URL('./activiteiten.css', import.meta.url).href;
-    if (!document.querySelector(`link[href="${cssUrl}"]`)) {
+    const existing = document.querySelector(`link[href="${cssUrl}"]`);
+    if (existing) {
+        if (existing.dataset.loaded === 'true' || existing.sheet) return Promise.resolve();
+        return new Promise((resolve) => {
+            existing.addEventListener('load', resolve, { once: true });
+            existing.addEventListener('error', resolve, { once: true });
+        });
+    }
+    return new Promise((resolve) => {
         const link = document.createElement('link');
         link.rel = 'stylesheet';
         link.href = cssUrl;
+        link.onload = () => {
+            link.dataset.loaded = 'true';
+            resolve();
+        };
+        link.onerror = resolve;
         document.head.appendChild(link);
-    }
+    });
 }
 
 function escapeHtml(str) {
@@ -62,8 +75,8 @@ function getIconForAct(naam) {
     return '✨'; 
 }
 
-export function renderActiviteitenModule(containerElement, onBackToKist) {
-    loadCSS();
+export async function renderActiviteitenModule(containerElement, onBackToKist) {
+    await loadCSS();
     window.scrollTo(0, 0);
 
     const container = containerElement || document.getElementById('app-content');

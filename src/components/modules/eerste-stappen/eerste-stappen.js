@@ -1,70 +1,211 @@
 // src/components/modules/eerste-stappen/eerste-stappen.js
 
+const optiesPerTraject = {
+    alcohol: {
+        vermijdingTitel: "Plaatsen & Situaties",
+        vermijdingSubtitel: "Selecteer welke situaties of personen je de komende periode beter even kunt mijden of waarin je extra waakzaam moet zijn.",
+        standaardVermijding: [
+            { text: "Feestjes waar alcohol gedronken wordt", icon: "🎉" },
+            { text: "In je eentje boodschappen doen", icon: "🛒" },
+            { text: "Café / terras / kroeg", icon: "🍺" },
+            { text: "Alleen thuis zijn", icon: "🛋️" }
+        ],
+        extraVermijding: [
+            { text: "Werk- / studieborrels", icon: "💼" },
+            { text: "Slijter / alcoholschap in de supermarkt", icon: "🏬" },
+            { text: "Festivals / feesten", icon: "🎪" }
+        ],
+        standaardHandelingen: [
+            { text: "Iets anders te drinken pakken: water / frisdrank / thee", icon: "🥤" },
+            { text: "Weggaan uit de situatie", icon: "🚪" },
+            { text: "Afleiding zoeken", icon: "🧩" },
+            { text: "Er met iemand over praten", icon: "💬" }
+        ],
+        extraHandelingen: [
+            { text: "Tegen mezelf zeggen dat het gevoel weggaat", icon: "🧠" },
+            { text: "Een ademhalingsoefening", icon: "🫁" },
+            { text: "Tot 10 tellen", icon: "🔢" }
+        ],
+        standaardAfleiding: [
+            { text: "Wandelen", icon: "🚶‍♂️" },
+            { text: "Sporten", icon: "💪" },
+            { text: "Telefoongebruik", icon: "📱" },
+            { text: "Muziek", icon: "🎧" }
+        ],
+        extraAfleiding: [
+            { text: "Iemand bellen / spreken / opzoeken", icon: "📞" },
+            { text: "Tv kijken", icon: "📺" },
+            { text: "Gamen", icon: "🎮" },
+            { text: "Opruimen", icon: "🧹" }
+        ]
+    },
+    cannabis: {
+        vermijdingTitel: "Plaatsen & Situaties",
+        vermijdingSubtitel: "Selecteer welke situaties of personen je de komende periode beter even kunt mijden of waarin je extra waakzaam moet zijn.",
+        standaardVermijding: [
+            { text: "De coffeeshop (of erlangs gaan)", icon: "🏪" },
+            { text: "Alleen thuis zijn", icon: "🛋️" },
+            { text: "Geen afspraken hebben / verveling", icon: "⏳" },
+            { text: "Feestjes waar geblowd wordt", icon: "🎉" }
+        ],
+        extraVermijding: [
+            { text: "Plaatsen waar mensen vaak blowen", icon: "📍" },
+            { text: "'s Avonds op de bank / voor het slapengaan", icon: "🌙" },
+            { text: "Gamen of series kijken op vaste blowmomenten", icon: "🎮" },
+            { text: "Stressvolle of onrustige momenten", icon: "⚡" }
+        ],
+        standaardHandelingen: [
+            { text: "Even naar buiten voor frisse lucht", icon: "🌬️" },
+            { text: "Weggaan uit de situatie", icon: "🚪" },
+            { text: "Afleiding zoeken", icon: "🧩" },
+            { text: "Er met iemand over praten", icon: "💬" }
+        ],
+        extraHandelingen: [
+            { text: "Iets met mijn handen doen / tandenpoetsen", icon: "🪥" },
+            { text: "Tegen mezelf zeggen dat het gevoel weggaat", icon: "🧠" },
+            { text: "Een ademhalingsoefening", icon: "🫁" },
+            { text: "Tot 10 tellen", icon: "🔢" }
+        ],
+        standaardAfleiding: [
+            { text: "Wandelen", icon: "🚶‍♂️" },
+            { text: "Sporten", icon: "💪" },
+            { text: "Koken / iets klaarmaken", icon: "🍳" },
+            { text: "Muziek", icon: "🎧" }
+        ],
+        extraAfleiding: [
+            { text: "Iemand bellen / spreken / opzoeken", icon: "📞" },
+            { text: "Fietsen", icon: "🚴" },
+            { text: "Opruimen", icon: "🧹" },
+            { text: "Tv kijken / gamen", icon: "📺" }
+        ]
+    },
+    cocaine: {
+        vermijdingTitel: "Plaatsen & Situaties",
+        vermijdingSubtitel: "Selecteer welke situaties of personen je de komende periode beter even kunt mijden of waarin je extra waakzaam moet zijn.",
+        standaardVermijding: [
+            { text: "Uitgaan / kroeg / club / festival", icon: "🪩" },
+            { text: "Feestjes waar gebruikt wordt", icon: "🎉" },
+            { text: "Alcohol drinken (verlaagt de drempel)", icon: "🍺" },
+            { text: "Alleen thuis zijn", icon: "🛋️" }
+        ],
+        extraVermijding: [
+            { text: "Plaatsen waar mensen vaak gebruiken", icon: "📍" },
+            { text: "Afterparty's / laat in de nacht doorgaan", icon: "🌙" },
+            { text: "Salarisdag / contant geld op zak hebben", icon: "💶" },
+            { text: "Verveling of stress na werk", icon: "💼" }
+        ],
+        standaardHandelingen: [
+            { text: "Geen alcohol drinken op dit moment", icon: "🚫" },
+            { text: "Weggaan uit de situatie", icon: "🚪" },
+            { text: "Afleiding zoeken", icon: "🧩" },
+            { text: "Er met iemand over praten", icon: "💬" }
+        ],
+        extraHandelingen: [
+            { text: "Direct naar huis gaan voordat het laat wordt", icon: "🏠" },
+            { text: "Tegen mezelf zeggen dat het gevoel weggaat", icon: "🧠" },
+            { text: "Een ademhalingsoefening", icon: "🫁" },
+            { text: "Tot 10 tellen", icon: "🔢" }
+        ],
+        standaardAfleiding: [
+            { text: "Wandelen", icon: "🚶‍♂️" },
+            { text: "Sporten", icon: "💪" },
+            { text: "Douchen / koud water", icon: "🚿" },
+            { text: "Muziek", icon: "🎧" }
+        ],
+        extraAfleiding: [
+            { text: "Iemand bellen / spreken / opzoeken", icon: "📞" },
+            { text: "Koken / iets klaarmaken", icon: "🍳" },
+            { text: "Tv kijken / gamen", icon: "🎮" },
+            { text: "Opruimen", icon: "🧹" }
+        ]
+    },
+    gokken: {
+        vermijdingTitel: "Plaatsen, situaties & blokkades",
+        vermijdingSubtitel: "Selecteer welke situaties of personen je de komende periode beter even kunt mijden of waarin je extra waakzaam moet zijn.",
+        standaardVermijding: [
+            { text: "CRUKS (of andere gokblokkering) inschakelen", icon: "🔒" },
+            { text: "Gokwebsites en gokapps vermijden", icon: "🌐" },
+            { text: "Casino / gokautomaten / krasloten", icon: "🎰" },
+            { text: "Alleen thuis zijn", icon: "🛋️" }
+        ],
+        extraVermijding: [
+            { text: "Gokreclames in de mail blokkeren / uitschrijven", icon: "📧" },
+            { text: "Nieuws over beleggingen, aandelen of crypto", icon: "📈" },
+            { text: "Live sportwedstrijden kijken", icon: "⚽" },
+            { text: "Salarisdag / veel geld op de betaalrekening", icon: "💳" },
+            { text: "Verveling of geen plannen hebben", icon: "⏳" }
+        ],
+        standaardHandelingen: [
+            { text: "Telefoon of laptop direct wegleggen", icon: "📵" },
+            { text: "Weggaan uit de situatie", icon: "🚪" },
+            { text: "Afleiding zoeken", icon: "🧩" },
+            { text: "Er met iemand over praten", icon: "💬" }
+        ],
+        extraHandelingen: [
+            { text: "Website of app meteen sluiten", icon: "❌" },
+            { text: "Tegen mezelf zeggen dat het gevoel weggaat", icon: "🧠" },
+            { text: "Een ademhalingsoefening", icon: "🫁" },
+            { text: "Tot 10 tellen", icon: "🔢" }
+        ],
+        standaardAfleiding: [
+            { text: "Wandelen", icon: "🚶‍♂️" },
+            { text: "Sporten", icon: "💪" },
+            { text: "Koken / iets klaarmaken", icon: "🍳" },
+            { text: "Muziek", icon: "🎧" }
+        ],
+        extraAfleiding: [
+            { text: "Iemand bellen / spreken / opzoeken", icon: "📞" },
+            { text: "Douchen / koud water", icon: "🚿" },
+            { text: "Tv kijken", icon: "📺" },
+            { text: "Opruimen", icon: "🧹" }
+        ]
+    }
+};
+
 export function renderEersteStappen(container, onComplete) {
-    let currentPage = 1; 
-    
+    let currentPage = 1;
+
+    const actiefTraject = localStorage.getItem('actieveVerslaving') || 'alcohol';
+    const config = optiesPerTraject[actiefTraject] || optiesPerTraject.alcohol;
+
+    const keys = {
+        vermijding: `arminius_vermijding_items_${actiefTraject}`,
+        personen: `arminius_vermijd_personen_${actiefTraject}`,
+        handelingen: `arminius_handelingen_items_${actiefTraject}`,
+        afleiding: `arminius_afleiding_items_${actiefTraject}`
+    };
+
+    function loadArray(key, legacyAlcoholKey) {
+        try {
+            const raw = localStorage.getItem(key);
+            if (raw !== null) return JSON.parse(raw);
+            if (actiefTraject === 'alcohol' && legacyAlcoholKey) {
+                const legacy = localStorage.getItem(legacyAlcoholKey);
+                if (legacy !== null) return JSON.parse(legacy);
+            }
+        } catch (e) {}
+        return [];
+    }
+
     let isExtraVermijdingOpen = false;
     let isExtraHandelingenOpen = false;
     let isExtraAfleidingOpen = false;
-    
-    let savedVermijding = JSON.parse(localStorage.getItem('arminius_vermijding_items')) || [
-        "Feestjes waar alcohol gedronken wordt",
-        "In je eentje boodschappen doen",
-        "Café / terras / kroeg",
-        "Alleen thuis zijn"
-    ];
 
-    let savedPersonen = JSON.parse(localStorage.getItem('arminius_vermijd_personen')) || [];
+    let savedVermijding = loadArray(keys.vermijding, 'arminius_vermijding_items');
+    let savedPersonen = loadArray(keys.personen, 'arminius_vermijd_personen');
+    let savedHandelingen = loadArray(keys.handelingen, 'arminius_handelingen_items');
+    let savedAfleiding = loadArray(keys.afleiding, 'arminius_afleiding_items');
 
-    let savedHandelingen = JSON.parse(localStorage.getItem('arminius_handelingen_items')) || [
-        "Weggaan uit de situatie",
-        "Afleiding zoeken"
-    ];
-
-    let savedAfleiding = JSON.parse(localStorage.getItem('arminius_afleiding_items')) || [
-        "Wandelen",
-        "Sporten"
-    ];
-
-    const standaardVermijding = [
-        { text: "Feestjes waar alcohol gedronken wordt", icon: "🎉" },
-        { text: "In je eentje boodschappen doen", icon: "🛒" },
-        { text: "Café / terras / kroeg", icon: "🍺" },
-        { text: "Alleen thuis zijn", icon: "🛋" }
-    ];
-
-    const extraVermijding = [
-        { text: "Werk-/studieborrels", icon: "💼" },
-        { text: "Slijter / alcoholschrap in de supermarkt", icon: "🏬" },
-        { text: "Festivals / feesten", icon: "🎪" }
-    ];
-
-    const standaardHandelingen = [
-        { text: "Iets anders te drinken pakken: water / frisdrank / thee", icon: "🥤" },
-        { text: "Weggaan uit de situatie", icon: "🚪" },
-        { text: "Afleiding zoeken", icon: "🧩" },
-        { text: "Er met iemand over praten", icon: "💬" }
-    ];
-
-    const extraHandelingen = [
-        { text: "Tegen mezelf zeggen dat het gevoel weggaat", icon: "🧠" },
-        { text: "Een ademhalingsoefening", icon: "🫁" },
-        { text: "Tot 10 tellen", icon: "🔢" }
-    ];
-
-    const standaardAfleiding = [
-        { text: "Wandelen", icon: "🚶‍♂️" },
-        { text: "Sporten", icon: "💪" },
-        { text: "Telefoongebruik", icon: "📱" },
-        { text: "Muziek", icon: "🎧" }
-    ];
-
-    const extraAfleiding = [
-        { text: "Iemand bellen / spreken / opzoeken", icon: "📞" },
-        { text: "Tv kijken", icon: "📺" },
-        { text: "Gamen", icon: "🎮" },
-        { text: "Opruimen", icon: "🧹" }
-    ];
+    const {
+        vermijdingTitel,
+        vermijdingSubtitel,
+        standaardVermijding,
+        extraVermijding,
+        standaardHandelingen,
+        extraHandelingen,
+        standaardAfleiding,
+        extraAfleiding
+    } = config;
 
     // --- DE VASTE SCHIL MET PROGRESSIEBALK ---
     container.innerHTML = `
@@ -85,7 +226,6 @@ export function renderEersteStappen(container, onComplete) {
             progressWrapper.style.display = 'none';
         } else {
             progressWrapper.style.display = 'block';
-            // setTimeout zorgt ervoor dat de browser de transitie vloeiend animeert
             setTimeout(() => {
                 progressBar.style.width = percentage + '%';
             }, 50);
@@ -124,7 +264,7 @@ export function renderEersteStappen(container, onComplete) {
 
     function render(preserveScroll = false) {
         const scrollY = window.scrollY;
-        
+
         if (currentPage === 1) {
             updateProgress(33);
             renderIntroPage();
@@ -135,7 +275,7 @@ export function renderEersteStappen(container, onComplete) {
             updateProgress(100);
             renderPage2();
         } else {
-            updateProgress(999); // Verbergt de balk
+            updateProgress(999);
             renderCompletionPage();
         }
 
@@ -172,7 +312,7 @@ export function renderEersteStappen(container, onComplete) {
                 y: Math.random() * canvas.height - canvas.height,
                 size: Math.random() * 9 + 4,
                 color: colors[Math.floor(Math.random() * colors.length)],
-                speedY: Math.random() * 5 + 5, 
+                speedY: Math.random() * 5 + 5,
                 speedX: Math.random() * 6 - 3,
                 rotation: Math.random() * 360,
                 rotationSpeed: Math.random() * 12 - 6
@@ -228,19 +368,19 @@ export function renderEersteStappen(container, onComplete) {
                 </div>
 
                 <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px;">
-                    <div class="stagger-1 info-block" style="border-left-color: #3b82f6;">
+                    <div class="stagger-1 info-block" style="border-left-color: #3b82f6; margin-bottom: 0;">
                         <span style="font-size: 24px; display: block; margin-bottom: 8px;">🚧</span>
                         <p style="margin: 0; font-size: 15px; color: #334155; line-height: 1.6;">
                             <strong>Moeilijke situaties vermijden.</strong> In het begin is het enorm helpend om plekken te vermijden die zware trek bij je oproepen. Dit hoeft niet permanent te zijn, maar wél zolang jij je nog niet sterk genoeg voelt.
                         </p>
                     </div>
-                    <div class="stagger-2 info-block" style="border-left-color: #f59e0b;">
+                    <div class="stagger-2 info-block" style="border-left-color: #f59e0b; margin-bottom: 0;">
                         <span style="font-size: 24px; display: block; margin-bottom: 8px;">🛡️</span>
                         <p style="margin: 0; font-size: 15px; color: #334155; line-height: 1.6;">
                             <strong>Een actieplan.</strong> Je kunt natuurlijk niet élke situatie blijven vermijden. Daarom schrijven we ook concrete acties en vormen van afleiding op voor als je wél in de verleiding komt.
                         </p>
                     </div>
-                    <div class="stagger-3 info-block" style="border-left-color: #10b981;">
+                    <div class="stagger-3 info-block" style="border-left-color: #10b981; margin-bottom: 0;">
                         <span style="font-size: 24px; display: block; margin-bottom: 8px;">💪</span>
                         <p style="margin: 0; font-size: 15px; color: #334155; line-height: 1.6;">
                             <strong>Direct toepasbaar.</strong> Met dit concrete plan op zak sta je veel sterker in je schoenen tijdens deze cruciale eerste fase van je verandering.
@@ -248,7 +388,7 @@ export function renderEersteStappen(container, onComplete) {
                     </div>
                 </div>
 
-                <div class="stagger-4" style="display: flex; justify-content: flex-end;">
+                <div class="stagger-4 button-group" style="display: flex; justify-content: flex-end;">
                     <button type="button" id="start-module-btn" style="background-color: #2563eb; color: white; border: none; padding: 12px 28px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 15px;">
                         Doorgaan naar module &rarr;
                     </button>
@@ -281,7 +421,7 @@ export function renderEersteStappen(container, onComplete) {
                 .info-block { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
                 
                 .es-chip-group { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
-.es-chip {
+                .es-chip {
                     display: inline-flex; align-items: flex-start; gap: 8px; padding: 10px 14px; border-radius: 20px;
                     font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s;
                     border: 1px solid #cbd5e1; background: #ffffff; color: #334155; font-family: inherit;
@@ -292,8 +432,8 @@ export function renderEersteStappen(container, onComplete) {
                 .es-chip.selected-red { border: 1px solid #ef4444; background: #fef2f2; color: #b91c1c; font-weight: 600; box-shadow: 0 2px 4px rgba(239,68,68,0.1); }
 
                 .custom-input-wrapper { display: flex; gap: 10px; align-items: center; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 6px 6px 6px 16px; }
-                .custom-input-wrapper input { flex: 1; border: none; background: transparent; outline: none; font-size: 14px; color: #334155; font-family: inherit; }
-                .custom-input-wrapper .es-btn-add { background: #1e293b; color: white; border: none; padding: 10px 18px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 14px; transition: background 0.2s; }
+                .custom-input-wrapper input { flex: 1; min-width: 0; border: none; background: transparent; outline: none; font-size: 14px; color: #334155; font-family: inherit; }
+                .custom-input-wrapper .es-btn-add { background: #1e293b; color: white; border: none; padding: 10px 18px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 14px; transition: background 0.2s; flex-shrink: 0; }
                 .custom-input-wrapper .es-btn-add:hover { background: #334155; }
                 
                 .es-btn-more { background: none; border: none; color: #2563eb; font-weight: 600; cursor: pointer; padding: 0; font-size: 14px; margin-bottom: 20px; }
@@ -302,23 +442,23 @@ export function renderEersteStappen(container, onComplete) {
             <div class="eerste-stappen-container" style="max-width: 700px; margin: 0 auto; font-family: inherit;">
                 <div style="margin-bottom: 24px;">
                     <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #ef4444; text-transform: uppercase; letter-spacing: 0.5px;">Stap 1 van 2</span>
-                    <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Te vermijden risico's</h2>
-                    <p style="font-size: 14px; color: #64748b; margin-top: 6px;">Selecteer welke situaties of personen je de komende periode beter even kunt mijden.</p>
+                    <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Risico's en valkuilen</h2>
+                    <p style="font-size: 15px; color: #64748b; margin-top: 6px;">${escapeHtml(vermijdingSubtitel)}</p>
                 </div>
 
                 <div class="info-block stagger-1" style="border-left-color: #ef4444;">
                     <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
                         <span style="font-size: 24px;">🛑</span>
-                        <h3 style="font-size: 18px; color: #1e293b; margin: 0;">Plaatsen & Situaties</h3>
+                        <h3 style="font-size: 18px; color: #1e293b; margin: 0;">${escapeHtml(vermijdingTitel)}</h3>
                     </div>
                     
                     <div class="es-chip-group">
                         ${visibleVermijding.map(item => {
                             const isSelected = savedVermijding.includes(item.text);
                             return `
-                                <button type="button" class="es-chip pill-btn ${isSelected ? 'selected-red' : ''}" data-item="${item.text}">
+                                <button type="button" class="es-chip pill-btn ${isSelected ? 'selected-red' : ''}" data-item="${escapeHtml(item.text)}">
                                     <span>${item.icon}</span>
-                                    <span>${item.text}</span>
+                                    <span>${escapeHtml(item.text)}</span>
                                 </button>
                             `;
                         }).join('')}
@@ -329,9 +469,9 @@ export function renderEersteStappen(container, onComplete) {
                             ${hiddenVermijding.map(item => {
                                 const isSelected = savedVermijding.includes(item.text);
                                 return `
-                                    <button type="button" class="es-chip pill-btn ${isSelected ? 'selected-red' : ''}" data-item="${item.text}">
+                                    <button type="button" class="es-chip pill-btn ${isSelected ? 'selected-red' : ''}" data-item="${escapeHtml(item.text)}">
                                         <span>${item.icon}</span>
-                                        <span>${item.text}</span>
+                                        <span>${escapeHtml(item.text)}</span>
                                     </button>
                                 `;
                             }).join('')}
@@ -343,9 +483,9 @@ export function renderEersteStappen(container, onComplete) {
                     ` : ''}
 
                     ${customVermijdingItems.length > 0 ? `
-                        <div class="es-chip-group">
+                        <div class="es-chip-group custom-vermijding-group">
                             ${customVermijdingItems.map(item => `
-                                <button type="button" class="es-chip custom-pill selected-red" data-item="${item}" title="Klik om te verwijderen">
+                                <button type="button" class="es-chip custom-pill selected-red" data-item="${escapeHtml(item)}" title="Klik om te verwijderen">
                                     <span>✏️</span>
                                     <span>${escapeHtml(item)}</span>
                                 </button>
@@ -367,9 +507,9 @@ export function renderEersteStappen(container, onComplete) {
                     <p style="font-size: 14px; color: #64748b; margin-bottom: 16px;">Welke personen (bijv. oude vrienden of collega's) vormen voor jou op dit moment nog een te groot risico?</p>
 
                     ${savedPersonen.length > 0 ? `
-                        <div class="es-chip-group">
+                        <div class="es-chip-group custom-personen-group">
                             ${savedPersonen.map(persoon => `
-                                <button type="button" class="es-chip pill-persoon-btn selected-red" data-persoon="${persoon}" title="Klik om te verwijderen">
+                                <button type="button" class="es-chip pill-persoon-btn selected-red" data-persoon="${escapeHtml(persoon)}" title="Klik om te verwijderen">
                                     <span>👤</span>
                                     <span>${escapeHtml(persoon)}</span>
                                 </button>
@@ -383,7 +523,7 @@ export function renderEersteStappen(container, onComplete) {
                     </div>
                 </div>
 
-                <div class="stagger-3" style="display: flex; justify-content: space-between; margin-top: 24px;">
+                <div class="stagger-3 button-group" style="display: flex; justify-content: space-between; margin-top: 24px;">
                     <button type="button" id="prev-intro-btn" style="background-color: #64748b; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">
                         &larr; Terug
                     </button>
@@ -410,7 +550,7 @@ export function renderEersteStappen(container, onComplete) {
             });
         }
 
-pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
+        pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
             btn.addEventListener('click', () => {
                 const item = btn.getAttribute('data-item');
                 const idx = savedVermijding.indexOf(item);
@@ -419,7 +559,7 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
                 } else {
                     savedVermijding.push(item);
                 }
-                localStorage.setItem('arminius_vermijding_items', JSON.stringify(savedVermijding));
+                localStorage.setItem(keys.vermijding, JSON.stringify(savedVermijding));
                 btn.classList.toggle('selected-red');
             });
         });
@@ -428,8 +568,8 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
             btn.addEventListener('click', () => {
                 const item = btn.getAttribute('data-item');
                 savedVermijding = savedVermijding.filter(i => i !== item);
-                localStorage.setItem('arminius_vermijding_items', JSON.stringify(savedVermijding));
-                render(true);
+                localStorage.setItem(keys.vermijding, JSON.stringify(savedVermijding));
+                btn.remove();
             });
         });
 
@@ -439,8 +579,31 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
             const val = customInput.value.trim();
             if (val && !savedVermijding.includes(val)) {
                 savedVermijding.push(val);
-                localStorage.setItem('arminius_vermijding_items', JSON.stringify(savedVermijding));
-                render(true);
+                localStorage.setItem(keys.vermijding, JSON.stringify(savedVermijding));
+
+                const infoBlock = addBtn.closest('.info-block');
+                const wrapper = infoBlock.querySelector('.custom-input-wrapper');
+                let customGroup = infoBlock.querySelector('.custom-vermijding-group');
+                if (!customGroup) {
+                    customGroup = document.createElement('div');
+                    customGroup.className = 'es-chip-group custom-vermijding-group';
+                    infoBlock.insertBefore(customGroup, wrapper);
+                }
+
+                const newBtn = document.createElement('button');
+                newBtn.type = 'button';
+                newBtn.className = 'es-chip custom-pill selected-red';
+                newBtn.setAttribute('data-item', val);
+                newBtn.title = 'Klik om te verwijderen';
+                newBtn.innerHTML = `<span>✏️</span><span>${escapeHtml(val)}</span>`;
+                newBtn.addEventListener('click', () => {
+                    savedVermijding = savedVermijding.filter(i => i !== val);
+                    localStorage.setItem(keys.vermijding, JSON.stringify(savedVermijding));
+                    newBtn.remove();
+                });
+                customGroup.appendChild(newBtn);
+                customInput.value = '';
+                requestAnimationFrame(fitMultilineChips);
             }
         };
         addBtn.addEventListener('click', handleAddSituatie);
@@ -452,8 +615,8 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
             btn.addEventListener('click', () => {
                 const persoon = btn.getAttribute('data-persoon');
                 savedPersonen = savedPersonen.filter(p => p !== persoon);
-                localStorage.setItem('arminius_vermijd_personen', JSON.stringify(savedPersonen));
-                render(true);
+                localStorage.setItem(keys.personen, JSON.stringify(savedPersonen));
+                btn.remove();
             });
         });
 
@@ -463,8 +626,31 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
             const val = persoonInput.value.trim();
             if (val && !savedPersonen.includes(val)) {
                 savedPersonen.push(val);
-                localStorage.setItem('arminius_vermijd_personen', JSON.stringify(savedPersonen));
-                render(true);
+                localStorage.setItem(keys.personen, JSON.stringify(savedPersonen));
+
+                const infoBlock = addPersoonBtn.closest('.info-block');
+                const wrapper = infoBlock.querySelector('.custom-input-wrapper');
+                let customGroup = infoBlock.querySelector('.custom-personen-group');
+                if (!customGroup) {
+                    customGroup = document.createElement('div');
+                    customGroup.className = 'es-chip-group custom-personen-group';
+                    infoBlock.insertBefore(customGroup, wrapper);
+                }
+
+                const newBtn = document.createElement('button');
+                newBtn.type = 'button';
+                newBtn.className = 'es-chip pill-persoon-btn selected-red';
+                newBtn.setAttribute('data-persoon', val);
+                newBtn.title = 'Klik om te verwijderen';
+                newBtn.innerHTML = `<span>👤</span><span>${escapeHtml(val)}</span>`;
+                newBtn.addEventListener('click', () => {
+                    savedPersonen = savedPersonen.filter(p => p !== val);
+                    localStorage.setItem(keys.personen, JSON.stringify(savedPersonen));
+                    newBtn.remove();
+                });
+                customGroup.appendChild(newBtn);
+                persoonInput.value = '';
+                requestAnimationFrame(fitMultilineChips);
             }
         };
         addPersoonBtn.addEventListener('click', handleAddPersoon);
@@ -523,8 +709,8 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
                 .es-chip.selected-purple { border: 1px solid #8b5cf6; background: #f5f3ff; color: #6d28d9; font-weight: 600; box-shadow: 0 2px 4px rgba(139,92,246,0.1); }
 
                 .custom-input-wrapper { display: flex; gap: 10px; align-items: center; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 6px 6px 6px 16px; }
-                .custom-input-wrapper input { flex: 1; border: none; background: transparent; outline: none; font-size: 14px; color: #334155; font-family: inherit; }
-                .custom-input-wrapper .es-btn-add { background: #1e293b; color: white; border: none; padding: 10px 18px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 14px; transition: background 0.2s; }
+                .custom-input-wrapper input { flex: 1; min-width: 0; border: none; background: transparent; outline: none; font-size: 14px; color: #334155; font-family: inherit; }
+                .custom-input-wrapper .es-btn-add { background: #1e293b; color: white; border: none; padding: 10px 18px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 14px; transition: background 0.2s; flex-shrink: 0; }
                 .custom-input-wrapper .es-btn-add:hover { background: #334155; }
                 
                 .es-btn-more { background: none; border: none; color: #2563eb; font-weight: 600; cursor: pointer; padding: 0; font-size: 14px; margin-bottom: 20px; }
@@ -534,7 +720,7 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
                 <div style="margin-bottom: 24px;">
                     <span class="step-indicator" style="font-size: 14px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 0.5px;">Stap 2 van 2</span>
                     <h2 style="font-size: 24px; color: #1e293b; margin-top: 4px;">Handelingen in risicosituaties</h2>
-                    <p style="font-size: 14px; color: #64748b; margin-top: 6px;">Wat ga je concreet doen op een moeilijk moment als je onverwacht in de verleiding komt?</p>
+                    <p style="font-size: 15px; color: #64748b; margin-top: 6px;">Wat ga je concreet doen op een moeilijk moment als je onverwacht in de verleiding komt?</p>
                 </div>
 
                 <div class="info-block stagger-1" style="border-left-color: #10b981;">
@@ -547,9 +733,9 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
                         ${visibleHandelingen.map(item => {
                             const isSelected = savedHandelingen.includes(item.text);
                             return `
-                                <button type="button" class="es-chip pill-handeling-btn ${isSelected ? 'selected-green' : ''}" data-item="${item.text}">
+                                <button type="button" class="es-chip pill-handeling-btn ${isSelected ? 'selected-green' : ''}" data-item="${escapeHtml(item.text)}">
                                     <span>${item.icon}</span>
-                                    <span>${item.text}</span>
+                                    <span>${escapeHtml(item.text)}</span>
                                 </button>
                             `;
                         }).join('')}
@@ -560,9 +746,9 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
                             ${hiddenHandelingen.map(item => {
                                 const isSelected = savedHandelingen.includes(item.text);
                                 return `
-                                    <button type="button" class="es-chip pill-handeling-btn ${isSelected ? 'selected-green' : ''}" data-item="${item.text}">
+                                    <button type="button" class="es-chip pill-handeling-btn ${isSelected ? 'selected-green' : ''}" data-item="${escapeHtml(item.text)}">
                                         <span>${item.icon}</span>
-                                        <span>${item.text}</span>
+                                        <span>${escapeHtml(item.text)}</span>
                                     </button>
                                 `;
                             }).join('')}
@@ -574,9 +760,9 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
                     ` : ''}
 
                     ${customHandelingItems.length > 0 ? `
-                        <div class="es-chip-group">
+                        <div class="es-chip-group custom-handelingen-group">
                             ${customHandelingItems.map(item => `
-                                <button type="button" class="es-chip custom-pill-handeling selected-green" data-item="${item}" title="Klik om te verwijderen">
+                                <button type="button" class="es-chip custom-pill-handeling selected-green" data-item="${escapeHtml(item)}" title="Klik om te verwijderen">
                                     <span>✏️</span>
                                     <span>${escapeHtml(item)}</span>
                                 </button>
@@ -601,9 +787,9 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
                         ${visibleAfleiding.map(item => {
                             const isSelected = savedAfleiding.includes(item.text);
                             return `
-                                <button type="button" class="es-chip pill-afleiding-btn ${isSelected ? 'selected-purple' : ''}" data-item="${item.text}">
+                                <button type="button" class="es-chip pill-afleiding-btn ${isSelected ? 'selected-purple' : ''}" data-item="${escapeHtml(item.text)}">
                                     <span>${item.icon}</span>
-                                    <span>${item.text}</span>
+                                    <span>${escapeHtml(item.text)}</span>
                                 </button>
                             `;
                         }).join('')}
@@ -614,9 +800,9 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
                             ${hiddenAfleiding.map(item => {
                                 const isSelected = savedAfleiding.includes(item.text);
                                 return `
-                                    <button type="button" class="es-chip pill-afleiding-btn ${isSelected ? 'selected-purple' : ''}" data-item="${item.text}">
+                                    <button type="button" class="es-chip pill-afleiding-btn ${isSelected ? 'selected-purple' : ''}" data-item="${escapeHtml(item.text)}">
                                         <span>${item.icon}</span>
-                                        <span>${item.text}</span>
+                                        <span>${escapeHtml(item.text)}</span>
                                     </button>
                                 `;
                             }).join('')}
@@ -628,10 +814,10 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
                     ` : ''}
 
                     ${customAfleidingItems.length > 0 ? `
-                        <div class="es-chip-group">
+                        <div class="es-chip-group custom-afleiding-group">
                             ${customAfleidingItems.map(item => `
-                                <button type="button" class="es-chip custom-pill-afleiding selected-purple" data-item="${item}" title="Klik om te verwijderen">
-                                    <span>✏</span>
+                                <button type="button" class="es-chip custom-pill-afleiding selected-purple" data-item="${escapeHtml(item)}" title="Klik om te verwijderen">
+                                    <span>✏️</span>
                                     <span>${escapeHtml(item)}</span>
                                 </button>
                             `).join('')}
@@ -644,7 +830,7 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
                     </div>
                 </div>
 
-                <div class="stagger-3" style="display: flex; justify-content: space-between; margin-top: 24px;">
+                <div class="stagger-3 button-group" style="display: flex; justify-content: space-between; margin-top: 24px;">
                     <button type="button" id="prev-page-btn" style="background-color: #64748b; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">
                         &larr; Vorige
                     </button>
@@ -680,7 +866,7 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
                 } else {
                     savedHandelingen.push(item);
                 }
-                localStorage.setItem('arminius_handelingen_items', JSON.stringify(savedHandelingen));
+                localStorage.setItem(keys.handelingen, JSON.stringify(savedHandelingen));
                 btn.classList.toggle('selected-green');
             });
         });
@@ -689,7 +875,7 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
             btn.addEventListener('click', () => {
                 const item = btn.getAttribute('data-item');
                 savedHandelingen = savedHandelingen.filter(i => i !== item);
-                localStorage.setItem('arminius_handelingen_items', JSON.stringify(savedHandelingen));
+                localStorage.setItem(keys.handelingen, JSON.stringify(savedHandelingen));
                 btn.remove();
             });
         });
@@ -701,7 +887,7 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
             const val = customHandelingInput.value.trim();
             if (val && !savedHandelingen.includes(val)) {
                 savedHandelingen.push(val);
-                localStorage.setItem('arminius_handelingen_items', JSON.stringify(savedHandelingen));
+                localStorage.setItem(keys.handelingen, JSON.stringify(savedHandelingen));
 
                 const infoBlock = addHandelingBtn.closest('.info-block');
                 const wrapper = infoBlock.querySelector('.custom-input-wrapper');
@@ -720,7 +906,7 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
                 newBtn.innerHTML = `<span>✏️</span><span>${escapeHtml(val)}</span>`;
                 newBtn.addEventListener('click', () => {
                     savedHandelingen = savedHandelingen.filter(i => i !== val);
-                    localStorage.setItem('arminius_handelingen_items', JSON.stringify(savedHandelingen));
+                    localStorage.setItem(keys.handelingen, JSON.stringify(savedHandelingen));
                     newBtn.remove();
                 });
                 customGroup.appendChild(newBtn);
@@ -755,7 +941,7 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
                 } else {
                     savedAfleiding.push(item);
                 }
-                localStorage.setItem('arminius_afleiding_items', JSON.stringify(savedAfleiding));
+                localStorage.setItem(keys.afleiding, JSON.stringify(savedAfleiding));
                 btn.classList.toggle('selected-purple');
             });
         });
@@ -764,7 +950,7 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
             btn.addEventListener('click', () => {
                 const item = btn.getAttribute('data-item');
                 savedAfleiding = savedAfleiding.filter(i => i !== item);
-                localStorage.setItem('arminius_afleiding_items', JSON.stringify(savedAfleiding));
+                localStorage.setItem(keys.afleiding, JSON.stringify(savedAfleiding));
                 btn.remove();
             });
         });
@@ -776,7 +962,7 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
             const val = customAfleidingInput.value.trim();
             if (val && !savedAfleiding.includes(val)) {
                 savedAfleiding.push(val);
-                localStorage.setItem('arminius_afleiding_items', JSON.stringify(savedAfleiding));
+                localStorage.setItem(keys.afleiding, JSON.stringify(savedAfleiding));
 
                 const infoBlock = addAfleidingBtn.closest('.info-block');
                 const wrapper = infoBlock.querySelector('.custom-input-wrapper');
@@ -795,7 +981,7 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
                 newBtn.innerHTML = `<span>✏️</span><span>${escapeHtml(val)}</span>`;
                 newBtn.addEventListener('click', () => {
                     savedAfleiding = savedAfleiding.filter(i => i !== val);
-                    localStorage.setItem('arminius_afleiding_items', JSON.stringify(savedAfleiding));
+                    localStorage.setItem(keys.afleiding, JSON.stringify(savedAfleiding));
                     newBtn.remove();
                 });
                 customGroup.appendChild(newBtn);
@@ -848,7 +1034,8 @@ pageContainer.querySelectorAll('.pill-btn:not(.custom-pill)').forEach(btn => {
     }
 
     function escapeHtml(str) {
-        return str.replace(/[&<>'"]/g, 
+        if (!str) return '';
+        return str.replace(/[&<>'"]/g,
             tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
         );
     }

@@ -10,6 +10,13 @@ function loadCSS() {
     }
 }
 
+function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/[&<>'"]/g,
+        tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+    );
+}
+
 // --- FUNCTIE VOOR CONFETTI ANIMATIE ---
 function triggerConfetti(onFinish) {
     const canvas = document.createElement('canvas');
@@ -72,6 +79,187 @@ function triggerConfetti(onFinish) {
     update();
 }
 
+const triggersPerTraject = {
+    alcohol: {
+        momenten: [
+            '🍻 Vrijdagmiddag',
+            '🌙 In de avond',
+            '🎉 In het weekend',
+            '💼 Na werktijd',
+            '🍳 Tijdens het koken',
+            '🍽️ Bij het eten',
+            '💢 Na een ruzie',
+            '🌅 Vlak na het opstaan'
+        ],
+        omgeving: [
+            '🍻 De horeca / kroeg',
+            '🎈 Een feestje',
+            '🏠 Alleen thuis zijn',
+            '🛒 De supermarkt',
+            '👥 Bepaalde vrienden',
+            '🍽️ Restaurant',
+            '🥂 Werkborrel',
+            '👔 Collega\'s',
+            '✈️ Vakantie'
+        ],
+        gevoelens: [
+            '😫 Stress',
+            '🥱 Verveling',
+            '👤 Eenzaamheid',
+            '🌪️ Onrust',
+            '🌧️ Somberheid',
+            '😁 Blijdschap',
+            '😡 Boosheid',
+            '😴 Vermoeidheid',
+            '🛀 Ontspanning',
+            '🍽️ Honger'
+        ],
+        afleiding: [
+            '🚶 Wandelen',
+            '💪 Sporten',
+            '📱 Telefoongebruik',
+            '🎧 Muziek',
+            '📞 Iemand bellen / spreken / opzoeken',
+            '📺 Tv kijken',
+            '🎮 Gamen',
+            '🧹 Opruimen'
+        ]
+    },
+    cannabis: {
+        momenten: [
+            '🌙 In de avond',
+            '🛌 Voor het slapen',
+            '💼 Na werktijd',
+            '🎉 In het weekend',
+            '🍽️ Na het eten',
+            '🌅 Vlak na het opstaan',
+            '🎮 Tijdens het gamen / tv kijken',
+            '📅 Vrijdagmiddag',
+            '💢 Na een ruzie'
+        ],
+        omgeving: [
+            '🏠 Alleen thuis zijn',
+            '🏪 De coffeeshop',
+            '👥 Bepaalde vrienden',
+            '🎈 Een feestje',
+            '📍 Bekende blowplekken',
+            '🛋️ Op de bank',
+            '👔 Collega\'s',
+            '✈️ Vakantie'
+        ],
+        gevoelens: [
+            '🥱 Verveling',
+            '😫 Stress',
+            '🌪️ Onrust',
+            '🌧️ Somberheid',
+            '👤 Eenzaamheid',
+            '🛌 Slaapproblemen',
+            '😴 Vermoeidheid',
+            '😡 Boosheid',
+            '🛀 Ontspanning',
+            '😁 Blijdschap'
+        ],
+        afleiding: [
+            '🚶 Wandelen',
+            '💪 Sporten',
+            '🍳 Koken / iets klaarmaken',
+            '🎧 Muziek',
+            '📞 Iemand bellen / spreken / opzoeken',
+            '🚴 Fietsen',
+            '🧹 Opruimen',
+            '📺 Tv kijken / gamen'
+        ]
+    },
+    cocaine: {
+        momenten: [
+            '🎉 In het weekend',
+            '🍺 Na het drinken van alcohol',
+            '🌙 Laat in de avond / nacht',
+            '📅 Vrijdagmiddag',
+            '💶 Salarisdag',
+            '💼 Na een drukke werkweek',
+            '🪩 Tijdens een afterparty',
+            '💢 Na een ruzie'
+        ],
+        omgeving: [
+            '🍻 De horeca / kroeg / club',
+            '🎈 Een feestje',
+            '👥 Bepaalde vrienden',
+            '🏠 Alleen thuis zijn',
+            '🎪 Festival',
+            '📍 Plekken waar gebruikt wordt',
+            '🥂 Werkborrel / collega\'s',
+            '✈️ Vakantie'
+        ],
+        gevoelens: [
+            '⚡ Opgewonden / zin in feest',
+            '😫 Stress',
+            '🥱 Verveling',
+            '🌧️ Somberheid',
+            '👤 Eenzaamheid',
+            '🌪️ Onrust',
+            '😔 Onzekerheid',
+            '😡 Boosheid',
+            '😴 Vermoeidheid',
+            '😁 Blijdschap'
+        ],
+        afleiding: [
+            '🚶 Wandelen',
+            '💪 Sporten',
+            '🚿 Douchen / koud water',
+            '🎧 Muziek',
+            '📞 Iemand bellen / spreken / opzoeken',
+            '🍳 Koken / iets klaarmaken',
+            '🎮 Gamen / tv kijken',
+            '🧹 Opruimen'
+        ]
+    },
+    gokken: {
+        momenten: [
+            '🌙 \'s Avonds op telefoon / laptop',
+            '💶 Salarisdag / geld op rekening',
+            '⚽ Tijdens live sportwedstrijden',
+            '🎉 In het weekend',
+            '📉 Na een verlies (terug willen winnen)',
+            '💼 Na werktijd',
+            '📅 Vrijdagmiddag',
+            '💢 Na een ruzie'
+        ],
+        omgeving: [
+            '🏠 Alleen thuis zijn',
+            '🌐 Gokwebsites & apps',
+            '🎰 Casino / speelhal / gokkast',
+            '📈 Beurs- / cryptonieuws',
+            '📧 Gokreclames / mails',
+            '👥 Bepaalde vrienden',
+            '🍻 De kroeg (gokkast)',
+            '👔 Collega\'s'
+        ],
+        gevoelens: [
+            '🥱 Verveling',
+            '⚡ Opgewonden / kick zoeken',
+            '😫 Stress',
+            '🌪️ Onrust',
+            '💸 Geldzorgen / financiële druk',
+            '🌧️ Somberheid',
+            '👤 Eenzaamheid',
+            '😡 Boosheid',
+            '😴 Vermoeidheid',
+            '😁 Blijdschap'
+        ],
+        afleiding: [
+            '🚶 Wandelen',
+            '💪 Sporten',
+            '🍳 Koken / iets klaarmaken',
+            '🎧 Muziek',
+            '📞 Iemand bellen / spreken / opzoeken',
+            '🚿 Douchen / koud water',
+            '📺 Tv kijken',
+            '🧹 Opruimen'
+        ]
+    }
+};
+
 export function renderRisicosituaties(containerElement, onComplete) {
     loadCSS();
     window.scrollTo(0, 0);
@@ -81,7 +269,8 @@ export function renderRisicosituaties(containerElement, onComplete) {
 
     const actiefTraject = localStorage.getItem('actieveVerslaving') || 'alcohol';
     const storageKey = `arminius_risicosituaties_data_${actiefTraject}`;
-    
+    const trajectOpties = triggersPerTraject[actiefTraject] || triggersPerTraject.alcohol;
+
     let actieWerkwoord = 'gebruiken';
     if (actiefTraject === 'alcohol') actieWerkwoord = 'drinken';
     else if (actiefTraject === 'cannabis') actieWerkwoord = 'blowen';
@@ -93,7 +282,7 @@ export function renderRisicosituaties(containerElement, onComplete) {
             icon: '⏱️',
             titel: 'Momenten & Gewoontes',
             desc: 'De tijd van de dag of ingesleten routines die standaard gekoppeld zijn aan de behoefte.',
-            opties: ['🍻 Vrijdagmiddag', '🌙 In de avond', '🎉 In het weekend', '💢 Na een ruzie', '🌅 Vlak na het opstaan', '💼 Na werktijd'],
+            opties: trajectOpties.momenten,
             color: 'info-block-border-blue'
         },
         {
@@ -101,7 +290,7 @@ export function renderRisicosituaties(containerElement, onComplete) {
             icon: '📍',
             titel: 'Mensen & Plaatsen',
             desc: `Specifieke omgevingen of het gezelschap van bepaalde mensen kunnen sterke associaties met ${actieWerkwoord} oproepen.`,
-            opties: ['👥 Bepaalde vrienden', '🏠 Alleen thuis zijn', '🎈 Een feestje', '🍻 De horeca/kroeg', '🛒 De supermarkt', '👔 Collega\'s', '✈️ Vakantie'],
+            opties: trajectOpties.omgeving,
             color: 'info-block-border-orange'
         },
         {
@@ -109,36 +298,22 @@ export function renderRisicosituaties(containerElement, onComplete) {
             icon: '🎭',
             titel: 'Gevoelens (Interne triggers)',
             desc: 'Soms triggert een specifieke emotie of lichamelijke staat direct de trek.',
-            opties: ['😫 Stress', '👤 Eenzaamheid', '🥱 Verveling', '🌧️ Somberheid', '🌪️ Onrust', '😁 Blijdschap', '🍽️ Honger', '😡 Boosheid', '😴 Vermoeidheid', '🛀 Ontspanning'],
+            opties: trajectOpties.gevoelens,
             color: 'info-block-border-purple'
         }
     ];
 
-    if (actiefTraject === 'alcohol') {
-        categorieen.find(c => c.id === 'omgeving').opties.push('🍽️ Restaurant', '🥂 Werkborrel');
-        categorieen.find(c => c.id === 'momenten').opties.push('🍳 Tijdens het koken');
-    } else if (actiefTraject === 'cannabis') {
-        categorieen.find(c => c.id === 'momenten').opties.push('🛌 Voor het slapen', '🍽️ Na het eten');
-    } else if (actiefTraject === 'cocaine') {
-        categorieen.find(c => c.id === 'gevoelens').opties.push('⚡ Opgewonden');
-        categorieen.find(c => c.id === 'omgeving').opties.push('🎪 Festival');
-    } else if (actiefTraject === 'gokken') {
-        categorieen.find(c => c.id === 'gevoelens').opties.push('⚡ Opgewonden');
-    }
-
-    const afleidingActies = [
-        '🚶 Wandelen',
-        '💪 Sporten',
-        '📱 Telefoongebruik',
-        '🎧 Muziek',
-        '📞 Iemand bellen / spreken / opzoeken',
-        '📺 Tv kijken',
-        '🎮 Gamen',
-        '🧹 Opruimen'
-    ];
+    const afleidingActies = trajectOpties.afleiding;
 
     function getPrioritizedActions(situatie, traject) {
         const actieDrinken = '🥤 Iets anders te drinken pakken (water/fris)';
+        const actieFrisseLucht = '🌬️ Even naar buiten voor frisse lucht';
+        const actieHanden = '🪥 Iets met mijn handen doen / tandenpoetsen';
+        const actieGeenAlcohol = '🚫 Geen alcohol drinken op dit moment';
+        const actieNaarHuis = '🏠 Direct naar huis gaan';
+        const actieTelefoonWeg = '📵 Telefoon of laptop direct wegleggen';
+        const actieAppSluiten = '❌ Website of app meteen sluiten';
+
         const actieWeggaan = '🚪 Weggaan uit de situatie';
         const actieAfleiding = '🧩 Afleiding zoeken';
         const actiePraten = '💬 Er met iemand over praten';
@@ -148,33 +323,46 @@ export function renderRisicosituaties(containerElement, onComplete) {
 
         let baseActions = [actieAfleiding, actiePraten, actieAccepteren, actieAdem, actieTellen];
         if (traject === 'alcohol') baseActions.unshift(actieDrinken);
+        else if (traject === 'cannabis') baseActions.unshift(actieFrisseLucht, actieHanden);
+        else if (traject === 'cocaine') baseActions.unshift(actieGeenAlcohol, actieNaarHuis);
+        else if (traject === 'gokken') baseActions.unshift(actieTelefoonWeg, actieAppSluiten);
 
         const sit = situatie.toLowerCase();
         let priority = [];
-        
-        const weggaanSituaties = ['ruzie', 'supermarkt', 'horeca', 'kroeg', 'werkborrel', 'onrust', 'boosheid', 'stress', 'feest', 'festival', 'vrienden'];
+
+        const weggaanSituaties = [
+            'ruzie', 'supermarkt', 'horeca', 'kroeg', 'club', 'werkborrel',
+            'onrust', 'boosheid', 'stress', 'feest', 'festival', 'vrienden',
+            'coffeeshop', 'blowplek', 'afterparty', 'gebruikt wordt', 'casino', 'speelhal', 'gokkast'
+        ];
         const weggaanIsLogisch = weggaanSituaties.some(kw => sit.includes(kw));
 
         if (weggaanIsLogisch) {
             priority.push(actieWeggaan);
         }
 
-        if (sit.includes('restaurant') || sit.includes('koken')) {
+        if (traject === 'gokken' && (sit.includes('telefoon') || sit.includes('website') || sit.includes('app') || sit.includes('sport') || sit.includes('beurs') || sit.includes('reclame') || sit.includes('salaris') || sit.includes('verlies'))) {
+            priority.push(actieTelefoonWeg, actieAppSluiten, actieAfleiding);
+        } else if (traject === 'cocaine' && (sit.includes('alcohol') || sit.includes('kroeg') || sit.includes('club') || sit.includes('feest') || sit.includes('festival') || sit.includes('afterparty') || sit.includes('borrel'))) {
+            priority.push(actieGeenAlcohol, actieNaarHuis, actiePraten);
+        } else if (traject === 'cannabis' && (sit.includes('avond') || sit.includes('slapen') || sit.includes('bank') || sit.includes('eten') || sit.includes('gamen'))) {
+            priority.push(actieFrisseLucht, actieHanden, actieAfleiding);
+        } else if (sit.includes('restaurant') || sit.includes('koken')) {
             if (traject === 'alcohol') priority.push(actieDrinken);
             priority.push(actieTellen, actieAfleiding);
-        } 
-        else if (sit.includes('alleen') || sit.includes('avond') || sit.includes('verveling') || sit.includes('eenzaam') || sit.includes('weekend') || sit.includes('slapen')) {
+        } else if (sit.includes('alleen') || sit.includes('avond') || sit.includes('verveling') || sit.includes('eenzaam') || sit.includes('weekend') || sit.includes('slapen')) {
+            if (traject === 'gokken') priority.push(actieTelefoonWeg);
             priority.push(actieAfleiding, actieAccepteren, actiePraten);
-        }
-        else if (sit.includes('ontspanning') || sit.includes('blijdschap') || sit.includes('vakantie')) {
+        } else if (sit.includes('ontspanning') || sit.includes('blijdschap') || sit.includes('vakantie')) {
             if (traject === 'alcohol') priority.push(actieDrinken);
             priority.push(actieAccepteren, actieAfleiding);
-        }
-        else if (sit.includes('stress') || sit.includes('boos') || sit.includes('ruzie') || sit.includes('onrust')) {
-            priority.push(actieAdem, actieTellen);
-        }
-        else {
+        } else if (sit.includes('stress') || sit.includes('boos') || sit.includes('ruzie') || sit.includes('onrust') || sit.includes('geldzorgen')) {
+            priority.push(actieAdem, actieTellen, actiePraten);
+        } else {
             if (traject === 'alcohol') priority.push(actieDrinken);
+            else if (traject === 'cannabis') priority.push(actieFrisseLucht);
+            else if (traject === 'cocaine') priority.push(actieGeenAlcohol);
+            else if (traject === 'gokken') priority.push(actieTelefoonWeg);
             priority.push(actieAfleiding, actiePraten);
         }
 
@@ -241,14 +429,17 @@ export function renderRisicosituaties(containerElement, onComplete) {
                         </p>
                     </div>
 
-${categorieen.map((cat, idx) => {
+                    ${categorieen.map((cat, idx) => {
                         const customOpties = data[cat.id].filter(optie => !cat.opties.includes(optie));
                         const allItems = [
                             ...cat.opties.map(optie => ({ val: optie, label: optie, isSelected: data[cat.id].includes(optie) })),
                             ...customOpties.map(optie => ({ val: optie, label: `✏️ ${optie}`, isSelected: true }))
                         ];
-                        const visibleItems = allItems.slice(0, 4);
-                        const hiddenItems = allItems.slice(4);
+                        const visibleItems = [
+                            ...allItems.slice(0, 4),
+                            ...allItems.slice(4).filter(item => item.isSelected)
+                        ];
+                        const hiddenItems = allItems.slice(4).filter(item => !item.isSelected);
 
                         return `
                         <div class="info-block stagger-${idx + 1} ${cat.color}" data-cat="${cat.id}">
@@ -259,11 +450,11 @@ ${categorieen.map((cat, idx) => {
                             <p style="font-size: 14px; color: #64748b; margin-bottom: 16px;">${cat.desc}</p>
                             
                             <div class="chip-group risico-category" data-cat="${cat.id}">
-                                ${visibleItems.map(item => `<div class="risico-chip ${item.isSelected ? 'selected' : ''}" data-value="${item.val}">${item.label}</div>`).join('')}
+                                ${visibleItems.map(item => `<div class="risico-chip ${item.isSelected ? 'selected' : ''}" data-value="${escapeHtml(item.val)}">${escapeHtml(item.label)}</div>`).join('')}
 
                                 ${hiddenItems.length > 0 ? `
                                     <div class="chip-group more-risico-${cat.id}" style="display: none; margin: 0; width: 100%;">
-                                        ${hiddenItems.map(item => `<div class="risico-chip ${item.isSelected ? 'selected' : ''}" data-value="${item.val}">${item.label}</div>`).join('')}
+                                        ${hiddenItems.map(item => `<div class="risico-chip ${item.isSelected ? 'selected' : ''}" data-value="${escapeHtml(item.val)}">${escapeHtml(item.label)}</div>`).join('')}
                                     </div>
                                 ` : ''}
                             </div>
@@ -274,14 +465,14 @@ ${categorieen.map((cat, idx) => {
 
                             <div class="custom-input-wrapper">
                                 <input type="text" class="custom-risico-input input-custom-${cat.id}" placeholder="+ Voeg eigen situatie toe...">
-                                <button class="btn-add-custom btn-add-cat" data-target="${cat.id}">Toevoegen</button>
+                                <button type="button" class="btn-add-custom btn-add-cat" data-target="${cat.id}">Toevoegen</button>
                             </div>
                         </div>
                         `;
                     }).join('')}
 
                     <div class="stagger-4 button-group" style="display: flex; justify-content: space-between; margin-top: 32px;">
-                        <button class="btn-secondary prev-step" data-prev="step-0-intro" style="background-color: #64748b; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">&larr; Vorige</button>
+                        <button type="button" class="btn-secondary prev-step" data-prev="step-0-intro" style="background-color: #64748b; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">&larr; Vorige</button>
                         <button type="button" class="btn-primary" id="btn-to-step2" style="background-color: #2563eb; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">Volgende: Jouw Top 3 &rarr;</button>
                     </div>
                 </section>
@@ -325,7 +516,6 @@ ${categorieen.map((cat, idx) => {
                         </ul>
                     </div>
 
-                    <!-- FIX: De class 'button-group' is hier nu toegevoegd! -->
                     <div class="stagger-4 button-group" style="display: flex; justify-content: space-between; margin-top: 32px;">
                         <button type="button" class="btn-secondary prev-step" data-prev="step-1-triggers" style="background-color: #64748b; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">
                             &larr; Terug
@@ -381,7 +571,7 @@ ${categorieen.map((cat, idx) => {
             if (catChip) {
                 const categoryId = catChip.closest('.risico-category').getAttribute('data-cat');
                 const val = catChip.getAttribute('data-value');
-                
+
                 catChip.classList.toggle('selected');
                 if (catChip.classList.contains('selected')) {
                     if (!data[categoryId].includes(val)) data[categoryId].push(val);
@@ -409,8 +599,8 @@ ${categorieen.map((cat, idx) => {
                 inputEl.value = '';
                 return;
             }
+
             // Stap 1: Meer voorbeelden tonen/verbergen
-// Stap 1: Meer voorbeelden tonen/verbergen
             const btnMoreRisico = e.target.closest('.btn-more-risico');
             if (btnMoreRisico) {
                 const targetClass = btnMoreRisico.getAttribute('data-target');
@@ -459,8 +649,8 @@ ${categorieen.map((cat, idx) => {
                 const targetDiv = e.target.closest('.slot-coping-section').querySelector(`.${targetClass}`);
                 if (targetDiv) {
                     targetDiv.classList.toggle('hidden');
-                    e.target.textContent = targetDiv.classList.contains('hidden') 
-                        ? '+ Meer voorbeelden tonen...' 
+                    e.target.textContent = targetDiv.classList.contains('hidden')
+                        ? '+ Meer voorbeelden tonen...'
                         : '- Minder voorbeelden tonen';
                 }
                 return;
@@ -480,7 +670,7 @@ ${categorieen.map((cat, idx) => {
                     } else {
                         top3Item.acties = top3Item.acties.filter(a => a !== actie);
                     }
-                    updateTop3UI(); 
+                    updateTop3UI();
                 }
                 return;
             }
@@ -496,7 +686,7 @@ ${categorieen.map((cat, idx) => {
 
                 if (actie && top3Item && !top3Item.acties.includes(actie)) {
                     top3Item.acties.push(`✏️ ${actie}`);
-                    updateTop3UI(); 
+                    updateTop3UI();
                 }
                 return;
             }
@@ -518,12 +708,21 @@ ${categorieen.map((cat, idx) => {
             }
         });
 
+        // Enter-toets voor eigen invoervelden
+        pageContainer.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && e.target.classList.contains('custom-risico-input')) {
+                e.preventDefault();
+                const addBtn = e.target.nextElementSibling;
+                if (addBtn) addBtn.click();
+            }
+        });
+
         // --- DRAG AND DROP LOGICA ---
-        const listContainer = pageContainer.querySelector('#step-2-top3'); // Luister op hogere container ivm dynamische injectie
-        
+        const listContainer = pageContainer.querySelector('#step-2-top3');
+
         listContainer.addEventListener('dragstart', (e) => {
             const slot = e.target.closest('.top3-slot');
-            if(!slot || slot.classList.contains('empty')) {
+            if (!slot || slot.classList.contains('empty')) {
                 e.preventDefault();
                 return;
             }
@@ -534,14 +733,14 @@ ${categorieen.map((cat, idx) => {
 
         listContainer.addEventListener('dragend', (e) => {
             const slot = e.target.closest('.top3-slot');
-            if(slot) slot.classList.remove('dragging');
+            if (slot) slot.classList.remove('dragging');
             listContainer.querySelectorAll('.top3-slot').forEach(s => s.classList.remove('drag-over'));
         });
 
         listContainer.addEventListener('dragover', (e) => {
             e.preventDefault();
             const slot = e.target.closest('.top3-slot');
-            if(slot) {
+            if (slot) {
                 e.dataTransfer.dropEffect = 'move';
                 slot.classList.add('drag-over');
             }
@@ -549,14 +748,14 @@ ${categorieen.map((cat, idx) => {
 
         listContainer.addEventListener('dragleave', (e) => {
             const slot = e.target.closest('.top3-slot');
-            if(slot) slot.classList.remove('drag-over');
+            if (slot) slot.classList.remove('drag-over');
         });
 
         listContainer.addEventListener('drop', (e) => {
             e.preventDefault();
             const slot = e.target.closest('.top3-slot');
-            if(!slot) return;
-            
+            if (!slot) return;
+
             slot.classList.remove('drag-over');
             const targetIndex = parseInt(slot.getAttribute('data-index'));
 
@@ -564,7 +763,7 @@ ${categorieen.map((cat, idx) => {
                 const temp = data.top3[draggedIndex];
                 data.top3[draggedIndex] = data.top3[targetIndex];
                 data.top3[targetIndex] = temp;
-                
+
                 data.top3 = data.top3.filter(i => i !== undefined);
                 updateTop3UI();
             }
@@ -574,31 +773,30 @@ ${categorieen.map((cat, idx) => {
 
     function showStep(stepId) {
         window.scrollTo(0, 0);
-        
+
         const steps = container.querySelectorAll('.wizard-step');
         steps.forEach(step => {
             step.style.display = 'none';
             step.classList.remove('active');
         });
-        
+
         const targetStep = container.querySelector(`#${stepId}`);
         if (targetStep) {
             targetStep.style.display = 'block';
             targetStep.classList.add('active');
         }
 
-        // Progress bar en Headers updaten
         const progressBarContainer = container.querySelector('.progress-bar-container');
         const progressBar = container.querySelector('#risico-progress-bar');
         const mainHeader = container.querySelector('#risico-main-header');
-        
+
         if (stepId === 'step-3-success') {
             if (progressBarContainer) progressBarContainer.style.display = 'none';
             if (mainHeader) mainHeader.style.display = 'none';
         } else {
             if (progressBarContainer) progressBarContainer.style.display = 'block';
             if (mainHeader) mainHeader.style.display = 'block';
-            
+
             if (progressBar) {
                 if (stepId === 'step-0-intro') progressBar.style.width = '25%';
                 else if (stepId === 'step-1-triggers') progressBar.style.width = '50%';
@@ -610,10 +808,10 @@ ${categorieen.map((cat, idx) => {
     function buildStep2Sources() {
         const populateSourceCol = (catId, targetId) => {
             const targetDiv = pageContainer.querySelector(`#${targetId}`);
-            if(!targetDiv) return;
+            if (!targetDiv) return;
             targetDiv.innerHTML = data[catId].map(sit => `
-                <div class="top3-source-chip" data-situatie="${sit}">
-                    <span>${sit}</span><span class="badge-rank"></span>
+                <div class="top3-source-chip" data-situatie="${escapeHtml(sit)}">
+                    <span>${escapeHtml(sit)}</span><span class="badge-rank"></span>
                 </div>
             `).join('');
         };
@@ -642,8 +840,8 @@ ${categorieen.map((cat, idx) => {
         });
 
         const listContainer = pageContainer.querySelector('#top3-draggable-list');
-        if(!listContainer) return;
-        
+        if (!listContainer) return;
+
         listContainer.innerHTML = '';
 
         for (let i = 1; i <= 3; i++) {
@@ -655,14 +853,14 @@ ${categorieen.map((cat, idx) => {
             if (item) {
                 li.className = 'top3-slot filled';
                 li.setAttribute('draggable', 'true');
-                
+
                 const allPrioritized = getPrioritizedActions(item.situatie, actiefTraject);
                 const shownBase = allPrioritized.slice(0, 3);
                 const hiddenBase = allPrioritized.slice(3);
-                
+
                 const renderChip = (actie) => {
                     const sel = item.acties.includes(actie) ? 'selected' : '';
-                    return `<div class="risico-chip coping-chip ${sel}" data-actie="${actie}">${actie}</div>`;
+                    return `<div class="risico-chip coping-chip ${sel}" data-actie="${escapeHtml(actie)}">${escapeHtml(actie)}</div>`;
                 };
 
                 item.acties.forEach(actie => {
@@ -674,13 +872,13 @@ ${categorieen.map((cat, idx) => {
 
                 const shownHTML = shownBase.map(renderChip).join('');
                 const hiddenHTML = hiddenBase.map(renderChip).join('');
-                
+
                 const customHTML = item.acties
                     .filter(a => !allPrioritized.includes(a) && !afleidingActies.includes(a))
                     .map(renderChip).join('');
 
                 const isAfleidingSelected = item.acties.includes('🧩 Afleiding zoeken') || item.acties.some(a => afleidingActies.includes(a));
-                
+
                 let afleidingSubPanelHTML = '';
                 if (isAfleidingSelected) {
                     afleidingSubPanelHTML = `
@@ -697,7 +895,7 @@ ${categorieen.map((cat, idx) => {
                 li.innerHTML = `
                     <div class="top3-slot-header">
                         <span class="rank-num">${i}</span>
-                        <span class="slot-text">${item.situatie}</span>
+                        <span class="slot-text">${escapeHtml(item.situatie)}</span>
                         <span class="drag-handle">⋮⋮</span>
                     </div>
                     <div class="slot-coping-section">
@@ -709,13 +907,13 @@ ${categorieen.map((cat, idx) => {
                                 ${hiddenHTML}
                             </div>
                         </div>
-                        <button class="btn-more-coping" data-target="more-coping-${i}">+ Meer voorbeelden tonen...</button>
+                        <button type="button" class="btn-more-coping" data-target="more-coping-${i}">+ Meer voorbeelden tonen...</button>
                         
                         ${afleidingSubPanelHTML}
 
                         <div class="custom-input-wrapper" style="margin-top: 12px;">
                             <input type="text" class="custom-risico-input input-coping" placeholder="+ Eigen actie toevoegen...">
-                            <button class="btn-add-custom btn-add-coping" data-index="${i-1}">Toevoegen</button>
+                            <button type="button" class="btn-add-custom btn-add-coping" data-index="${i - 1}">Toevoegen</button>
                         </div>
                     </div>
                 `;
@@ -732,7 +930,7 @@ ${categorieen.map((cat, idx) => {
         const totalAvailable = sourceChips.length;
         const targetCount = Math.min(3, totalAvailable);
         const incompleet = data.top3.some(t => t.acties.length === 0);
-        
+
         const btnFinish = pageContainer.querySelector('#btn-finish-risico');
         if (btnFinish) {
             btnFinish.disabled = totalAvailable === 0 || data.top3.length < targetCount || incompleet;

@@ -122,15 +122,62 @@ export function renderFasenVanVerandering(container, onComplete) {
 
     const html = `
         <div class="module-container fase-container">
-            <style>
+  <style>
                 @keyframes slideUpFade { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
                 .stagger-1 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.1s; }
                 .stagger-2 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.2s; }
                 .stagger-3 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.3s; }
+                .stagger-4 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.4s; }
+                .stagger-5 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.5s; }
                 
                 .info-block { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
                 .info-block-border-blue { border-left: 4px solid #3b82f6; }
-                .info-block-border-purple { border-left: 4px solid #8b5cf6; }
+                .info-block-border-orange { border-left: 4px solid #f59e0b; }
+                .info-block-border-green { border-left: 4px solid #10b981; }
+
+                @media (max-width: 600px) {
+                    .watisverslaving-container .wizard-step:not(#wat-step-6) > div {
+                        padding: 12px 6px !important;
+                    }
+                    #wat-step-6 > div {
+                        padding: 24px 18px !important;
+                    }
+                    .watisverslaving-container .wizard-step p,
+                    #wat-step-5 .stagger-4 span {
+                        font-size: var(--mobiel-tekstformaat, 16.5px) !important;
+                        line-height: 1.55 !important;
+                    }
+                    .watisverslaving-container .check-card h3,
+                    .watisverslaving-container .accordion-header h4,
+                    .watisverslaving-container .info-block h4,
+                    #wat-step-5 h4 {
+                        font-size: 17.5px !important;
+                    }
+                    .watisverslaving-container .wizard-step p {
+                        color: #1e293b !important;
+                    }
+                    /* Kleuren behouden op gekleurde en donkere kaarten */
+                    #wat-step-2 .info-block p {
+                        color: #7f1d1d !important;
+                    }
+                    #wat-step-4 .info-block p {
+                        color: #15803d !important;
+                    }
+                    #wat-step-5 .stagger-3 p {
+                        color: #1e3a8a !important;
+                    }
+                    #wat-step-5 .stagger-4 p {
+                        color: #f8fafc !important;
+                    }
+                    /* Bredere kaarten op mobiel */
+                    #wat-step-4 .stagger-1,
+                    #wat-step-5 .stagger-1,
+                    #wat-step-5 .stagger-2,
+                    #wat-step-5 .stagger-3,
+                    #wat-step-5 .stagger-4 {
+                        padding: 18px 16px !important;
+                    }
+                }
             </style>
 
             <div class="progress-bar-container" style="background: #e2e8f0; height: 6px; border-radius: 3px; margin-bottom: 24px; overflow: hidden;">
@@ -212,8 +259,8 @@ export function renderFasenVanVerandering(container, onComplete) {
                         </div>
                     </div>
 
-                    <div style="display: flex; justify-content: space-between; margin-top: 32px;">
-                        <button type="button" class="btn-secondary prev-step" data-prev="fase-step-intro" style="background-color: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">&larr; Vorige</button>
+                    <div class="button-group" style="display: flex; justify-content: space-between; margin-top: 32px; margin-bottom: 16px;">
+                        <button type="button" class="btn-secondary prev-step" data-prev="fase-step-intro" style="background-color: #64748b; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">&larr; Vorige</button>
                         <button type="button" id="btn-finish-fasen" style="background-color: #10b981; color: white; border: none; padding: 12px 28px; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 15px; opacity: ${savedFase ? '1' : '0.5'}; transition: opacity 0.2s;" ${savedFase ? '' : 'disabled'}>
                             Module Afronden 🎉
                         </button>
@@ -256,14 +303,21 @@ export function renderFasenVanVerandering(container, onComplete) {
         }
     }
 
-    container.addEventListener('click', (e) => {
-        if (e.target.matches('.next-step')) {
-            showStep(e.target.getAttribute('data-next'));
-        }
-        if (e.target.matches('.prev-step')) {
-            showStep(e.target.getAttribute('data-prev'));
-        }
-    });
+    const faseRoot = container.querySelector('.fase-container');
+    if (faseRoot) {
+        faseRoot.addEventListener('click', (e) => {
+            const nextBtn = e.target.closest('.next-step');
+            if (nextBtn) {
+                showStep(nextBtn.getAttribute('data-next'));
+                return;
+            }
+            const prevBtn = e.target.closest('.prev-step');
+            if (prevBtn) {
+                showStep(prevBtn.getAttribute('data-prev'));
+                return;
+            }
+        });
+    }
 
     // Wiel logica
     const wheelNodes = container.querySelectorAll('.wheel-node');
@@ -298,7 +352,6 @@ export function renderFasenVanVerandering(container, onComplete) {
 
     reflectieBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            // Zorg ervoor dat we de werkelijke button selecteren, niet toevallig de emoji erin
             const targetBtn = e.target.closest('.fase-select-btn');
             
             reflectieBtns.forEach(b => b.classList.remove('selected'));

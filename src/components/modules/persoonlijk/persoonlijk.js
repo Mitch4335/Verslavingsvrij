@@ -29,20 +29,34 @@ const trajectConfig = {
 };
 
 const mottos = [
+    // Nederlands
     "Elke stap voorwaarts brengt helderheid en kracht.",
-    "Alles komt goed.",
-    "Morgen weer een nieuwe dag.",
-    "Na regen komt zonneschijn.",
-    "Carpe diem.",
-    "Pluk de dag.",
+    "Niet 'op een dag', maar 'dag één'.",
+    "De aanhouder wint.",
     "Eén dag tegelijk.",
-    "Je bent sterker dan je denkt.",
     "Vooruitgang, geen perfectie.",
+    "Kleine stappen maken een groot verschil.",
+    "Vandaag kies ik voor mezelf.",
+    "Je bent sterker dan je denkt.",
     "Vallen en weer opstaan.",
+    "Een misstap wist mijn vooruitgang niet uit.",
+    "Rust in mijn hoofd, regie over mijn leven.",
+    "Na regen komt zonneschijn.",
+    "Morgen weer een nieuwe dag.",
+    "Ook dit gaat weer voorbij.",
+    "Pluk de dag.",
+    "Alles komt goed.",
+
+    // Engels & overig
     "One day at a time.",
     "Progress, not perfection.",
+    "Small steps every day.",
+    "Your future self will thank you.",
+    "Fall seven times, stand up eight.",
     "This too shall pass.",
-    "You've got this."
+    "Trust the process.",
+    "You've got this.",
+    "Carpe diem."
 ];
 
 // Helper: Haalt de ruwe opgeslagen data uit registraties.js
@@ -136,6 +150,7 @@ export function renderPersoonlijkModule() {
     const mijnTrajecten = JSON.parse(localStorage.getItem('mijnTrajecten') || '[]');
     const opgeslagenMotto = localStorage.getItem('persoonlijkMotto');
     const huidigMotto = opgeslagenMotto || mottos[0];
+    const opgeslagenProfielfoto = localStorage.getItem('persoonlijkProfielfoto');
 
     function berekenSuccesRatio(regs, middel, goalData) {
         const trajectRegs = regs.filter(r => r.middel === middel);
@@ -242,12 +257,12 @@ export function renderPersoonlijkModule() {
                                     const borderColor = isNadeel ? '#ef4444' : '#10b981';
                                     
                                     return `
-                                        <li style="display: flex; align-items: center; gap: 14px; background: ${bgColor}; padding: 14px; border-radius: 12px; border-left: 4px solid${borderColor}; box-sizing: border-box; max-width: 100%;">
+                                        <li style="display: flex; align-items: center; gap: 14px; background: ${bgColor}; padding: 14px; border-radius: 12px; border-left: 4px solid ${borderColor}; box-sizing: border-box; max-width: 100%;">
                                             <div style="background: ${borderColor}; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; flex-shrink: 0; text-align: center; line-height: 1;">
                                                 ${index + 1}
                                             </div>
                                             <div style="font-size: 14px; color: #1e293b; line-height: 1.4; word-break: break-word;">
-                                                <strong>${isNadeel ? '⚠️' : '✨'} ${item.type}:</strong>${item.text}
+                                                <strong>${isNadeel ? '⚠️' : '✨'} ${item.type}:</strong> ${item.text}
                                             </div>
                                         </li>
                                     `;
@@ -335,7 +350,6 @@ export function renderPersoonlijkModule() {
                                     <span style="display: block; font-size: 12px; font-weight: 700; color: #64748b;">${succesData.gehoudenAanDoel === 1 ? 'dag' : 'dagen'}</span>
                                 </div>
                             </div>
-                            </div>
 
                             <div style="box-sizing: border-box; width: 100%; min-width: 0; max-width: 100%;">
                                 <h4 style="margin: 0 0 8px 0; font-size: 15px; font-weight: 700; color: #1e293b;">Voortgang Registraties</h4>
@@ -358,21 +372,23 @@ export function renderPersoonlijkModule() {
     const htmlContent = `
         <div id="persoonlijk-module-root" class="module-container" style="font-family: 'Nunito', sans-serif; color: #1e293b; width: 100%; max-width: 100%; margin: 0; padding: 8px; box-sizing: border-box; padding-bottom: 100px; overflow-x: hidden;">
             
-            <div class="stagger-1" style="background: #ffffff; border-radius: 20px; padding: 28px 20px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 16px; margin-bottom: 24px; box-sizing: border-box; width: 100%; max-width: 100%;">
+            <div class="stagger-1" style="position: relative; z-index: 50; background: #ffffff; border-radius: 20px; padding: 28px 20px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 16px; margin-bottom: 24px; box-sizing: border-box; width: 100%; max-width: 100%;">
                 
-                <div style="position: relative; width: 120px; height: 120px; border-radius: 50%; background: #f1f5f9; border: 2px dashed #cbd5e1; display: flex; align-items: center; justify-content: center; cursor: pointer; overflow: hidden; flex-shrink: 0; margin: 0 auto;" title="Klik om profielfoto toe te voegen">
-                    <span style="font-size: 56px; line-height: 1; display: flex; align-items: center; justify-content: center;">👤</span>
+                <div id="profielfoto-container" style="position: relative; width: 120px; height: 120px; border-radius: 50%; background: #f1f5f9; border: 2px ${opgeslagenProfielfoto ? 'solid' : 'dashed'} #cbd5e1; display: flex; align-items: center; justify-content: center; cursor: pointer; overflow: hidden; flex-shrink: 0; margin: 0 auto;" title="Klik om profielfoto toe te voegen">
+                    <span id="profielfoto-preview" style="width: 100%; height: 100%; font-size: 56px; line-height: 1; display: flex; align-items: center; justify-content: center;">
+                        ${opgeslagenProfielfoto ? `<img src="${opgeslagenProfielfoto}" alt="Profielfoto" style="width: 100%; height: 100%; object-fit: cover;">` : '👤'}
+                    </span>
                     <input type="file" id="profielfoto-input" style="position: absolute; inset: 0; opacity: 0; cursor: pointer;" accept="image/*">
                 </div>
                 
                 <div style="width: 100%; max-width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 6px; width: 100%;" id="motto-wrapper">
+                    <div style="position: relative; display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 6px; width: 100%;" id="motto-wrapper">
                         <span style="font-size: 11px; font-weight: 700; color: #2563eb; text-transform: uppercase; letter-spacing: 0.5px;">Jouw Persoonlijke Kompas</span>
                         
-                        <div style="position: relative; display: inline-block;">
+                        <div style="display: inline-block;">
                             <button type="button" id="btn-toggle-motto" style="background: none; border: none; font-size: 15px; cursor: pointer; color: #64748b; padding: 2px 4px; border-radius: 4px; transition: background 0.2s;" title="Verander motto">✏️</button>
                             
-                            <div id="motto-dropdown" class="hidden" style="position: absolute; left: 50%; transform: translateX(-50%); top: 100%; background: white; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); padding: 8px; width: 260px; z-index: 100; max-height: 350px; overflow-y: auto; border: 1px solid #e2e8f0; margin-top: 4px; text-align: left;">
+                            <div id="motto-dropdown" class="hidden" style="position: absolute; left: 50%; transform: translateX(-50%); top: 100%; background: white; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); padding: 8px; width: 260px; max-width: 100%; box-sizing: border-box; z-index: 100; max-height: 350px; overflow-y: auto; border: 1px solid #e2e8f0; margin-top: 4px; text-align: left;">
                                 
                                 <div style="font-size: 10px; font-weight: 800; color: #94a3b8; text-transform: uppercase; padding: 4px 8px; margin-bottom: 4px;">Eigen motto invullen</div>
                                 <div style="padding: 0 8px 12px 8px; border-bottom: 1px solid #e2e8f0; margin-bottom: 8px;">
@@ -403,6 +419,7 @@ export function renderPersoonlijkModule() {
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
                     <h3 style="margin: 0; font-size: 18px; font-weight: 700; color: #1e293b;">Inspiratie & Motivatie</h3>
                     <button type="button" id="btn-add-foto" style="background: #2563eb; color: #ffffff; border: none; border-radius: 20px; padding: 6px 14px; font-weight: 700; font-size: 14px; cursor: pointer; font-family: inherit;">+ Foto toevoegen</button>
+                    <input type="file" id="inspiratie-foto-input" accept="image/*" style="display: none;">
                 </div>
                 <p style="margin: 0 0 16px 0; font-size: 15px; color: #64748b; line-height: 1.4;">Beelden die je kracht geven en herinneren aan je doelen.</p>
                 
@@ -512,14 +529,11 @@ function tekenGrafiek(registraties, canvasId, goalData, traject) {
         }
     });
 
-    // NIEUW: Dwing een minimale breedte af per staafje, zodat we kunnen scrollen!
     const wrapperId = `grafiek-wrapper-${traject}`;
     const wrapperEl = document.getElementById(wrapperId);
     if (wrapperEl && labels.length > 7) { 
-        // 40 pixels breedte per staafje
         wrapperEl.style.width = `${labels.length * 40}px`;
         
-        // Scroll automatisch helemaal naar rechts (vandaag) zodra de module opent
         setTimeout(() => {
             const scrollContainer = wrapperEl.parentElement;
             if (scrollContainer) {
@@ -598,15 +612,146 @@ function tekenGrafiek(registraties, canvasId, goalData, traject) {
     });
 }
 
+function comprimeerAfbeelding(file, maxFormaat = 600, kwaliteit = 0.75) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            const img = new Image();
+            img.onload = () => {
+                let width = img.width;
+                let height = img.height;
+
+                if (width > height) {
+                    if (width > maxFormaat) {
+                        height = Math.round((height * maxFormaat) / width);
+                        width = maxFormaat;
+                    }
+                } else {
+                    if (height > maxFormaat) {
+                        width = Math.round((width * maxFormaat) / height);
+                        height = maxFormaat;
+                    }
+                }
+
+                const canvas = document.createElement('canvas');
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, width, height);
+                resolve(canvas.toDataURL('image/jpeg', kwaliteit));
+            };
+            img.onerror = reject;
+            img.src = event.target.result;
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+    });
+}
+
 function initPersoonlijkListeners() {
+    // 1. Profielfoto verwerken & opslaan
     const profielInput = document.getElementById('profielfoto-input');
+    const profielPreview = document.getElementById('profielfoto-preview');
+    const profielContainer = document.getElementById('profielfoto-container');
+
     if (profielInput) {
-        profielInput.addEventListener('change', function(e) {
+        profielInput.addEventListener('change', async function(e) {
             const file = e.target.files[0];
-            if (file) console.log('Profielfoto geselecteerd:', file.name);
+            if (!file) return;
+
+            try {
+                const compressedDataUrl = await comprimeerAfbeelding(file, 300, 0.8);
+                localStorage.setItem('persoonlijkProfielfoto', compressedDataUrl);
+                if (profielPreview) {
+                    profielPreview.innerHTML = `<img src="${compressedDataUrl}" alt="Profielfoto" style="width: 100%; height: 100%; object-fit: cover;">`;
+                }
+                if (profielContainer) {
+                    profielContainer.style.border = '2px solid #cbd5e1';
+                }
+            } catch (err) {
+                alert('De profielfoto kon niet worden opgeslagen. Probeer eventueel een andere foto.');
+                console.error('Fout bij opslaan profielfoto:', err);
+            }
+            e.target.value = '';
         });
     }
 
+    // 2. Inspiratie & Motivatie fotoalbum
+    const btnAddFoto = document.getElementById('btn-add-foto');
+    const inspiratieInput = document.getElementById('inspiratie-foto-input');
+    const fotoalbumGrid = document.getElementById('fotoalbum-grid');
+
+    function laadInspiratieFotos() {
+        try {
+            return JSON.parse(localStorage.getItem('persoonlijkInspiratieFotos') || '[]');
+        } catch (e) {
+            return [];
+        }
+    }
+
+    function renderFotoalbumGrid() {
+        if (!fotoalbumGrid) return;
+        const fotos = laadInspiratieFotos();
+
+        if (fotos.length === 0) {
+            fotoalbumGrid.innerHTML = `
+                <div style="aspect-ratio: 1; border-radius: 14px; background: #f8fafc; border: 2px dashed #e2e8f0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: #94a3b8; font-size: 15px; font-weight: 600; text-align: center;">
+                    <span style="font-size: 36px; line-height: 1;">🌄</span>
+                    <span>Natuur / Rust</span>
+                </div>
+                <div style="aspect-ratio: 1; border-radius: 14px; background: #f8fafc; border: 2px dashed #e2e8f0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: #94a3b8; font-size: 15px; font-weight: 600; text-align: center;">
+                    <span style="font-size: 36px; line-height: 1;">🎯</span>
+                    <span>Doelgericht</span>
+                </div>
+            `;
+            return;
+        }
+
+        fotoalbumGrid.innerHTML = fotos.map((src, index) => `
+            <div style="position: relative; aspect-ratio: 1; border-radius: 14px; overflow: hidden; background: #f1f5f9; box-shadow: 0 2px 4px rgba(0,0,0,0.08);">
+                <img src="${src}" alt="Inspiratiefoto ${index + 1}" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <button type="button" class="btn-verwijder-inspiratie" data-index="${index}" title="Foto verwijderen" style="position: absolute; top: 6px; right: 6px; width: 26px; height: 26px; border-radius: 50%; border: none; background: rgba(15, 23, 42, 0.7); color: #ffffff; font-size: 16px; font-weight: 700; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center;">&times;</button>
+            </div>
+        `).join('');
+
+        fotoalbumGrid.querySelectorAll('.btn-verwijder-inspiratie').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const idx = parseInt(btn.getAttribute('data-index'), 10);
+                const huidigeFotos = laadInspiratieFotos();
+                huidigeFotos.splice(idx, 1);
+                localStorage.setItem('persoonlijkInspiratieFotos', JSON.stringify(huidigeFotos));
+                renderFotoalbumGrid();
+            });
+        });
+    }
+
+    renderFotoalbumGrid();
+
+    if (btnAddFoto && inspiratieInput) {
+        btnAddFoto.addEventListener('click', () => {
+            inspiratieInput.click();
+        });
+
+        inspiratieInput.addEventListener('change', async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            try {
+                const compressedDataUrl = await comprimeerAfbeelding(file, 600, 0.75);
+                const fotos = laadInspiratieFotos();
+                fotos.push(compressedDataUrl);
+                localStorage.setItem('persoonlijkInspiratieFotos', JSON.stringify(fotos));
+                renderFotoalbumGrid();
+            } catch (err) {
+                alert('De opslagruimte van de browser is bijna vol, waardoor deze foto niet kon worden opgeslagen. Verwijder eerst een oudere foto.');
+                console.error('Fout bij opslaan inspiratiefoto:', err);
+            }
+            e.target.value = '';
+        });
+    }
+
+    // 3. Motto-menu
     const btnToggle = document.getElementById('btn-toggle-motto');
     const dropdown = document.getElementById('motto-dropdown');
     const mottoDisplay = document.getElementById('motto-display');
@@ -633,7 +778,7 @@ function initPersoonlijkListeners() {
                 const newMotto = e.currentTarget.getAttribute('data-motto');
                 
                 if (mottoDisplay) {
-                    mottoDisplay.innerHTML = `"${newMotto}"`;
+                    mottoDisplay.textContent = `"${newMotto}"`;
                 }
                 
                 localStorage.setItem('persoonlijkMotto', newMotto);
@@ -667,7 +812,7 @@ function initPersoonlijkListeners() {
                 const newMotto = customInput.value.trim();
                 
                 if (newMotto) {
-                    if (mottoDisplay) mottoDisplay.innerHTML = `"${newMotto}"`;
+                    if (mottoDisplay) mottoDisplay.textContent = `"${newMotto}"`;
                     localStorage.setItem('persoonlijkMotto', newMotto);
                     dropdown.classList.add('hidden');
                     

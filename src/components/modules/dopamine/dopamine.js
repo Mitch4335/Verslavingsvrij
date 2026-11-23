@@ -82,7 +82,7 @@ export function renderDopamineModule(onComplete) {
 
     const htmlContent = `
         <div class="module-container dopamine-container">
-     <style>
+            <style>
                 @keyframes slideUpFade { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
                 .stagger-1 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.1s; }
                 .stagger-2 { animation: slideUpFade 0.4s ease forwards; opacity: 0; animation-delay: 0.2s; }
@@ -100,12 +100,31 @@ export function renderDopamineModule(onComplete) {
                     max-width: 100%;
                 }
 
-                .info-block { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; margin-bottom: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); overflow-x: hidden; }
+                .info-block { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; margin-bottom: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); overflow-x: hidden; }
                 .info-block-border-blue { border-left: 4px solid #3b82f6; }
                 .info-block-border-orange { border-left: 4px solid #f59e0b; }
                 .info-block-border-green { border-left: 4px solid #10b981; }
                 .info-block-border-red { border-left: 4px solid #ef4444; }
                 .info-block-border-purple { border-left: 4px solid #8b5cf6; }
+
+                .dopa-list {
+                    margin: 0 0 16px 20px;
+                    padding: 0;
+                    color: #334155;
+                    font-size: 15px;
+                    line-height: 1.6;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                }
+
+                @media (max-width: 600px) {
+                    .dopa-list {
+                        font-size: var(--mobiel-tekstformaat, 16.5px);
+                        line-height: 1.55;
+                        color: #1e293b;
+                    }
+                }
 
                 /* Standaard (mobiel): verticaal onder elkaar */
                 .g-schema-container {
@@ -174,19 +193,19 @@ export function renderDopamineModule(onComplete) {
                     </div>
 
                     <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px;">
-                        <div class="stagger-1 info-block info-block-border-blue">
+                        <div class="stagger-1 info-block info-block-border-blue" style="margin-bottom: 0;">
                             <span style="font-size: 24px; display: block; margin-bottom: 8px;">🧠</span>
                             <p style="margin: 0; font-size: 15px; color: #334155; line-height: 1.6;">
                                 <strong>De biologische motor.</strong> Veranderen heeft alles te maken met hoe ons brein werkt. In deze module leggen we je uit wat er precies in je hoofd gebeurt wanneer je de neiging voelt om te ${term.werkwoord}.
                             </p>
                         </div>
-                        <div class="stagger-2 info-block info-block-border-orange">
+                        <div class="stagger-2 info-block info-block-border-orange" style="margin-bottom: 0;">
                             <span style="font-size: 24px; display: block; margin-bottom: 8px;">🔄</span>
                             <p style="margin: 0; font-size: 15px; color: #334155; line-height: 1.6;">
                                 <strong>Logische reactie.</strong> We kijken hierbij specifiek naar <strong>dopamine</strong>: de stof in onze hersenen die ons motiveert en gedrag stuurt.
                             </p>
                         </div>
-                        <div class="stagger-3 info-block info-block-border-green">
+                        <div class="stagger-3 info-block info-block-border-green" style="margin-bottom: 0;">
                             <span style="font-size: 24px; display: block; margin-bottom: 8px;">💡</span>
                             <p style="margin: 0; font-size: 15px; color: #334155; line-height: 1.6;">
                                 <strong>Geen zwakte.</strong> Door dit te begrijpen, zul je ontdekken dat trek en sterke gewoontes geen tekenen van zwakte zijn, maar een logisch fysiologisch proces.
@@ -209,21 +228,33 @@ export function renderDopamineModule(onComplete) {
                     </div>
 
                     <div class="info-block info-block-border-blue stagger-1">
-                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
-                            <span style="font-size: 24px;">🔋</span>
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                            <span style="font-size: 22px;">🔋</span>
                             <h4 style="font-size: 18px; margin: 0; color: #1e293b;">Dopamine is een motivator</h4>
                         </div>
-                        <p style="font-size: 15px; color: #334155; line-height: 1.6; margin-bottom: 12px;"><strong>Dopamine is een stof in de hersenen die zorgt voor een gevoel van beloning en plezier.</strong></p>
-                        <p style="font-size: 15px; color: #334155; line-height: 1.6; margin-bottom: 12px;">Omdat het ons een goed gevoel geeft, noemen we dopamine vaak een 'beloningsstofje'. De belangrijkste functie ervan is echter <strong>motivatie</strong>: het spoort je aan om datgene wat het goede gevoel veroorzaakte, nog eens te doen.</p>
-                        <p style="font-size: 15px; color: #334155; line-height: 1.6; margin-bottom: 16px;">Stel, je gaat naar een restaurant met vrienden. Je kletst, eet lekker en maakt er samen iets leuks van. Als gevolg voel je je fijn en maakt je brein dopamine aan. In samenwerking met je geheugen motiveert deze dopamine je om dit gedrag in de toekomst te herhalen.</p>
-                        
-                        <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-left: 4px solid #64748b; padding: 16px; border-radius: 8px;">
-                            <p style="margin: 0; font-size: 14px; color: #475569; line-height: 1.6;">Evolutionair gezien is dit overlevingsmechanisme heel belangrijk: ons brein beloont gedrag dat gezond is voor onszelf en het voortbestaan van onze soort, zoals eten, drinken, beweging, sociaal contact en seksualiteit.</p>
-                        </div>
+                        <p style="font-size: 15px; color: #334155; line-height: 1.6; margin: 0 0 10px 0;"><strong>Dopamine is een stof in je hersenen die zorgt voor een gevoel van beloning en plezier.</strong></p>
+                        <p style="font-size: 15px; color: #334155; line-height: 1.6; margin: 0;">Daarom noemen we het vaak een 'beloningsstofje'. De belangrijkste functie is echter <strong>motivatie</strong>: het spoort je aan om gedrag dat goed voelt, nog eens te herhalen.</p>
                     </div>
 
-                    <div class="stagger-2 button-group" style="display: flex; justify-content: space-between; margin-top: 24px;">
-                        <button class="btn-secondary prev-step" data-prev="dopa-step-intro" style="background-color: #64748b; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">&larr; Terug</button>
+                    <div class="info-block info-block-border-green stagger-2">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                            <span style="font-size: 22px;">🍽️</span>
+                            <h4 style="font-size: 18px; margin: 0; color: #1e293b;">Een voorbeeld uit het dagelijks leven</h4>
+                        </div>
+                        <p style="font-size: 15px; color: #334155; line-height: 1.6; margin: 0 0 10px 0;">Stel, je gaat naar een restaurant met vrienden. Je kletst, eet lekker en hebt een fijne avond.</p>
+                        <p style="font-size: 15px; color: #334155; line-height: 1.6; margin: 0;">Je brein maakt dopamine aan en slaat dat op in je geheugen. Daardoor raak je gemotiveerd om dit in de toekomst vaker te doen.</p>
+                    </div>
+
+                    <div class="info-block stagger-3" style="background: #f8fafc; border-left: 4px solid #64748b;">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                            <span style="font-size: 22px;">🧬</span>
+                            <h4 style="font-size: 17px; margin: 0; color: #1e293b;">Slim overlevingsmechanisme</h4>
+                        </div>
+                        <p style="margin: 0; font-size: 15px; color: #475569; line-height: 1.6;">Evolutionair gezien is dit heel belangrijk: ons brein beloont gedrag dat gezond is voor onszelf en ons voortbestaan — zoals eten, drinken, beweging, sociaal contact en seksualiteit.</p>
+                    </div>
+
+                    <div class="stagger-4 button-group" style="display: flex; justify-content: space-between; margin-top: 24px;">
+                        <button type="button" class="btn-secondary prev-step" data-prev="dopa-step-intro" style="background-color: #64748b; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">&larr; Terug</button>
                         <button type="button" class="btn-primary next-step" data-next="dopa-step-2" style="background-color: #2563eb; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">Hoe werkt dit bij verslaving? &rarr;</button>
                     </div>
                 </div>
@@ -238,15 +269,15 @@ export function renderDopamineModule(onComplete) {
                     </div>
 
                     <div class="info-block info-block-border-orange stagger-1">
-                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
-                            <span style="font-size: 24px;">🔄</span>
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                            <span style="font-size: 22px;">🔄</span>
                             <h4 style="font-size: 18px; margin: 0; color: #1e293b;">Leren en herhalen</h4>
                         </div>
-                        <p style="font-size: 15px; color: #334155; line-height: 1.6; margin-bottom: 24px;">
-                            Dit leerproces werkt als een kettingreactie. Een bepaalde <strong>situatie</strong> leidt tot <strong>gedrag</strong>, wat resulteert in een positief <strong>gevolg</strong> (een belonend gevoel). Je geheugen slaat dit op en motiveert je om dit de volgende keer te herhalen.
+                        <p style="font-size: 15px; color: #334155; line-height: 1.6; margin: 0 0 20px 0;">
+                            Dit leerproces werkt als een kettingreactie: een <strong>situatie</strong> leidt tot <strong>gedrag</strong>, wat zorgt voor een belonend <strong>gevolg</strong>. Je geheugen slaat die koppeling direct op.
                         </p>
 
-                        <div class="g-schema-container stagger-2">
+                        <div class="g-schema-container">
                             <div class="g-schema-flow">
                                 <div class="schema-node node-situatie">
                                     <span class="node-title">Situatie</span>
@@ -268,35 +299,44 @@ export function renderDopamineModule(onComplete) {
                                 <div class="feedback-text">🧠 Geheugen slaat de koppeling op ↩️</div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="stagger-3" style="margin-top: 24px;">
-                            <p style="font-size: 15px; color: #334155; line-height: 1.6; margin-bottom: 12px;">Middelen (of gokken) 'kapen' echter dit natuurlijke leersysteem. Ze maken een veel diepere indruk op je brein omdat ze op drie manieren agressiever werken dan natuurlijk gedrag:</p>
-                            <ul style="margin: 0 0 24px 20px; padding: 0; color: #475569; font-size: 14px; line-height: 1.6;">
-                                <li><strong>Sterker:</strong> Ze veroorzaken een onnatuurlijk grote explosie van dopamine.</li>
-                                <li><strong>Sneller:</strong> Het belonende effect is vrijwel direct merkbaar.</li>
-                                <li><strong>Gemakkelijker:</strong> Je hoeft er nauwelijks moeite voor te doen (je hoeft geen sportschoenen aan te trekken, maar simpelweg iets te pakken).</li>
-                            </ul>
+                    <div class="info-block info-block-border-orange stagger-2">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                            <span style="font-size: 22px;">⚡</span>
+                            <h4 style="font-size: 18px; margin: 0; color: #1e293b;">Hoe middelen dit systeem kapen</h4>
+                        </div>
+                        <p style="font-size: 15px; color: #334155; line-height: 1.6; margin: 0 0 12px 0;">Middelen (of gokken) maken een veel diepere indruk dan natuurlijk gedrag, omdat ze op drie manieren heftiger werken:</p>
+                        <ul class="dopa-list">
+                            <li><strong>Sterker:</strong> een onnatuurlijk grote explosie van dopamine.</li>
+                            <li><strong>Sneller:</strong> het belonende effect is vrijwel direct merkbaar.</li>
+                            <li><strong>Gemakkelijker:</strong> je hoeft er nauwelijks moeite voor te doen (je pakt het simpelweg, zonder eerst te hoeven sporten).</li>
+                        </ul>
 
-                            <div class="dopamine-chart">
-                                <div class="bar-row">
-                                    <span class="bar-label">Normaal (sporten/eten)</span>
-                                    <div class="bar-track"><div class="bar-fill bar-normal"></div></div>
-                                </div>
-                                <div class="bar-row">
-                                    <span class="bar-label" style="text-transform: capitalize;">${term.werkwoord}</span>
-                                    <div class="bar-track"><div class="bar-fill bar-spike"></div></div>
-                                </div>
+                        <div class="dopamine-chart">
+                            <div class="bar-row">
+                                <span class="bar-label">Normaal (sporten/eten)</span>
+                                <div class="bar-track"><div class="bar-fill bar-normal"></div></div>
                             </div>
-
-                            <div style="background: #fef2f2; border: 1px solid #fca5a5; border-left: 4px solid #ef4444; padding: 16px; border-radius: 8px; margin-top: 24px;">
-                                <p style="margin: 0; font-size: 14px; color: #991b1b; line-height: 1.6;">Om zichzelf te beschermen tegen deze enorme dopamine-explosie, gaat het brein zijn eigen dopamine-ontvangers tijdelijk uitschakelen. Het resultaat hiervan is dat alledaagse dingen opeens niet meer genoeg dopamine opleveren om je blij te maken. <strong>Alles voelt tijdelijk saai of vlak.</strong></p>
+                            <div class="bar-row">
+                                <span class="bar-label" style="text-transform: capitalize;">${term.werkwoord}</span>
+                                <div class="bar-track"><div class="bar-fill bar-spike"></div></div>
                             </div>
                         </div>
                     </div>
 
+                    <div class="info-block info-block-border-red stagger-3" style="background: #fef2f2; border-color: #fca5a5; border-left-color: #ef4444;">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                            <span style="font-size: 22px;">🛡️</span>
+                            <h4 style="font-size: 17px; margin: 0; color: #991b1b;">Waarom alles tijdelijk vlak voelt</h4>
+                        </div>
+                        <p style="margin: 0 0 10px 0; font-size: 15px; color: #991b1b; line-height: 1.6;">Om zichzelf te beschermen tegen deze enorme dopamine-explosie, schakelt je brein tijdelijk een deel van zijn eigen dopamine-ontvangers uit.</p>
+                        <p style="margin: 0; font-size: 15px; color: #991b1b; line-height: 1.6;">Alledaagse dingen leveren daardoor opeens te weinig dopamine op. <strong>Alles voelt tijdelijk saai of vlak.</strong></p>
+                    </div>
+
                     <div class="stagger-4 button-group" style="display: flex; justify-content: space-between; margin-top: 24px;">
-                        <button class="btn-secondary prev-step" data-prev="dopa-step-1" style="background-color: #64748b; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">&larr; Vorige</button>
-                        <button class="btn-primary next-step" data-next="dopa-step-3" style="background-color: #2563eb; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">Volgende &rarr;</button>
+                        <button type="button" class="btn-secondary prev-step" data-prev="dopa-step-1" style="background-color: #64748b; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">&larr; Vorige</button>
+                        <button type="button" class="btn-primary next-step" data-next="dopa-step-3" style="background-color: #2563eb; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">Volgende &rarr;</button>
                     </div>
                 </div>
             </section>
@@ -310,15 +350,35 @@ export function renderDopamineModule(onComplete) {
                     </div>
 
                     <div class="info-block info-block-border-purple stagger-1">
-                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
-                            <span style="font-size: 24px;">🍬</span>
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                            <span style="font-size: 22px;">🎬</span>
                             <h4 style="font-size: 18px; margin: 0; color: #1e293b;">Het filmpje begint te spelen</h4>
                         </div>
-                        <p style="font-size: 15px; color: #334155; line-height: 1.6; margin-bottom: 12px;">Omdat die initiële piek zó hoog was, is het ${term.werkwoord} na verloop van tijd geautomatiseerd tot een sterke gewoonte. Het speelt zich af als een soort filmpje in je hoofd, dat vaak al ruim voor het daadwerkelijke gebruik begint.</p>
-                        <p style="font-size: 15px; color: #334155; line-height: 1.6; margin-bottom: 12px;">Een specifieke situatie wekt de trek op. Dit kan <strong>intern</strong> zijn (een emotie of lichamelijk gevoel) of <strong>extern</strong> (een bepaalde tijd, plaats of persoon).</p>
-                        <p style="font-size: 15px; color: #334155; line-height: 1.6; margin-bottom: 24px;">Al aan het begin van dit filmpje (na de situatie) begint de dopamine in je brein toe te nemen. Dit is het zogenaamde <em>'kind in een snoepwinkel'-effect</em>: de verwachting en voorpret zorgen voor een enorme stijging. Hierdoor ontstaan hevige trekgedachten en een overweldigende behoefte om te ${term.werkwoord}. Vaak is deze 'voorpret' in het brein zelfs sterker dan de werkelijke beloning, waardoor het uiteindelijke effect weleens tegenvalt. Zodra je daadwerkelijk gaat ${term.werkwoord}, stijgt de dopamine nog wat extra tot een piek, waarna deze weer snel terugkeert naar het basisniveau.</p>
+                        <p style="font-size: 15px; color: #334155; line-height: 1.6; margin: 0 0 12px 0;">Door die hoge pieken wordt het ${term.werkwoord} na verloop van tijd een automatische gewoonte. Het speelt zich af als een filmpje in je hoofd, dat vaak al ruim vóór het daadwerkelijke gebruik start.</p>
+                        <p style="font-size: 15px; color: #334155; line-height: 1.6; margin: 0 0 8px 0;">Een specifieke situatie wekt de trek op. Die trigger kan twee vormen hebben:</p>
+                        <ul class="dopa-list" style="margin-bottom: 0;">
+                            <li><strong>Intern:</strong> een emotie of lichamelijk gevoel.</li>
+                            <li><strong>Extern:</strong> een bepaalde tijd, plaats of persoon.</li>
+                        </ul>
+                    </div>
 
-                        <div class="svg-graph-container stagger-2">
+                    <div class="info-block info-block-border-purple stagger-2">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                            <span style="font-size: 22px;">🍬</span>
+                            <h4 style="font-size: 18px; margin: 0; color: #1e293b;">Het 'kind in een snoepwinkel'-effect</h4>
+                        </div>
+                        <p style="font-size: 15px; color: #334155; line-height: 1.6; margin: 0 0 10px 0;">Al direct na die situatie begint de dopamine te stijgen. Alleen de <strong>verwachting en voorpret</strong> zorgen al voor hevige trekgedachten en een sterke drang om te ${term.werkwoord}.</p>
+                        <p style="font-size: 15px; color: #334155; line-height: 1.6; margin: 0;">Vaak is die voorpret in je brein zelfs sterker dan de werkelijke beloning, waardoor het uiteindelijke effect weleens tegenvalt.</p>
+                    </div>
+
+                    <div class="info-block info-block-border-purple stagger-3">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                            <span style="font-size: 22px;">📈</span>
+                            <h4 style="font-size: 18px; margin: 0; color: #1e293b;">De piek en de daling</h4>
+                        </div>
+                        <p style="font-size: 15px; color: #334155; line-height: 1.6; margin: 0 0 20px 0;">Zodra je daadwerkelijk gaat ${term.werkwoord}, stijgt de dopamine nog even door tot een piek — waarna deze weer snel terugvalt naar het basisniveau.</p>
+
+                        <div class="svg-graph-container">
                             <svg viewBox="0 0 400 220" width="100%" height="100%" style="overflow: visible;">
                                 <line x1="40" y1="10" x2="40" y2="170" stroke="#94a3b8" stroke-width="3" stroke-linecap="round"/>
                                 <line x1="40" y1="170" x2="380" y2="170" stroke="#94a3b8" stroke-width="3" stroke-linecap="round"/>
@@ -342,9 +402,9 @@ export function renderDopamineModule(onComplete) {
                         </div>
                     </div>
 
-                    <div class="stagger-3 button-group" style="display: flex; justify-content: space-between; margin-top: 24px;">
-                        <button class="btn-secondary prev-step" data-prev="dopa-step-2" style="background-color: #64748b; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">&larr; Vorige</button>
-                        <button class="btn-primary next-step" data-next="dopa-step-4" style="background-color: #2563eb; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">Hoe stopt dit? &rarr;</button>
+                    <div class="stagger-4 button-group" style="display: flex; justify-content: space-between; margin-top: 24px;">
+                        <button type="button" class="btn-secondary prev-step" data-prev="dopa-step-2" style="background-color: #64748b; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">&larr; Vorige</button>
+                        <button type="button" class="btn-primary next-step" data-next="dopa-step-4" style="background-color: #2563eb; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">Hoe stopt dit? &rarr;</button>
                     </div>
                 </div>
             </section>
@@ -358,25 +418,31 @@ export function renderDopamineModule(onComplete) {
                     </div>
 
                     <div class="info-block info-block-border-green stagger-1">
-                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
-                            <span style="font-size: 24px;">🌱</span>
-                            <h4 style="font-size: 18px; margin: 0; color: #1e293b;">Neuroplasticiteit en controle</h4>
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                            <span style="font-size: 22px;">🌱</span>
+                            <h4 style="font-size: 18px; margin: 0; color: #1e293b;">Neuroplasticiteit: je brein herstelt</h4>
                         </div>
-                        <p style="font-size: 15px; color: #334155; line-height: 1.6; margin-bottom: 16px;">Het prachtige van ons brein is <strong>neuroplasticiteit</strong>: het brein past zich aan. Als je een tijdje stopt of sterk mindert met ${term.werkwoord}, beseft je brein dat de explosie aan dopamine wegblijft. Langzaam gaat het de ontvangers weer aanzetten. Het vlakke gevoel verdwijnt en je haalt weer oprecht plezier uit een simpele wandeling of hobby.</p>
-                        
-                        <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-left: 4px solid #10b981; padding: 16px; border-radius: 8px;">
-                            <p style="margin: 0; font-size: 14px; color: #166534; line-height: 1.6;"><strong>Jouw wapen:</strong> Door in de module Registraties je situaties bij te houden, leer je precies welke interne en externe factoren jouw gewoonte opstarten. Herken je de voortekenen? Dan kun jij het 'filmpje' bewust op pauze zetten voordat je bij de piek uitkomt.</p>
-                        </div>
+                        <p style="font-size: 15px; color: #334155; line-height: 1.6; margin: 0 0 10px 0;">Het prachtige van ons brein is <strong>neuroplasticiteit</strong>: het brein past zich aan. Stop of minder je een tijdje met ${term.werkwoord}, dan merkt je brein dat de enorme dopamine-explosies wegblijven.</p>
+                        <p style="font-size: 15px; color: #334155; line-height: 1.6; margin: 0;">Langzaam zet het de dopamine-ontvangers weer aan. Het vlakke gevoel verdwijnt en je haalt weer oprecht plezier uit een simpele wandeling of hobby.</p>
                     </div>
 
-                    <div class="stagger-2 button-group" style="display: flex; justify-content: space-between; margin-top: 24px;">
-                        <button class="btn-secondary prev-step" data-prev="dopa-step-3" style="background-color: #64748b; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">&larr; Vorige</button>
-                        <button class="btn-primary" id="btn-finish-dopamine" style="background-color: #10b981; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">Module Afronden 🎉</button>
+                    <div class="info-block info-block-border-green stagger-2" style="background: #f0fdf4; border-color: #bbf7d0; border-left-color: #10b981;">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                            <span style="font-size: 22px;">⏸️</span>
+                            <h4 style="font-size: 17px; margin: 0; color: #166534;">Jouw wapen: het filmpje pauzeren</h4>
+                        </div>
+                        <p style="margin: 0 0 10px 0; font-size: 15px; color: #166534; line-height: 1.6;">Door in <strong>Registraties</strong> je situaties bij te houden, leer je precies welke interne en externe factoren jouw gewoonte opstarten.</p>
+                        <p style="margin: 0; font-size: 15px; color: #166534; line-height: 1.6;">Herken je de voortekenen? Dan kun jij het 'filmpje' bewust op pauze zetten voordat je bij de piek uitkomt.</p>
+                    </div>
+
+                    <div class="stagger-3 button-group" style="display: flex; justify-content: space-between; margin-top: 24px;">
+                        <button type="button" class="btn-secondary prev-step" data-prev="dopa-step-3" style="background-color: #64748b; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">&larr; Vorige</button>
+                        <button type="button" class="btn-primary" id="btn-finish-dopamine" style="background-color: #10b981; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">Module Afronden 🎉</button>
                     </div>
                 </div>
             </section>
 
-            <!-- STAP 5: AFRONDING & SUCCES (Nieuwe Afsluitende Pagina) -->
+            <!-- STAP 5: AFRONDING & SUCCES -->
             <section class="wizard-step" id="dopa-step-5" style="display: none;">
                 <div style="max-width: 600px; margin: 40px auto; padding: 32px; text-align: center; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
                     <div style="font-size: 64px; margin-bottom: 16px; display: inline-block;">🧠</div>
@@ -400,7 +466,6 @@ export function renderDopamineModule(onComplete) {
     const containerEl = document.querySelector('.dopamine-container');
     if (containerEl) {
         containerEl.addEventListener('click', (e) => {
-            // Door .closest() te gebruiken, vangen we ook klikken op elementen (zoals de emoji) ín de knop op
             const nextBtn = e.target.closest('.next-step');
             if (nextBtn) {
                 showStep(nextBtn.getAttribute('data-next'));
@@ -430,14 +495,12 @@ export function renderDopamineModule(onComplete) {
     }
 }
 
-// Binnen deze module afhandelen zodat we de DOM direct kunnen sturen
 function showStep(stepId) {
     window.scrollTo(0, 0);
 
     const container = document.querySelector('.dopamine-container');
     if (!container) return;
 
-    // Directe stijlen toepassen voorkomt problemen als CSS ontbreekt of wordt overschreven
     const steps = container.querySelectorAll('.wizard-step');
     steps.forEach(step => {
         step.style.display = 'none';
@@ -450,7 +513,6 @@ function showStep(stepId) {
         targetStep.classList.add('active');
     }
 
-    // Voortgangsbalk updaten
     const progressBarContainer = container.querySelector('.progress-bar-container');
     const progressBar = container.querySelector('#dopamine-progress-bar');
     

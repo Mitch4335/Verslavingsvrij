@@ -1,13 +1,27 @@
+
 // src/components/gereedschapskist/geluiden/geluiden.js
 
 function loadCSS() {
     const cssUrl = new URL('./geluiden.css', import.meta.url).href;
-    if (!document.querySelector(`link[href="${cssUrl}"]`)) {
+    const existing = document.querySelector(`link[href="${cssUrl}"]`);
+    if (existing) {
+        if (existing.dataset.loaded === 'true' || existing.sheet) return Promise.resolve();
+        return new Promise((resolve) => {
+            existing.addEventListener('load', resolve, { once: true });
+            existing.addEventListener('error', resolve, { once: true });
+        });
+    }
+    return new Promise((resolve) => {
         const link = document.createElement('link');
         link.rel = 'stylesheet';
         link.href = cssUrl;
+        link.onload = () => {
+            link.dataset.loaded = 'true';
+            resolve();
+        };
+        link.onerror = resolve;
         document.head.appendChild(link);
-    }
+    });
 }
 
 const geluidenData = [
@@ -26,8 +40,8 @@ const svgPause = `<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
 let huidigeAudio = null;
 let actiefGeluidId = null;
 
-export function renderGeluidenModule(containerElement, onBackToKist) {
-    loadCSS();
+export async function renderGeluidenModule(containerElement, onBackToKist) {
+    await loadCSS();
     window.scrollTo(0, 0);
 
     const container = containerElement || document.getElementById('app-content');

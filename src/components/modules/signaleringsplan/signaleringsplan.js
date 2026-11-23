@@ -44,7 +44,6 @@ function triggerConfetti(onFinish) {
     let animationFrame;
     let isFinished = false;
 
-    // Timeout voor de veiligheid, mocht het canvas blijven hangen
     setTimeout(() => {
         if (!isFinished) {
             isFinished = true;
@@ -85,49 +84,100 @@ function triggerConfetti(onFinish) {
     update();
 }
 
-const MODULE_DATA = {
-    groen: {
-        title: "Fase Groen: Geen trek",
-        bgHeader: "#10b981",
-        textColor: "#ffffff",
-        borderClass: "info-block-border-green",
-        themas: [
-            { id: "signalen", label: "1. Wat zijn de signalen?", shown: ["🌿 Rustig", "😊 Vrolijk", "⚡ Energiek", "🏃 Actief"], hidden: ["🤝 Sociaal", "💡 Helder", "💪 Fit", "🚀 Ondernemend", "☕ Gezellig"] },
-            { id: "situaties", label: "2. In welke situaties komt het voor?", shown: ["☀️ Alles loopt zoals gewenst", "💤 Goed geslapen", "🏡 Rustige omgeving", "🌤️ Mooi weer"], hidden: ["🎯 Gevoel alles onder controle te hebben", "🧘 Alleen zijn", "👥 Bij vrienden/familie", "🚴 Tijdens/na sporten"] },
-            { id: "zelf", label: "3. Wat kan ik zelf doen?", shown: ["📅 Dagstructuur aanhouden", "🏋️ Sporten", "☕ Afspreken met mensen", "🛋️ Genoeg rust bewaren"], hidden: [] },
-            { id: "anderen", label: "4. Hoe zouden anderen mij kunnen helpen?", shown: ["🎉 Samen iets leuks doen", "📞 Contact met me opnemen", "🛡️ Me niet belasten met iets negatiefs", "💬 Positief contact"], hidden: [] },
-            { id: "contacten", label: "Contactpersonen", subtitle: "Wie kan ik hiervoor benaderen?", shown: [], hidden: [] }
-        ]
-    },
-    oranje: {
-        title: "Fase Oranje: Beetje trek",
-        bgHeader: "#f59e0b",
-        textColor: "#ffffff",
-        borderClass: "info-block-border-orange",
-        themas: [
-            { id: "signalen", label: "1. Wat zijn de signalen?", shown: ["⚡ Trekgevoel", "💢 Irritatie", "🌀 Opwinding", "🚶 Teruggetrokken"], hidden: ["🌧️ Somber", "😰 Angstig", "💭 Piekeren", "✨ Euforisch", "😊 Vrolijk", "🍺 Zin om te drinken", "🧱 Behoefte aan verdoving", "🔥 Stress", "⚡ Licht ontvlambaar"] },
-            { id: "situaties", label: "2. In welke situaties komt het voor?", shown: ["💼 Na een drukke dag", "🏠 Alleen thuis", "🍻 In gezelschap waar gedronken wordt", "⏱️ Verveling"], hidden: ["😴 Slecht geslapen", "🌧️ Regenachtig weer", "🌴 Vakantie", "⚠️ Tegenslag", "🎉 Goed nieuws", "🍾 Iets te vieren"] },
-            { id: "zelf", label: "3. Wat kan ik zelf doen?", shown: ["🔍 Afleiding zoeken", "🗣️ Erover praten", "🧃 Iets anders drinken", "🏃 Sporten"], hidden: ["🚶 Wandelen", "🎵 Muziek luisteren", "🧘 Ontspanningsoefening", "🚪 Weggaan uit de situatie"] },
-            { id: "anderen", label: "4. Hoe zouden anderen mij kunnen helpen?", shown: ["👂 Luisterend oor", "🎯 Afleiding", "💡 Advies", "🤝 Steun"], hidden: ["🚶 Samen een rondje wandelen", "🚪 Samen weggaan uit de situatie", "🎯 Me helpen herinneren aan mijn doelen", "⭐ Me positieve feedback geven"] },
-            { id: "contacten", label: "Contactpersonen", subtitle: "Wie kan ik bellen voor afleiding of advies?", shown: [], hidden: [] }
-        ]
-    },
-    rood: {
-        title: "Fase Rood: Veel trek",
-        bgHeader: "#ef4444",
-        textColor: "#ffffff",
-        borderClass: "info-block-border-red",
-        themas: [
-            { id: "signalen", label: "1. Wat zijn de signalen?", shown: ["🚨 Sterke fysieke drang", "⚠️ Directe neiging om toe te geven", "🔄 Vasthouden aan trekgedachten", "🧩 Geen afleiding meer kunnen vinden"], hidden: ["🌪️ Zeer onrustig", "😱 Paniek", "🧱 Geïsoleerd", "🛋️ Passief"] },
-            { id: "situaties", label: "2. In welke situaties komt het voor?", shown: ["🔥 Hevige stress", "🍻 Sterke trigger-omgeving", "📦 Overbelasting", "👥 Hoge sociale druk"], hidden: ["😢 Verdriet", "⚡ Ruzie", "🛑 Grote tegenslag"] },
-            { id: "zelf", label: "3. Wat kan ik zelf doen?", shown: ["🚪 Weggaan uit de situatie", "📞 Iemand bellen/spreken", "🎯 Afleiding", "📋 Terugvallen op plan"], hidden: ["🏡 Naar veilige omgeving", "☎️ Hulpnummer bellen", "🚿 Douchen", "🚶 Wandelen"] },
-            { id: "anderen", label: "4. Hoe zouden anderen mij kunnen helpen?", shown: ["👂 Actief luisteren", "🎯 Helpen met afleiden", "💡 Helder advies geven", "🤝 Directe steun bieden"], hidden: ["🚶 Samen weggaan", "🎯 Herinneren aan doelen"] },
-            { id: "contacten", label: "Contactpersonen", subtitle: "Wie moet ik nu direct bellen?", shown: [], hidden: [] }
-        ]
-    }
-};
+function getModuleData(traject) {
+    const specifiek = {
+        alcohol: {
+            oranjeSignalenExtra: ["🍺 Zin om te drinken"],
+            oranjeSituatiesShown: ["💼 Na een drukke dag", "🏠 Alleen thuis", "🍻 In gezelschap waar gedronken wordt", "⏱️ Verveling"],
+            oranjeSituatiesHidden: ["😴 Slecht geslapen", "🌧️ Regenachtig weer", "🌴 Vakantie", "⚠️ Tegenslag", "🎉 Goed nieuws", "🍾 Iets te vieren"],
+            oranjeZelfShown: ["🔍 Afleiding zoeken", "🗣️ Erover praten", "🧃 Iets anders drinken", "🏃 Sporten"],
+            roodSituatiesShown: ["🔥 Hevige stress", "🍻 Sterke trigger-omgeving", "📦 Overbelasting", "👥 Hoge sociale druk"],
+            roodSituatiesHidden: ["😢 Verdriet", "⚡ Ruzie", "🛑 Grote tegenslag"],
+            roodZelfHidden: ["🏡 Naar veilige omgeving", "☎️ Hulpnummer bellen", "🚿 Douchen", "🚶 Wandelen"]
+        },
+        cannabis: {
+            oranjeSignalenExtra: ["🌿 Zin om te blowen", "🛌 Moeite met inslapen"],
+            oranjeSituatiesShown: ["💼 Na een drukke dag", "🏠 Alleen thuis", "🌙 's Avonds op de bank", "⏱️ Verveling"],
+            oranjeSituatiesHidden: ["🌿 In gezelschap waar geblowd wordt", "🏪 Langs de coffeeshop", "😴 Slecht geslapen", "🌧️ Regenachtig weer", "🌴 Vakantie", "⚠️ Tegenslag", "🎉 Goed nieuws"],
+            oranjeZelfShown: ["🔍 Afleiding zoeken", "🗣️ Erover praten", "🌬️ Even naar buiten", "🏃 Sporten"],
+            roodSituatiesShown: ["🔥 Hevige stress", "🚨 Sterke trigger-omgeving", "📦 Overbelasting", "👥 Hoge sociale druk"],
+            roodSituatiesHidden: ["😢 Verdriet", "⚡ Ruzie", "🛑 Grote tegenslag", "🛌 Slaapproblemen"],
+            roodZelfHidden: ["🏡 Naar veilige omgeving", "☎️ Hulpnummer bellen", "🚿 Douchen", "🚶 Wandelen"]
+        },
+        cocaine: {
+            oranjeSignalenExtra: ["⚡ Zin om te gebruiken", "🍺 Trek na alcohol"],
+            oranjeSituatiesShown: ["🍺 Na het drinken van alcohol", "🪩 Op een feest / in de kroeg", "🏠 Alleen thuis", "⏱️ Verveling"],
+            oranjeSituatiesHidden: ["💼 Na een drukke werkweek", "💶 Salarisdag", "😴 Slecht geslapen", "🌴 Vakantie", "⚠️ Tegenslag", "🎉 Goed nieuws", "🍾 Iets te vieren"],
+            oranjeZelfShown: ["🔍 Afleiding zoeken", "🗣️ Erover praten", "🚫 Geen alcohol drinken", "🏃 Sporten"],
+            roodSituatiesShown: ["🔥 Hevige stress", "🚨 Sterke trigger-omgeving", "📦 Overbelasting", "👥 Hoge sociale druk"],
+            roodSituatiesHidden: ["🍺 Alcohol gedronken", "😢 Verdriet", "⚡ Ruzie", "🛑 Grote tegenslag"],
+            roodZelfHidden: ["🏡 Direct naar huis gaan", "☎️ Hulpnummer bellen", "🚿 Douchen", "🚶 Wandelen"]
+        },
+        gokken: {
+            oranjeSignalenExtra: ["🎰 Zin om te gokken", "📉 Verlies willen terugwinnen"],
+            oranjeSituatiesShown: ["📱 Alleen met telefoon / laptop", "🏠 Alleen thuis", "💶 Salarisdag / geld op rekening", "⏱️ Verveling"],
+            oranjeSituatiesHidden: ["⚽ Live sportwedstrijd", "📧 Gokreclame gezien", "💼 Na een drukke dag", "😴 Slecht geslapen", "⚠️ Tegenslag", "🎉 Goed nieuws"],
+            oranjeZelfShown: ["🔍 Afleiding zoeken", "🗣️ Erover praten", "📵 Telefoon / laptop wegleggen", "🏃 Sporten"],
+            roodSituatiesShown: ["🔥 Hevige stress", "🚨 Sterke trigger-omgeving", "💸 Geldzorgen / financiële druk", "📦 Overbelasting"],
+            roodSituatiesHidden: ["📉 Na een verlies", "😢 Verdriet", "⚡ Ruzie", "🛑 Grote tegenslag"],
+            roodZelfHidden: ["❌ Site / app direct sluiten", "🏡 Naar veilige omgeving", "☎️ Hulpnummer bellen", "🚿 Douchen", "🚶 Wandelen"]
+        }
+    };
+
+    const s = specifiek[traject] || specifiek.alcohol;
+
+    return {
+        groen: {
+            title: "Fase Groen: Geen trek",
+            bgHeader: "#10b981",
+            textColor: "#ffffff",
+            borderClass: "info-block-border-green",
+            themas: [
+                { id: "signalen", label: "1. Wat zijn de signalen?", shown: ["🌿 Rustig", "😊 Vrolijk", "⚡ Energiek", "🏃 Actief"], hidden: ["🤝 Sociaal", "💡 Helder", "💪 Fit", "🚀 Ondernemend", "☕ Gezellig"] },
+                { id: "situaties", label: "2. In welke situaties komt het voor?", shown: ["☀️ Alles loopt zoals gewenst", "💤 Goed geslapen", "🏡 Rustige omgeving", "🌤️ Mooi weer"], hidden: ["🎯 Gevoel alles onder controle te hebben", "🧘 Alleen zijn", "👥 Bij vrienden/familie", "🚴 Tijdens/na sporten"] },
+                { id: "zelf", label: "3. Wat kan ik zelf doen?", shown: ["📅 Dagstructuur aanhouden", "🏋️ Sporten", "☕ Afspreken met mensen", "🛋️ Genoeg rust bewaren"], hidden: [] },
+                { id: "anderen", label: "4. Hoe zouden anderen mij kunnen helpen?", shown: ["🎉 Samen iets leuks doen", "📞 Contact met me opnemen", "🛡️ Me niet belasten met iets negatiefs", "💬 Positief contact"], hidden: [] },
+                { id: "contacten", label: "Contactpersonen", subtitle: "Wie kan ik hiervoor benaderen?", shown: [], hidden: [] }
+            ]
+        },
+        oranje: {
+            title: "Fase Oranje: Beetje trek",
+            bgHeader: "#f59e0b",
+            textColor: "#ffffff",
+            borderClass: "info-block-border-orange",
+            themas: [
+                { id: "signalen", label: "1. Wat zijn de signalen?", shown: ["⚡ Trekgevoel", "💢 Irritatie", "🌀 Opwinding", "🚶 Teruggetrokken"], hidden: ["🌧️ Somber", "😰 Angstig", "💭 Piekeren", "✨ Euforisch", "😊 Vrolijk", ...s.oranjeSignalenExtra, "🧱 Behoefte aan verdoving", "🔥 Stress", "⚡ Licht ontvlambaar"] },
+                { id: "situaties", label: "2. In welke situaties komt het voor?", shown: s.oranjeSituatiesShown, hidden: s.oranjeSituatiesHidden },
+                { id: "zelf", label: "3. Wat kan ik zelf doen?", shown: s.oranjeZelfShown, hidden: ["🚶 Wandelen", "🎵 Muziek luisteren", "🧘 Ontspanningsoefening", "🚪 Weggaan uit de situatie"] },
+                { id: "anderen", label: "4. Hoe zouden anderen mij kunnen helpen?", shown: ["👂 Luisterend oor", "🎯 Afleiding", "💡 Advies", "🤝 Steun"], hidden: ["🚶 Samen een rondje wandelen", "🚪 Samen weggaan uit de situatie", "🎯 Me helpen herinneren aan mijn doelen", "⭐ Me positieve feedback geven"] },
+                { id: "contacten", label: "Contactpersonen", subtitle: "Wie kan ik bellen voor afleiding of advies?", shown: [], hidden: [] }
+            ]
+        },
+        rood: {
+            title: "Fase Rood: Veel trek",
+            bgHeader: "#ef4444",
+            textColor: "#ffffff",
+            borderClass: "info-block-border-red",
+            themas: [
+                { id: "signalen", label: "1. Wat zijn de signalen?", shown: ["🚨 Sterke fysieke drang", "⚠️ Directe neiging om toe te geven", "🔄 Vasthouden aan trekgedachten", "🧩 Geen afleiding meer kunnen vinden"], hidden: ["🌪️ Zeer onrustig", "😱 Paniek", "🧱 Geïsoleerd", "🛋️ Passief"] },
+                { id: "situaties", label: "2. In welke situaties komt het voor?", shown: s.roodSituatiesShown, hidden: s.roodSituatiesHidden },
+                { id: "zelf", label: "3. Wat kan ik zelf doen?", shown: ["🚪 Weggaan uit de situatie", "📞 Iemand bellen/spreken", "🎯 Afleiding", "📋 Terugvallen op plan"], hidden: s.roodZelfHidden },
+                { id: "anderen", label: "4. Hoe zouden anderen mij kunnen helpen?", shown: ["👂 Actief luisteren", "🎯 Helpen met afleiden", "💡 Helder advies geven", "🤝 Directe steun bieden"], hidden: ["🚶 Samen weggaan", "🎯 Herinneren aan doelen"] },
+                { id: "contacten", label: "Contactpersonen", subtitle: "Wie moet ik nu direct bellen?", shown: [], hidden: [] }
+            ]
+        }
+    };
+}
 
 const fasenKeys = ['groen', 'oranje', 'rood'];
+const heeftTelefoonboek = 'contacts' in navigator && 'ContactsManager' in window;
+
+function formatContactLabel(raw) {
+    const parts = String(raw || '').split(' | ');
+    const naam = parts[0].trim();
+    const tel = parts[1] ? parts[1].trim() : '';
+    return tel ? `📞 ${naam} (${tel})` : `✏️ ${naam}`;
+}
 
 export function renderSignaleringsplan(containerElement, onComplete) {
     loadCSS();
@@ -137,11 +187,12 @@ export function renderSignaleringsplan(containerElement, onComplete) {
     if (!container) return;
 
     const actiefTraject = localStorage.getItem('actieveVerslaving') || 'alcohol';
+    const MODULE_DATA = getModuleData(actiefTraject);
     const storageKeyName = `signaleringsplan_state_${actiefTraject}`;
     const isCompleted = localStorage.getItem(`arminius_module_signaleringsplan_completed_${actiefTraject}`) === 'true';
 
     // State variabelen
-    let currentStepIndex = isCompleted ? 3 : -1; 
+    let currentStepIndex = isCompleted ? 3 : -1;
     let isEditing = !isCompleted;
     let expandedThemas = new Set();
     let activeAccordionFase = 'groen';
@@ -176,7 +227,7 @@ export function renderSignaleringsplan(containerElement, onComplete) {
         const selectedItems = savedState[storageKey] || [];
         const isExpanded = expandedThemas.has(storageKey);
         const placeholderText = thema.id === 'contacten' ? '+ Naam toevoegen...' : '+ Eigen optie toevoegen...';
-        
+
         let html = `
             <div class="info-block ${faseData.borderClass}" style="margin-bottom: 0; padding: 20px;">
                 <div class="thema-title">${thema.label}</div>
@@ -187,7 +238,7 @@ export function renderSignaleringsplan(containerElement, onComplete) {
         // Geselecteerde items altijd eerst tonen
         const allPredefined = [...thema.shown, ...thema.hidden];
         const customItems = selectedItems.filter(i => !allPredefined.includes(i));
-        
+
         const visibleList = [
             ...allPredefined.filter(i => selectedItems.includes(i)),
             ...thema.shown.filter(i => !selectedItems.includes(i))
@@ -221,9 +272,10 @@ export function renderSignaleringsplan(containerElement, onComplete) {
 
         // Custom items
         customItems.forEach(opt => {
+            const label = thema.id === 'contacten' ? formatContactLabel(opt) : `✏️ ${opt}`;
             html += `
                 <button type="button" class="sp-chip fase-${actieveFaseKey} selected" data-fase="${actieveFaseKey}" data-thema="${thema.id}" data-value="${escapeHtml(opt)}" title="Klik om te verwijderen">
-                    ✏️ ${escapeHtml(opt)} &times;
+                    ${escapeHtml(label)} &times;
                 </button>
             `;
         });
@@ -236,20 +288,39 @@ export function renderSignaleringsplan(containerElement, onComplete) {
                      </button>`;
         }
 
-        html += `
+        if (thema.id === 'contacten') {
+            html += `
+                ${heeftTelefoonboek ? `
+                    <button type="button" class="btn-pick-contact" data-fase="${actieveFaseKey}" style="width: 100%; margin-bottom: 10px; padding: 10px 14px; border-radius: 8px; border: 1px dashed #2563eb; background: #eff6ff; color: #1d4ed8; font-weight: 700; font-size: 14px; cursor: pointer; font-family: inherit;">
+                        📒 Kies uit telefoonboek
+                    </button>
+                ` : ''}
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div class="custom-input-wrapper" style="margin-top: 0;">
+                        <input type="text" class="custom-sp-input contact-naam-input" placeholder="+ Naam van contactpersoon...">
+                    </div>
+                    <div class="custom-input-wrapper" style="margin-top: 0;">
+                        <input type="tel" class="custom-sp-input contact-tel-input" placeholder="Telefoonnummer (optioneel)...">
+                        <button type="button" class="btn-add-custom" data-fase="${actieveFaseKey}" data-thema="contacten">Toevoegen</button>
+                    </div>
+                </div>
+            </div>
+            `;
+        } else {
+            html += `
                 <div class="custom-input-wrapper">
                     <input type="text" class="custom-sp-input" placeholder="${placeholderText}">
                     <button type="button" class="btn-add-custom" data-fase="${actieveFaseKey}" data-thema="${thema.id}">Toevoegen</button>
                 </div>
             </div>
-        `;
+            `;
+        }
         return html;
     }
 
     function renderStep(preserveScroll = false) {
         const scrollY = window.scrollY;
 
-        // Bepaal of de header en de progressiebalk zichtbaar zijn
         headerWrapper.style.display = (currentStepIndex === 4) ? 'none' : 'block';
         if (progressWrapper) {
             progressWrapper.style.display = (currentStepIndex === 4 || (currentStepIndex === 3 && !isEditing)) ? 'none' : 'block';
@@ -291,7 +362,7 @@ export function renderSignaleringsplan(containerElement, onComplete) {
                     </button>
                 </div>
             `;
-        } 
+        }
         // STAP 0, 1, 2: FASEN INVULLEN
         else if (currentStepIndex >= 0 && currentStepIndex <= 2) {
             const actieveFaseKey = fasenKeys[currentStepIndex];
@@ -303,11 +374,11 @@ export function renderSignaleringsplan(containerElement, onComplete) {
             const isStepValid = hasSignalen && hasSituaties && hasZelf;
 
             headerTitle.textContent = fase.title;
-            
+
             let colorCode = '#3b82f6';
-            if(currentStepIndex === 0) colorCode = '#10b981';
-            if(currentStepIndex === 1) colorCode = '#f59e0b';
-            if(currentStepIndex === 2) colorCode = '#ef4444';
+            if (currentStepIndex === 0) colorCode = '#10b981';
+            if (currentStepIndex === 1) colorCode = '#f59e0b';
+            if (currentStepIndex === 2) colorCode = '#ef4444';
 
             pageContent.innerHTML = `
                 <div class="stagger-1" style="margin-bottom: 24px;">
@@ -334,10 +405,10 @@ export function renderSignaleringsplan(containerElement, onComplete) {
                 </div>
             `;
         }
-        // STAP 3: OVERZICHT (Alleen ter controle of weergave)
+        // STAP 3: OVERZICHT
         else if (currentStepIndex === 3) {
             headerTitle.textContent = isEditing ? 'Controleer je Signaleringsplan' : 'Mijn Signaleringsplan';
-            
+
             let overzichtHtml = `
                 <div class="stagger-1">
                     <p style="font-size: 15px; color: #475569; margin-bottom: 24px;">Klik op een fase om je ingevulde antwoorden in te zien.</p>
@@ -358,52 +429,39 @@ export function renderSignaleringsplan(containerElement, onComplete) {
                 `;
 
                 if (isOpen) {
+                    const renderOverviewBox = (thema) => {
+                        const storageKey = `${faseKey}_${thema.id}`;
+                        const selectedItems = savedState[storageKey] || [];
+                        return `
+                            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;">
+                                <div class="sp-overview-title" style="font-size: 14px; font-weight: 700; color: #1e293b; margin-bottom: 12px;">${thema.label}</div>
+                                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                    ${selectedItems.length > 0
+                                        ? selectedItems.map(item => `<span class="sp-overview-chip" style="background: #ffffff; color: #334155; border: 1px solid #cbd5e1; padding: 6px 12px; border-radius: 9999px; font-size: 15px; font-weight: 500;">${escapeHtml(item)}</span>`).join('')
+                                        : '<span style="font-size: 15px; color: #94a3b8; font-style: italic;">Nog niets ingevuld</span>'
+                                    }
+                                </div>
+                            </div>
+                        `;
+                    };
+
                     overzichtHtml += `
-                        <div style="padding: 20px;">
+                        <div style="padding: 16px;">
                             <div class="themas-layout">
                                 <div class="themas-col">
+                                    ${fase.themas.slice(0, 2).map(renderOverviewBox).join('')}
+                                </div>
+                                <div class="themas-col">
+                                    ${fase.themas.slice(2).map(renderOverviewBox).join('')}
+                                </div>
+                            </div>
+                        </div>
                     `;
-                    
-                    fase.themas.slice(0, 2).forEach(thema => {
-                        const storageKey = `${faseKey}_${thema.id}`;
-                        const selectedItems = savedState[storageKey] || [];
-                        overzichtHtml += `
-                            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;">
-                                <div style="font-size: 14px; font-weight: 700; color: #1e293b; margin-bottom: 12px;">${thema.label}</div>
-                                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                    ${selectedItems.length > 0 
-                                        ? selectedItems.map(item => `<span style="background: #ffffff; color: #334155; border: 1px solid #cbd5e1; padding: 6px 12px; border-radius: 9999px; font-size: 15px; font-weight: 500;">${escapeHtml(item)}</span>`).join('') 
-                                        : '<span style="font-size: 15px; color: #94a3b8; font-style: italic;">Nog niets ingevuld</span>'
-                                    }
-                                </div>
-                            </div>
-                        `;
-                    });
-
-                    overzichtHtml += `</div><div class="themas-col">`;
-                    
-                    fase.themas.slice(2).forEach(thema => {
-                        const storageKey = `${faseKey}_${thema.id}`;
-                        const selectedItems = savedState[storageKey] || [];
-                        overzichtHtml += `
-                            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;">
-                                <div style="font-size: 14px; font-weight: 700; color: #1e293b; margin-bottom: 12px;">${thema.label}</div>
-                                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                    ${selectedItems.length > 0 
-                                        ? selectedItems.map(item => `<span style="background: #ffffff; color: #334155; border: 1px solid #cbd5e1; padding: 6px 12px; border-radius: 9999px; font-size: 15px; font-weight: 500;">${escapeHtml(item)}</span>`).join('') 
-                                        : '<span style="font-size: 15px; color: #94a3b8; font-style: italic;">Nog niets ingevuld</span>'
-                                    }
-                                </div>
-                            </div>
-                        `;
-                    });
-
-                    overzichtHtml += `</div></div></div>`;
                 }
                 overzichtHtml += `</div>`;
             });
 
-            overzichtHtml += `</div>`; // End accordion container
+            overzichtHtml += `</div>`;
 
             if (isEditing) {
                 overzichtHtml += `
@@ -431,7 +489,7 @@ export function renderSignaleringsplan(containerElement, onComplete) {
 
             pageContent.innerHTML = overzichtHtml;
         }
-        // STAP 4: DE SUCCESPAGINA (Nieuw!)
+        // STAP 4: SUCCESPAGINA
         else if (currentStepIndex === 4) {
             pageContent.innerHTML = `
                 <div style="max-width: 600px; margin: 40px auto; padding: 32px; text-align: center; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
@@ -455,10 +513,9 @@ export function renderSignaleringsplan(containerElement, onComplete) {
         else window.scrollTo(0, 0);
     }
 
-    // --- EVENT LISTENERS (Delegation) ---
-    if (container) {
-        container.addEventListener('click', (e) => {
-            // Navigatie
+    // --- EVENT LISTENERS (Delegation op pageContent tegen dubbele listeners) ---
+    if (pageContent) {
+        pageContent.addEventListener('click', (e) => {
             if (e.target.closest('#btn-start')) {
                 currentStepIndex = 0;
                 renderStep();
@@ -472,20 +529,20 @@ export function renderSignaleringsplan(containerElement, onComplete) {
             }
             if (e.target.closest('#btn-terug')) {
                 currentStepIndex--;
-                expandedThemas.clear(); 
+                expandedThemas.clear();
                 renderStep();
                 return;
             }
             if (e.target.closest('#btn-volgende') && !e.target.closest('#btn-volgende').disabled) {
                 currentStepIndex++;
-                expandedThemas.clear(); 
+                expandedThemas.clear();
                 renderStep();
                 return;
             }
             if (e.target.closest('#btn-overzicht') && !e.target.closest('#btn-overzicht').disabled) {
                 currentStepIndex = 3;
                 activeAccordionFase = 'groen';
-                expandedThemas.clear(); 
+                expandedThemas.clear();
                 renderStep();
                 return;
             }
@@ -494,13 +551,12 @@ export function renderSignaleringsplan(containerElement, onComplete) {
                 renderStep();
                 return;
             }
-            
-            // --- HET OPSLAAN ---
+
             if (e.target.closest('#btn-opslaan-plan')) {
                 localStorage.setItem(`arminius_module_signaleringsplan_completed_${actiefTraject}`, 'true');
                 isEditing = false;
                 triggerConfetti();
-                currentStepIndex = 4; // Ga nu naar de nieuwe succespagina!
+                currentStepIndex = 4;
                 renderStep();
                 return;
             }
@@ -511,14 +567,12 @@ export function renderSignaleringsplan(containerElement, onComplete) {
                 renderStep();
                 return;
             }
-            
-            // Beide 'Terug naar overzicht' knoppen sluiten de module af
+
             if (e.target.closest('#btn-close-module') || e.target.closest('#btn-close-module-success')) {
                 if (onComplete) onComplete();
                 return;
             }
 
-            // Accordeon klik in overzicht
             const accHeader = e.target.closest('.accordion-header-btn');
             if (accHeader) {
                 activeAccordionFase = accHeader.dataset.fasekey;
@@ -526,7 +580,7 @@ export function renderSignaleringsplan(containerElement, onComplete) {
                 return;
             }
 
-      const updateNextButton = (fase) => {
+            const updateNextButton = (fase) => {
                 const hasSignalen = savedState[`${fase}_signalen`]?.length > 0;
                 const hasSituaties = savedState[`${fase}_situaties`]?.length > 0;
                 const hasZelf = savedState[`${fase}_zelf`]?.length > 0;
@@ -539,13 +593,12 @@ export function renderSignaleringsplan(containerElement, onComplete) {
                 }
             };
 
-            // Chip klikken
             const chip = e.target.closest('.sp-chip');
             if (chip) {
                 const fase = chip.dataset.fase;
                 const thema = chip.dataset.thema;
                 const value = chip.dataset.value;
-                
+
                 const sKey = `${fase}_${thema}`;
                 if (!savedState[sKey]) savedState[sKey] = [];
 
@@ -567,7 +620,6 @@ export function renderSignaleringsplan(containerElement, onComplete) {
                 return;
             }
 
-            // Meer/Minder voorbeelden togglen
             const toggleBtn = e.target.closest('.toggle-hidden-btn');
             if (toggleBtn) {
                 const sKey = toggleBtn.dataset.storagekey;
@@ -596,59 +648,103 @@ export function renderSignaleringsplan(containerElement, onComplete) {
                 return;
             }
 
-            // Custom toevoegen
+            const pickContactBtn = e.target.closest('.btn-pick-contact');
+            if (pickContactBtn && heeftTelefoonboek) {
+                const fase = pickContactBtn.dataset.fase;
+                navigator.contacts.select(['name', 'tel'], { multiple: false })
+                    .then(contacts => {
+                        if (!contacts || contacts.length === 0) return;
+                        const c = contacts[0];
+                        const naam = (c.name && c.name[0]) ? c.name[0].trim() : '';
+                        const tel = (c.tel && c.tel[0]) ? c.tel[0].trim() : '';
+                        if (!naam && !tel) return;
+
+                        const val = tel ? `${naam || tel} | ${tel}` : naam;
+                        const sKey = `${fase}_contacten`;
+                        if (!savedState[sKey]) savedState[sKey] = [];
+                        if (!savedState[sKey].includes(val)) {
+                            savedState[sKey].push(val);
+                            localStorage.setItem(storageKeyName, JSON.stringify(savedState));
+
+                            const chipGroup = pickContactBtn.closest('.info-block').querySelector('.chip-group');
+                            if (chipGroup) {
+                                const newChip = document.createElement('button');
+                                newChip.type = 'button';
+                                newChip.className = `sp-chip fase-${fase} selected`;
+                                newChip.dataset.fase = fase;
+                                newChip.dataset.thema = 'contacten';
+                                newChip.dataset.value = val;
+                                newChip.title = 'Klik om te verwijderen';
+                                newChip.textContent = `${formatContactLabel(val)} ×`;
+                                chipGroup.appendChild(newChip);
+                            }
+                        }
+                    })
+                    .catch(err => console.log('Telefoonboek geannuleerd of niet beschikbaar:', err));
+                return;
+            }
+
             const addBtn = e.target.closest('.btn-add-custom');
             if (addBtn) {
                 const fase = addBtn.dataset.fase;
                 const thema = addBtn.dataset.thema;
-                const input = addBtn.previousElementSibling;
-                
-                if (input && input.value.trim()) {
-                    const val = input.value.trim();
-                    const sKey = `${fase}_${thema}`;
-                    
-                    if (!savedState[sKey]) savedState[sKey] = [];
-                    if (!savedState[sKey].includes(val)) {
-                        savedState[sKey].push(val);
-                        localStorage.setItem(storageKeyName, JSON.stringify(savedState));
+                const infoBlock = addBtn.closest('.info-block');
+                let val = '';
 
-                        const chipGroup = addBtn.closest('.info-block').querySelector('.chip-group');
-                        if (chipGroup) {
-                            const newChip = document.createElement('button');
-                            newChip.type = 'button';
-                            newChip.className = `sp-chip fase-${fase} selected`;
-                            newChip.dataset.fase = fase;
-                            newChip.dataset.thema = thema;
-                            newChip.dataset.value = val;
-                            newChip.title = 'Klik om te verwijderen';
-                            newChip.textContent = `✏️ ${val} ×`;
-                            chipGroup.appendChild(newChip);
-                        }
-                        updateNextButton(fase);
-                    }
+                if (thema === 'contacten') {
+                    const naamInput = infoBlock.querySelector('.contact-naam-input');
+                    const telInput = infoBlock.querySelector('.contact-tel-input');
+                    const naam = naamInput ? naamInput.value.trim() : '';
+                    const tel = telInput ? telInput.value.trim() : '';
+                    if (!naam) return;
+                    val = tel ? `${naam} | ${tel}` : naam;
+                    if (naamInput) naamInput.value = '';
+                    if (telInput) telInput.value = '';
+                } else {
+                    const input = addBtn.previousElementSibling;
+                    if (!input || !input.value.trim()) return;
+                    val = input.value.trim();
                     input.value = '';
+                }
+
+                const sKey = `${fase}_${thema}`;
+                if (!savedState[sKey]) savedState[sKey] = [];
+                if (!savedState[sKey].includes(val)) {
+                    savedState[sKey].push(val);
+                    localStorage.setItem(storageKeyName, JSON.stringify(savedState));
+
+                    const chipGroup = infoBlock.querySelector('.chip-group');
+                    if (chipGroup) {
+                        const newChip = document.createElement('button');
+                        newChip.type = 'button';
+                        newChip.className = `sp-chip fase-${fase} selected`;
+                        newChip.dataset.fase = fase;
+                        newChip.dataset.thema = thema;
+                        newChip.dataset.value = val;
+                        newChip.title = 'Klik om te verwijderen';
+                        newChip.textContent = thema === 'contacten' ? `${formatContactLabel(val)} ×` : `✏️ ${val} ×`;
+                        chipGroup.appendChild(newChip);
+                    }
+                    updateNextButton(fase);
                 }
                 return;
             }
         });
 
-        // Enter-toets voor custom velden
-        container.addEventListener('keypress', (e) => {
+        pageContent.addEventListener('keypress', (e) => {
             if (e.key === 'Enter' && e.target.classList.contains('custom-sp-input')) {
                 const addBtn = e.target.nextElementSibling;
-                if(addBtn) {
-                    addBtn.click();
-                }
+                if (addBtn) addBtn.click();
             }
         });
     }
 
     function escapeHtml(str) {
-        return str.replace(/[&<>'"]/g, 
+        if (!str) return '';
+        return str.replace(/[&<>'"]/g,
             tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
         );
     }
 
-    // Start eerste render
     renderStep();
 }
