@@ -311,6 +311,19 @@ export async function renderActiviteitenModule(containerElement, onBackToKist) {
         if (!preserveScroll) window.scrollTo(0, scrollY); 
     }
 
+    function navigateTo(nextState) {
+        const prevState = viewState;
+        if (window.pushSubHistory) {
+            window.pushSubHistory(() => {
+                viewState = prevState;
+                renderView(false);
+            });
+        }
+        viewState = nextState;
+        window.scrollTo(0, 0);
+        renderView(true);
+    }
+
     container.onclick = (e) => {
         if (e.target.closest('#btn-terug-kist')) {
             if (onBackToKist) onBackToKist();
@@ -318,20 +331,19 @@ export async function renderActiviteitenModule(containerElement, onBackToKist) {
         }
 
         if (e.target.closest('#btn-open-catalogus')) {
-            viewState = 'catalog';
-            renderView(false);
+            navigateTo('catalog');
             return;
         }
 
         if (e.target.closest('#btn-terug-overzicht')) {
-            viewState = 'overview';
-            renderView(false);
+            if (window.goBackSubHistory) window.goBackSubHistory(() => { viewState = 'overview'; renderView(false); });
+            else { viewState = 'overview'; renderView(false); }
             return;
         }
         
         if (e.target.closest('#btn-terug-catalogus')) {
-            viewState = 'catalog';
-            renderView(false);
+            if (window.goBackSubHistory) window.goBackSubHistory(() => { viewState = 'catalog'; renderView(false); });
+            else { viewState = 'catalog'; renderView(false); }
             return;
         }
 
@@ -391,9 +403,7 @@ export async function renderActiviteitenModule(containerElement, onBackToKist) {
 
         if (e.target.closest('#btn-naar-frequentie')) {
             if (draftSelection.length === 0) return;
-            viewState = 'frequencies';
-            window.scrollTo(0,0);
-            renderView(true);
+            navigateTo('frequencies');
             return;
         }
 
@@ -413,9 +423,16 @@ export async function renderActiviteitenModule(containerElement, onBackToKist) {
         if (e.target.closest('#btn-save-drafts')) {
             mijnBezigheden = [...mijnBezigheden, ...draftSelection];
             saveBezigheden();
-            viewState = 'overview';
-            window.scrollTo(0,0);
-            renderView(true);
+            if (window.goBackSubHistory) {
+                window.goBackSubHistory(() => { viewState = 'overview'; renderView(false); });
+                setTimeout(() => {
+                    window.goBackSubHistory(() => { viewState = 'overview'; renderView(false); });
+                }, 50);
+            } else {
+                viewState = 'overview';
+                window.scrollTo(0, 0);
+                renderView(true);
+            }
             return;
         }
 

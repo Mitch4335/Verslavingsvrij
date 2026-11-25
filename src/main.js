@@ -1085,9 +1085,25 @@ if (document.readyState === 'loading') {
 // =========================================================
 // --- TERUGKNOP (HISTORY API) VOOR MOBIEL ---
 // =========================================================
+let subBackStack = [];
+
 function pushAppHistory(viewName) {
+    subBackStack = []; // Reset sub-stappen bij wisselen van hoofdscherm
     if (history.state?.view !== viewName) {
         history.pushState({ view: viewName }, '', `#${viewName}`);
+    }
+}
+
+function pushSubHistory(onBackCallback) {
+    subBackStack.push(onBackCallback);
+    history.pushState({ view: 'sub-step', depth: subBackStack.length }, '', `#sub-${subBackStack.length}`);
+}
+
+function goBackSubHistory(fallbackCallback) {
+    if (subBackStack.length > 0) {
+        history.back();
+    } else if (typeof fallbackCallback === 'function') {
+        fallbackCallback();
     }
 }
 
@@ -1106,6 +1122,14 @@ document.addEventListener('click', (e) => {
 
 // Vang de fysieke terugknop (of swipe) van de telefoon op
 window.addEventListener('popstate', (e) => {
+    // 1. Zit de gebruiker op een subpagina binnen een module? Ga eerst daar 1 stap terug
+    if (subBackStack.length > 0) {
+        const backFn = subBackStack.pop();
+        if (typeof backFn === 'function') backFn();
+        return;
+    }
+
+    // 2. Anders: normale navigatie tussen hoofdschermen
     const targetView = e.state?.view || 'dashboard';
     const appContent = document.getElementById('app-content');
 
@@ -1130,5 +1154,7 @@ window.addEventListener('popstate', (e) => {
     }
 });
 
-// Maak beschikbaar voor sub-pagina's (zoals Achtergrondgeluiden in Hulpmiddelen)
+// Maak beschikbaar voor alle modules en subpagina's
 window.pushAppHistory = pushAppHistory;
+window.pushSubHistory = pushSubHistory;
+window.goBackSubHistory = goBackSubHistory;

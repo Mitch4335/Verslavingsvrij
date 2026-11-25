@@ -120,7 +120,6 @@ export async function renderAdemhalingModule(containerElement, onBackToKist) {
         }, 50);
     }
 
-    // --- NIEUW: Het beloningsscherm ---
     function renderCompletion() {
         container.innerHTML = `
             <div style="padding: 20px; height: 80vh; display: flex; flex-direction: column; justify-content: center;">
@@ -147,7 +146,12 @@ export async function renderAdemhalingModule(containerElement, onBackToKist) {
         const btnOpnieuw = container.querySelector('#btn-nog-een-keer');
 
         if (btnKlaar) btnKlaar.onclick = () => onBackToKist && onBackToKist();
-        if (btnOpnieuw) btnOpnieuw.onclick = renderSetup;
+        if (btnOpnieuw) {
+            btnOpnieuw.onclick = () => {
+                if (window.goBackSubHistory) window.goBackSubHistory(renderSetup);
+                else renderSetup();
+            };
+        }
     }
 
     function bindSetupEvents() {
@@ -186,6 +190,12 @@ export async function renderAdemhalingModule(containerElement, onBackToKist) {
         const btnStart = container.querySelector('#btn-start-oefening');
         if (btnStart) {
             btnStart.onclick = () => {
+                if (window.pushSubHistory) {
+                    window.pushSubHistory(() => {
+                        stopTimers();
+                        renderSetup();
+                    });
+                }
                 isRunning = true;
                 resterendeSeconden = minuten * 60;
                 renderActiveSession();
@@ -206,7 +216,6 @@ export async function renderAdemhalingModule(containerElement, onBackToKist) {
         return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
     }
 
-    // Stop alles (bijvoorbeeld bij handmatig afbreken)
     function stopTimers() {
         isRunning = false;
         clearInterval(mainTimerInterval);
@@ -214,11 +223,17 @@ export async function renderAdemhalingModule(containerElement, onBackToKist) {
     }
 
     function stopSession() {
-        stopTimers();
-        renderSetup();
+        if (window.goBackSubHistory) {
+            window.goBackSubHistory(() => {
+                stopTimers();
+                renderSetup();
+            });
+        } else {
+            stopTimers();
+            renderSetup();
+        }
     }
 
-    // Succesvolle afronding
     function finishSession() {
         stopTimers();
         renderCompletion();
@@ -232,7 +247,6 @@ export async function renderAdemhalingModule(containerElement, onBackToKist) {
             if (timerDisplay) timerDisplay.textContent = formatTime(resterendeSeconden);
             
             if (resterendeSeconden <= 0) {
-                // Vervangt de harde alert door de zachte overgang
                 finishSession();
             }
         }, 1000);

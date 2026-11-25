@@ -51,7 +51,7 @@ export async function renderDagboekModule(containerElement, onBackToKist) {
     
     let notities = [];
     let isEditing = false;
-    let currentFilter = 'all'; // State voor de emoji filter
+    let currentFilter = 'all';
 
     let huidigeNotitie = {
         id: null,
@@ -113,7 +113,6 @@ export async function renderDagboekModule(containerElement, onBackToKist) {
                     </div>
                 `;
             } else {
-                // Mooie Mood-grid Filter balk rendering, met het reset-linkje subtiel naast de titel
                 overzichtHtml += `
                     <div class="stagger-1" style="margin-bottom: 24px;">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
@@ -131,7 +130,6 @@ export async function renderDagboekModule(containerElement, onBackToKist) {
                     </div>
                 `;
 
-                // Sorteer van nieuw naar oud en filter
                 let gefilterd = [...notities].sort((a, b) => b.id - a.id);
                 if (currentFilter !== 'all') {
                     gefilterd = gefilterd.filter(n => n.stemming === currentFilter);
@@ -232,28 +230,30 @@ export async function renderDagboekModule(containerElement, onBackToKist) {
 
     // --- Event Delegation ---
     container.addEventListener('click', (e) => {
-        // Terug naar Gereedschapskist
         if (e.target.closest('#btn-terug-kist')) {
             if (onBackToKist) onBackToKist();
             return;
         }
 
-        // Nieuwe Notitie starten
         if (e.target.closest('#btn-nieuw')) {
+            if (window.pushSubHistory) {
+                window.pushSubHistory(() => {
+                    isEditing = false;
+                    renderView();
+                });
+            }
             isEditing = true;
             huidigeNotitie = { id: Date.now(), datum: new Date().toISOString(), stemming: '', tekst: '', conclusie: '' };
             renderView();
             return;
         }
 
-        // Notitie Annuleren
         if (e.target.closest('#btn-annuleren')) {
-            isEditing = false;
-            renderView();
+            if (window.goBackSubHistory) window.goBackSubHistory(() => { isEditing = false; renderView(); });
+            else { isEditing = false; renderView(); }
             return;
         }
 
-        // Stemming selecteren in formulier
         const formMoodCard = e.target.closest('.form-mood-card');
         if (formMoodCard) {
             container.querySelectorAll('.form-mood-card').forEach(c => c.classList.remove('active'));
@@ -262,11 +262,9 @@ export async function renderDagboekModule(containerElement, onBackToKist) {
             return;
         }
 
-        // Filter knop selecteren in overzicht
         const filterCard = e.target.closest('.filter-card');
         if (filterCard) {
             const mood = filterCard.getAttribute('data-filter');
-            // Toggle logica: Als je op de reeds actieve klikt, de-selecteer je hem
             if (currentFilter === mood) {
                 currentFilter = 'all';
             } else {
@@ -276,14 +274,12 @@ export async function renderDagboekModule(containerElement, onBackToKist) {
             return;
         }
 
-        // Reset filter via tekstlinkje
         if (e.target.closest('#btn-reset-filter')) {
             currentFilter = 'all';
             renderView();
             return;
         }
 
-        // Notitie Opslaan
         if (e.target.closest('#btn-opslaan')) {
             const tekstVeld = container.querySelector('#dagboek-tekst');
             const conclusieVeld = container.querySelector('#dagboek-conclusie');
@@ -303,13 +299,12 @@ export async function renderDagboekModule(containerElement, onBackToKist) {
             notities.push({...huidigeNotitie});
             saveNotities();
             
-            isEditing = false;
-            currentFilter = 'all'; // Reset filter zodat de nieuwe notitie direct zichtbaar is
-            renderView();
+            currentFilter = 'all';
+            if (window.goBackSubHistory) window.goBackSubHistory(() => { isEditing = false; renderView(); });
+            else { isEditing = false; renderView(); }
             return;
         }
 
-        // Notitie Verwijderen
         const deleteBtn = e.target.closest('.delete-btn');
         if (deleteBtn) {
             if (confirm("Weet je zeker dat je deze notitie wilt weggooien?")) {
